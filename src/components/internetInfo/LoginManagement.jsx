@@ -72,36 +72,13 @@ const LoginManagement = ({
     }
   ];
 
-  const ActionButton = ({ action, shouldShow }) => {
-    if (!shouldShow) return null;
-
-    return (
-      <motion.div 
-        className="w-full"
-        whileHover={{ 
-          scale: 1.02,
-          transition: { duration: 0.2 }
-        }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <GlasmorphizmButton 
-          handleAction={action.action}
-          label={action.label}
-          disabled={action.disabled}
-          disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
-          className="w-full h-full min-h-[40px] text-sm whitespace-normal"
-        />
-      </motion.div>
-    );
-  };
-
   return (
     <motion.div 
-      className={`mt-8 bg-gray-800 p-4 sm:p-6 rounded-md shadow-md ${style.animationBorder}`} // Changed from black to dark gray
-      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }} // Changed from red to olive green
+      className={`mt-8 bg-gray-800 p-4 sm:p-6 rounded-md shadow-md w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
+      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }}
     >
       <div className="flex items-center justify-between mb-4 sm:mb-6">
-        <h2 className="text-xl font-bold text-green-600 flex items-center"> {/* Changed from red to green */}
+        <h2 className="text-xl font-bold text-green-600 flex items-center">
           <motion.div
             variants={iconVariants}
             animate="animate"
@@ -121,13 +98,13 @@ const LoginManagement = ({
         >
           <HelpIcon 
             onClick={() => setControllPanelDialog(true)} 
-            className="w-6 h-6 text-gray-400 hover:text-gray-300 cursor-help" // Changed hover color to lighter gray
+            className="w-6 h-6 text-gray-400 hover:text-gray-300 cursor-help"
           />
         </motion.div>
       </div>
 
       <motion.div 
-        className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-4xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 justify-items-center"
         initial="hidden"
         animate="visible"
         variants={{
@@ -146,20 +123,27 @@ const LoginManagement = ({
             'Статична IP': configCabinet.home.staticIp,
             'Тарифні плани': configCabinet.home.tariffPlans,
             'Це не мій особистий кабінет': configCabinet.home.unlinkLogin && user.subLogin.length !== 0,
-            'Вийти з особистого кабінету': configCabinet.home.unlinkLogin && user.subLogin.length !== 0
+            'Вийти з особистого кабінету': true
           }[action.label];
 
-          return (
+          return shouldShow ? (
             <motion.div
               key={index}
+              className="w-full max-w-xs"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <ActionButton action={action} shouldShow={shouldShow} />
+              <GlasmorphizmButton 
+                handleAction={action.action}
+                label={action.label}
+                disabled={action.disabled}
+                disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
+                className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3"
+              />
             </motion.div>
-          );
+          ) : null;
         })}
       </motion.div>
     </motion.div>

@@ -624,7 +624,7 @@ async addFeedBackU(login,phone,message,sublogin) {
 async removeStaticRequest(login) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/removeStaticRequest', {login});
+    const response = await $api.post('http://194.8.147.150:5000/api/removeStaticRequest', {login,provider:'Opticom'});
     const result = response.data;
     return result;
   } catch (error) {
