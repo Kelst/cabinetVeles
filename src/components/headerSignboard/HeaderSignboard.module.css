@@ -1,0 +1,54 @@
+/* Стилі для мобільних пристроїв */
+@media (max-width: 768px) {
+    .bgImgM {
+      position: absolute;
+      width: 100%;
+      height: 200px;
+    }
+  
+    .bgImgM::after,
+    .bgImgM::before {
+      content: "";
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      background-image: url("../../assets/gear.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: -100;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+    }
+    
+    .bgImgM::after {
+      top: -32px;
+      left: calc(50% - 94px);
+      animation: spin 10s linear infinite;
+    }
+    
+    .bgImgM::before {
+      top: 91px;
+      right: calc(50% - 194px);
+      animation: spinReverse 8s linear infinite;
+    }
+  }
+  
+  @keyframes spin { 
+    100% { transform: rotate(360deg); } 
+  }
+  
+  @keyframes spinReverse { 
+    100% { transform: rotate(-360deg); } 
+  }
+  
+  /* Додаткові стилі для покращення візуального ефекту */
+  .text-shadow-pop {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }

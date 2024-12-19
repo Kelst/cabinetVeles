@@ -1,0 +1,74 @@
+.sideBar {
+  @apply rounded-2xl rounded-tl-none rounded-bl-none;
+  position: absolute;
+  width: 80px;
+  height: 100vh;
+  background: #4a5d23; /* Dark olive green background */
+  transition: 0.5s;
+  padding-left: 22px;
+  color: white;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.sideBar.active {
+  width: 100vw;
+  position: relative;
+  z-index: 1000;
+}
+
+.sideBar ul li.active {
+  color: white;
+  background: rgb(47, 59, 22);
+  background: linear-gradient(90deg, rgba(47, 59, 22, 1) 12%, rgba(107, 142, 35, 0.551) 45%);
+  padding-left: 10px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.sideBar ul li.active::before {
+  --tw-bg-opacity: 1;
+  top: -20px;
+  right: 0;
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-width: 0px;
+  border-color: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 5px 5px 0 5px #4a5d23;
+}
+
+.sideBar ul li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 5px -5px 0 5px #4a5d23;
+}
+
+.sideBar ul li.logo .icon {
+  font-size: 2em;
+  color: #a9abb3; /* Keeping the original gray color for consistency */
+}
+
+.sideBar ul li a .icon {
+  color: #d9e6b6; /* Light olive color for icons */
+}
+
+.sideBar ul li:hover a .icon,
+.sideBar ul li:hover a .text {
+  color: #6b8e23; /* Olive green for hover states */
+}
+
+.sideBar ul li.active a .icon::before {
+  background: #4a5d23; /* Dark olive green for active state */
+}
+
+.sideBar ul li:hover.active a .icon::before {
+  background: #2f3b16; /* Darker olive green for active hover state */
+}

@@ -1,0 +1,116 @@
+.buttonWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.container .btn {
+  position: relative;
+  min-width: 260px;
+  height: 60px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn {
+  position: relative;
+  z-index: 1;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+}
+
+.container .btn span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(107, 142, 35, 0.9); /* Changed to olive green */
+  box-shadow: 0 15px 35px rgba(107, 142, 35, 0.05); /* Changed to olive green */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+}
+
+.container .btn:hover span {
+  letter-spacing: 2px;
+  cursor: pointer;
+  background: rgba(74, 93, 35, 0.9); /* Changed to darker olive green */
+}
+
+.container .btn span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(139, 154, 71, 0.15), transparent); /* Changed to lighter olive green */
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.container .btn:hover span::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background-color: #6b8e23; /* Changed to olive green */
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 1000000;
+  box-shadow: 0 2px 4px rgba(107, 142, 35, 0.2); /* Changed to olive green */
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease-in-out;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #6b8e23 transparent transparent transparent; /* Changed to olive green */
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.wideButton {
+  min-width: 260px !important;
+}
+
+.wideButton .tooltip {
+  max-width: 390px;
+}

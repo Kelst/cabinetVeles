@@ -1,0 +1,15 @@
+.animationBorder{
+    font: 'Rubik';
+    @apply  rounded-br-md  p-4;
+    
+    border: 0.1rem solid #e92e2e;
+   
+    
+    box-shadow: 0 0 .1rem #fff,
+    0 0 .2rem #db1d1d,
+    0 0 2rem #dc2626,
+    0 0 0.4rem #dc2626,
+    0 0 0.4rem #dc2626,
+    inset 0 0 1.3rem #b81e1e;
+    
+}

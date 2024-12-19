@@ -1,0 +1,233 @@
+.container{
+    position: relative;
+    width: 1000px;
+    display: flex;
+    align-items: center;
+     
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding:20px 0;
+}
+
+.container .card{
+    position: relative;
+    height: 250px;
+    background: #fff;
+    display: flex;
+    width: 45%;
+    margin: 30px 0;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   
+}
+.container .card .imgBx{
+    padding: 10px;
+position: absolute;
+top: 10px;
+left: 10px;
+background:rgba(255, 0, 0, 0.1);
+
+height: calc(100% - 20px);
+width: calc(100% - 20px);
+z-index: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+overflow: hidden;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 5px 5px 30px rgba(0,0,0,0.1);
+backdrop-filter: blur(20px);
+transition: 0.6s ease-in-out;
+gap: 5px;
+}
+
+.container .card:hover .imgBx{
+    height: 150px;
+    width: 150px;
+    left: -75px;
+    top:calc(50% - 75px);
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.container .card.actives .imgBx{
+    height: 150px;
+    width: 150px;
+    left: -75px;
+    top:calc(50% - 75px);
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.container .card:hover .output .data {
+   color: black;    
+    
+}
+.container .card.active .output .data {
+    color: black;    
+     
+ }
+.container .card:hover .output .data .price {
+   font-size: 2px;   
+   color: white;
+     
+ }
+.container .card .imgBx img {
+    max-width: 100px;
+
+    transition: 0.5s ease-in-out;
+
+}
+.container .card:hover .imgBx img 
+{
+    max-width: 75px;
+    filter: invert(1);
+}
+.container .card.actives .imgBx img 
+{
+    max-width: 75px;
+    filter: invert(1);
+}
+.container .card .content{
+    position: absolute;
+    right: 0;
+    width: calc(100% - 75px);
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card .content h3
+{
+    color:#ff0057;
+    margin-bottom: 5px;
+    font-size: 16px;
+
+ }
+
+ .container .card .content .button
+ {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: #0095ff;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+ }
+
+ @media(max-width:992px){
+.container{
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.container .card{
+   min-width: 200px;
+   height: auto;
+   flex-direction: column;
+   background: transparent;
+   margin: -20px 0;
+   box-shadow: none;
+}
+
+.container .card .content h3
+{
+    color:#ff0057;
+    margin-bottom: 5px;
+    font-size: 11px;
+   
+
+ }
+.container .card .imgBx{
+    position: relative;
+}
+
+.container .card .imgBx,
+.container .card:hover .imgBx
+{
+   width: 80%;
+   height: 200px;
+   top: 100px;
+   left: 10%;
+}
+.card.actives{
+    min-width: 200px;
+    height: auto;
+    flex-direction: column;
+    background: transparent;
+    margin: -20px 0;
+    box-shadow: none;
+}
+.container .card .imgBx,
+.container .card.card.actives .imgBx
+{
+   width: 80%;
+   height: 200px;
+   top: 100px;
+   left: 10%;
+}
+.container .card:hover .imgBx{
+    top:80px;
+}
+.container .card .imgBx img,
+.container .card:hover .imgBx img{
+    max-width: 100px;
+}
+
+.container .card .content {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    box-shadow: none;
+    border-top: 100px solid #fff;
+    border-radius: 20px;
+    padding:  20px 40px;
+    font-size: 12px;
+}
+
+ }
+
+
+ .output {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333; /* колір тексту */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+   
+    border-radius: 10px; /* закругленість кутиків */
+  position: relative;
+  margin-left: 5px;
+}
+
+.data {
+    font-weight: bold;
+    color: red; /* колір для ціни */
+  
+
+}
+
+.price {
+    font-weight: bold;
+    color: black; /* колір для важливої інформації */
+   
+}
+
+.units {
+    font-style: italic;
+    color: #6c757d; /* колір одиниць вимірювання */
+}
