@@ -70,7 +70,7 @@ setActiveItem(item)
   return (
     <div className="">
     <HeaderSignboard user={user} clases={clases} />
-    <div className={'transition-all duration-500 bg-[#4a5d23] -translate-y-80 md:translate-y-[0px] relative -z-10 ' + ' ' + clases.navigation}>
+    <div className={'transition-all duration-500 bg-[#060606] -translate-y-80 md:translate-y-[0px] relative -z-10 ' + ' ' + clases.navigation}>
       <div 
         className="absolute -left-6  w-[210px] h-[200px] z-50 cursor-pointer overflow-hidden"
         onClick={() => navigate('/home')}

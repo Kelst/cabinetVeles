@@ -43,10 +43,10 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
   
   const InfoItem = ({ icon: Icon, label, value, children }) => (
     <motion.div 
-      className="flex items-center py-3 border-b border-gray-600 last:border-b-0"
+      className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
       whileHover={{ 
         x: 5,
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        backgroundColor: "rgba(163, 230, 53, 0.05)",
         transition: { duration: 0.2 }
       }}
     >
@@ -55,15 +55,15 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         variants={iconVariants}
         animate="animate"
       >
-        <Icon className="w-5 h-5 flex-shrink-0 text-gray-400" />
+        <Icon className="w-5 h-5 flex-shrink-0 text-lime-400" />
       </motion.div>
       <motion.div 
         className="flex flex-col sm:flex-row sm:justify-between sm:items-center w-full"
-        whileHover={{ color: "#6b8e23" }} // Changed from indigo to olive green
+        whileHover={{ color: "#84cc16" }}
       >
-        <span className="text-sm text-gray-400 sm:text-base sm:mr-4">{label}</span>
+        <span className="text-sm text-lime-200/70 sm:text-base sm:mr-4">{label}</span>
         <motion.div 
-          className="font-medium text-gray-200 mt-1 sm:mt-0 flex items-center"
+          className="font-medium text-lime-100 mt-1 sm:mt-0 flex items-center"
           whileHover={{ scale: 1.02 }}
         >
           {value}
@@ -79,7 +79,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-3 py-2 bg-green-800/10 rounded-lg border border-green-600/20" // Changed from red to green
+          className="inline-flex items-center gap-3 px-3 py-2 bg-lime-900/20 rounded-lg border border-lime-600/20"
         >
           <motion.div
             animate={{ 
@@ -92,14 +92,14 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
               ease: "easeInOut"
             }}
           >
-            <AlertCircle className="w-5 h-5 text-green-600" /> {/* Changed from red to green */}
+            <AlertCircle className="w-5 h-5 text-lime-500" />
           </motion.div>
           <motion.div 
             className="flex flex-col"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-green-500 font-medium">Недостатньо коштів</span>
-            <span className="text-green-400/60 text-sm">Поповніть баланс для продовження</span>
+            <span className="text-lime-500 font-medium">Недостатньо коштів</span>
+            <span className="text-lime-400/60 text-sm">Поповніть баланс для продовження</span>
           </motion.div>
         </motion.div>
       );
@@ -112,7 +112,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         {configCabinet.home.reloadSesion &&
           <Tooltip title="Перезавантажити сесію" arrow>
             <IconButton size="small" className="ml-2" onClick={handleReloadSession}>
-              <RefreshIcon className="w-4 h-4 text-gray-300" />
+              <RefreshIcon className="w-4 h-4 text-lime-300" />
             </IconButton>
           </Tooltip>
         }
@@ -126,13 +126,13 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
 
   return (
     <motion.div 
-      className={`bg-gray-800 p-4 sm:p-6 rounded-md shadow-md ${style.animationBorder}`} // Changed from black to dark gray
-      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }} // Changed from red to olive green
+      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style.animationBorder}`}
+      whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
       <TelegramAdButton/>
       <FeedbackModal/>
       <HomeTour/>
-      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-green-600 flex items-center"> {/* Changed from red to green */}
+      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-lime-400 flex items-center">
         <motion.div
           className="mr-2 perspective-400"
           variants={iconVariants}
@@ -155,7 +155,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
                 onClick={handleEditPhone} 
                 className="ml-2"
               >
-                <ModeEditOutlineTwoToneIcon className="text-gray-300" fontSize="small" />
+                <ModeEditOutlineTwoToneIcon className="text-lime-300" fontSize="small" />
               </IconButton>
             </Tooltip>
           }
@@ -172,7 +172,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
           value={
             <Tooltip title="Інтернет сесія працює на цьому mac-адресі" arrow>
               <IconButton size="small" className="ml-2">
-                <div className='text-white'>{user?.cid}</div> 
+                <div className='text-lime-100'>{user?.cid}</div> 
               </IconButton>
             </Tooltip>
           } 
@@ -198,7 +198,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
                 onClick={handleEditPassword} 
                 className="ml-2"
               >
-                <ModeEditOutlineTwoToneIcon className="text-gray-300" fontSize="small" />
+                <ModeEditOutlineTwoToneIcon className="text-lime-300" fontSize="small" />
               </IconButton>
             </Tooltip>
           }

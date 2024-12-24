@@ -57,13 +57,13 @@ const StyledTabs = styled((props) => (
   position: 'relative',
   zIndex: 0,
   '& .MuiTabs-indicator': {
-    backgroundColor: 'white',
+    backgroundColor: '#A4DE02', // Lime green color
     marginBottom: "10px",
     marginTop: "10px",
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
-    backgroundColor: 'black',
+    backgroundColor: '#353535', // Matte black
   },
 });
 
@@ -73,12 +73,12 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(0, 0, 0, 0.7)', // Slightly faded black
     '&.Mui-selected': {
-      color: '#fff',
+      color: '#000000', // Solid black
     },
     '&.MuiTabs-indicator': {
-      color: "black"
+      color: '#000000' // Black
     }
   }),
 );

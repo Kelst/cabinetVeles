@@ -74,11 +74,11 @@ const LoginManagement = ({
 
   return (
     <motion.div 
-      className={`mt-8 bg-gray-800 p-4 sm:p-6 rounded-md shadow-md w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
-      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }}
+      className={`mt-8 bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
+      whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
       <div className="flex items-center justify-between mb-4 sm:mb-6">
-        <h2 className="text-xl font-bold text-green-600 flex items-center">
+        <h2 className="text-xl font-bold text-lime-400 flex items-center">
           <motion.div
             variants={iconVariants}
             animate="animate"
@@ -98,7 +98,7 @@ const LoginManagement = ({
         >
           <HelpIcon 
             onClick={() => setControllPanelDialog(true)} 
-            className="w-6 h-6 text-gray-400 hover:text-gray-300 cursor-help"
+            className="w-6 h-6 text-lime-400 hover:text-lime-300 cursor-help"
           />
         </motion.div>
       </div>
@@ -140,7 +140,7 @@ const LoginManagement = ({
                 label={action.label}
                 disabled={action.disabled}
                 disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
-                className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3"
+                className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20"
               />
             </motion.div>
           ) : null;

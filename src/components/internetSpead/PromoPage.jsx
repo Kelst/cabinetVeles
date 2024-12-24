@@ -15,20 +15,20 @@ import { styled } from '@mui/material/styles';
 import ContactInfoButton from '../сontactInfoButton/ContactInfoButton';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  background: 'linear-gradient(to bottom, #1a1a1a, #004d40, #1a1a1a)',
+  background: 'linear-gradient(to bottom, #000000, #353535, #000000)', // Black and matte black
   minHeight: '100vh',
   padding: theme.spacing(4),
   color: '#ffffff'
 }));
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: 'rgba(26, 26, 26, 0.9)',
+  backgroundColor: 'rgba(0, 0, 0, 0.9)', // Black with transparency
   backdropFilter: 'blur(8px)',
-  border: '1px solid #00796b',
+  border: '1px solid #A4DE02', // Lime green
   marginBottom: theme.spacing(4),
   color: '#ffffff',
   '&:hover': {
-    boxShadow: '0 0 15px rgba(0, 121, 107, 0.3)',
+    boxShadow: '0 0 15px rgba(164, 222, 2, 0.3)', // Lime green shadow
     transform: 'translateY(-2px)',
     transition: 'all 0.3s ease'
   }
@@ -71,7 +71,7 @@ const PromoPage = () => {
             variant="h2" 
             align="center" 
             sx={{ 
-              color: '#4caf50',
+              color: '#A4DE02', // Lime green
               mb: 2, 
               fontWeight: 'bold',
               textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
@@ -84,7 +84,7 @@ const PromoPage = () => {
             sx={{ 
               mb: 4, 
               fontWeight: 'bold',
-              color: '#e0e0e0'
+              color: '#ffffff'
             }}>
             3 МІСЯЦІ ПОСЛУГ У ПОДАРУНОК!
           </Typography>
@@ -93,7 +93,7 @@ const PromoPage = () => {
         <AnimatedSection delay={0.3}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h5" sx={{ mb: 3, color: '#e0e0e0' }}>
+              <Typography variant="h5" sx={{ mb: 3, color: '#ffffff' }}>
                 Підключайте друга, товариша, хорошого знайомого, колегу або просто сусіда до Інтернет-провайдера "Оптикомплюс" і отримуйте 3 місяці послуг у подарунок!
               </Typography>
             </CardContent>
@@ -103,14 +103,14 @@ const PromoPage = () => {
         <AnimatedSection delay={0.4}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#4caf50', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
                 Як стати учасником акції:
               </Typography>
               <List>
                 <ListItem>
                   <ListItemText 
                     primary={
-                      <Typography sx={{ color: '#e0e0e0' }}>
+                      <Typography sx={{ color: '#ffffff' }}>
                         1. Домовтеся з другом про підключення та залиште заявку за тел.: <ContactInfoButton iconColor="white"/>
                       </Typography>
                     }
@@ -119,7 +119,7 @@ const PromoPage = () => {
                 <ListItem>
                   <ListItemText 
                     primary={
-                      <Typography sx={{ color: '#e0e0e0' }}>
+                      <Typography sx={{ color: '#ffffff' }}>
                         2. У заявці вкажіть акцію «Приведи друга» і Ваш логін
                       </Typography>
                     }
@@ -133,17 +133,17 @@ const PromoPage = () => {
         <AnimatedSection delay={0.5}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#4caf50', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
                 Спеціальна пропозиція!
               </Typography>
-              <Typography variant="h5" sx={{ mb: 2, color: '#e0e0e0' }}>
+              <Typography variant="h5" sx={{ mb: 2, color: '#ffffff' }}>
                 Підключіть 5 друзів за один місяць та отримайте:
               </Typography>
               <List>
                 <ListItem>
                   <ListItemText 
                     primary={
-                      <Typography sx={{ color: '#e0e0e0' }}>
+                      <Typography sx={{ color: '#ffffff' }}>
                         • 3 безкоштовні місяці послуг
                       </Typography>
                     }
@@ -152,7 +152,7 @@ const PromoPage = () => {
                 <ListItem>
                   <ListItemText 
                     primary={
-                      <Typography sx={{ color: '#e0e0e0' }}>
+                      <Typography sx={{ color: '#ffffff' }}>
                         • Роутер у подарунок
                       </Typography>
                     }
@@ -166,10 +166,10 @@ const PromoPage = () => {
         <AnimatedSection delay={0.6}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#4caf50', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
                 Важливо!
               </Typography>
-              <Typography variant="body1" sx={{ color: '#e0e0e0' }}>
+              <Typography variant="body1" sx={{ color: '#ffffff' }}>
                 Бонуси будуть зараховані Вам протягом 7 днів після підключення Вашого друга.
               </Typography>
             </CardContent>

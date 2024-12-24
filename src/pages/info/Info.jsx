@@ -65,18 +65,18 @@ const StyledTabs = styled((props) => (
   position: 'relative',
   zIndex: 0,
   '& .MuiTabs-indicator': {
-    backgroundColor: '#6b8e23', // Changed to olive green
+    backgroundColor: '#A4DE02', // Lime green
     marginBottom: "10px",
     marginTop: "10px",
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
-    backgroundColor: '#4a5d23', // Changed to darker olive green
+    backgroundColor: '#353535', // Matte black
   },
   '& .MuiTabs-flexContainer': {
     '& button': {
       '&:hover': {
-        color: '#8B9A47', // Added lighter olive green for hover
+        color: '#90EE90', // Lighter lime green for hover
         opacity: 1,
       },
     },
@@ -89,16 +89,15 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),
-    color: 'rgba(255, 255, 255, 0.7)',
-    transition: 'color 0.3s ease',
+    color: 'rgba(0, 0, 0, 0.7)',
     '&.Mui-selected': {
-      color: '#6b8e23', // Changed to olive green
+      color: '#000000', // Black
     },
     '&.MuiTabs-indicator': {
-      color: "#6b8e23" // Changed to olive green
+      color: "#000000" // Black
     },
     '&:hover': {
-      color: '#8B9A47', // Added lighter olive green for hover
+      color: 'rgba(0, 0, 0, 0.9)', // Darker black for hover
     }
   }),
 );
@@ -115,12 +114,12 @@ export default function Info() {
     { label: "Офіси", show: configCabinet.additional.showOffice, component: (
       <div>
         <div className='mb-2 flex flex-wrap justify-center items-center'>
-          <div className='text-sm border-2 border-[#6b8e23]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center mb-2 hover:border-[#6b8e23] transition-colors duration-300'>
+          <div className='text-sm border-2 border-[#A4DE02]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center mb-2 hover:border-[#A4DE02] transition-colors duration-300'>
             <div className='font-bold'>ТЦ "Проспект", оф. № 128А (праворуч від ескалатору)</div>
             <div className='text-[14px]'>пн-пт 09:00 - 18:00 (перерва 14:00 - 15:00)</div>
             <div className='text-[12px]'>сб 10:00 - 18:00 (перерва 13:00 - 14:00), нд - вихідний</div>
           </div>
-          <div className='text-sm border-2 border-[#6b8e23]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center hover:border-[#6b8e23] transition-colors duration-300'>
+          <div className='text-sm border-2 border-[#A4DE02]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center hover:border-[#A4DE02] transition-colors duration-300'>
             <div className='font-bold'>ТРЦ «DEPOt» (2-й поверх)</div>
             <div className='text-[14px]'>пн-нд 10:00 - 20:00 (перерва 14:00 - 14:30)</div>
           </div>

@@ -3,9 +3,23 @@ import { motion } from 'framer-motion';
 import { Dialog, TextField, Typography, Button, IconButton, Tooltip, Box } from '@mui/material';
 import { Headset, X, MessageSquare } from 'lucide-react';
 import InputMask from 'react-input-mask';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ContactInfoButton from '../сontactInfoButton/ContactInfoButton';
 import useInfoStore from '../../store/infoStore';
 import useStore from '../../store/store';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#a6ff00',
+    },
+  },
+});
 
 const MaskedInput = memo(({ value, onChange }) => (
   <InputMask
@@ -21,22 +35,22 @@ const MaskedInput = memo(({ value, onChange }) => (
           variant="outlined"
           sx={{
             '& .MuiOutlinedInput-root': {
-              color: '#666666',
-              backgroundColor: '#FFFFFF',
+              color: '#fff',
+              backgroundColor: '#1a1a1a',
               '& fieldset': {
-                borderColor: 'rgba(107, 142, 35, 0.3)', // Changed to olive green
+                borderColor: 'rgba(166, 255, 0, 0.3)',
               },
               '&:hover fieldset': {
-                borderColor: '#6b8e23', // Changed to olive green
+                borderColor: '#a6ff00',
               },
               '&.Mui-focused fieldset': {
-                borderColor: '#4a5d23', // Changed to darker olive green
+                borderColor: '#fff',
               }
             },
             '& .MuiInputLabel-root': {
-              color: '#666666',
+              color: '#a6ff00',
               '&.Mui-focused': {
-                color: '#4a5d23' // Changed to darker olive green
+                color: '#fff'
               }
             },
           }}
@@ -106,7 +120,7 @@ const FeedbackModal = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
       <motion.div
         variants={iconVariants}
         initial="initial"
@@ -118,12 +132,12 @@ const FeedbackModal = () => {
           placement="left"
           sx={{
             '& .MuiTooltip-tooltip': {
-              bgcolor: '#6b8e23', // Changed to olive green
-              color: '#ffffff',
+              bgcolor: '#1a1a1a',
+              color: '#a6ff00',
               fontSize: '0.875rem',
               fontWeight: 500,
-              boxShadow: '0 2px 8px rgba(107, 142, 35, 0.5)', // Changed to olive green
-              borderRadius: '4px',
+              boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+              borderRadius: '8px',
               padding: '6px 12px'
             }
           }}
@@ -131,10 +145,14 @@ const FeedbackModal = () => {
           <IconButton 
             onClick={handleOpen}
             sx={{ 
-              bgcolor: '#6b8e23', // Changed to olive green
-              color: 'white',
-              '&:hover': { bgcolor: '#4a5d23' }, // Changed to darker olive green
-              boxShadow: '0 0 20px rgba(107, 142, 35, 0.5)' // Changed to olive green
+              bgcolor: '#a6ff00',
+              color: '#000',
+              '&:hover': { 
+                bgcolor: '#fff',
+                transform: 'scale(1.05)',
+              },
+              boxShadow: '0 0 20px rgba(166, 255, 0, 0.5)',
+              transition: 'all 0.3s ease'
             }}
           >
             <Headset size={28} />
@@ -149,8 +167,9 @@ const FeedbackModal = () => {
         fullWidth
         PaperProps={{
           sx: {
-            borderRadius: 3,
-            boxShadow: '0 40px 20px rgba(107, 142, 35, 0.1)', // Changed to olive green
+            bgcolor: '#1a1a1a',
+            borderRadius: '16px',
+            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
             position: 'relative',
             p: 3
           }
@@ -171,12 +190,12 @@ const FeedbackModal = () => {
           <IconButton 
             onClick={handleClose}
             sx={{ 
-              color: 'grey.500',
-              '&:hover': { 
-                color: '#6b8e23', // Changed to olive green
-                transform: 'rotate(90deg)',
-                transition: 'all 0.3s'
-              }
+              color: '#a6ff00',
+              '&:hover': {
+                color: '#fff',
+                transform: 'rotate(180deg)',
+              },
+              transition: 'all 0.3s ease'
             }}
           >
             <X size={24} />
@@ -186,7 +205,7 @@ const FeedbackModal = () => {
         <Box className="mb-6">
           <Typography 
             sx={{ 
-              color: '#6b8e23', // Changed to olive green
+              color: '#a6ff00',
               fontWeight: 600, 
               fontSize: '1.5rem',
               mb: 2
@@ -196,8 +215,8 @@ const FeedbackModal = () => {
             <ContactInfoButton />
           </Typography>
           <Box className="flex items-center gap-2">
-            <MessageSquare size={24} color="#6b8e23" /> {/* Changed to olive green */}
-            <Typography sx={{ color: '#6b8e23', fontWeight: 500, fontSize: '1.25rem' }}> {/* Changed to olive green */}
+            <MessageSquare size={24} color="#a6ff00" />
+            <Typography sx={{ color: '#fff', fontWeight: 500, fontSize: '1.25rem' }}>
               {user.login}
             </Typography>
           </Box>
@@ -215,22 +234,22 @@ const FeedbackModal = () => {
               onChange={(e) => setMessage(e.target.value)}
               sx={{
                 '& .MuiOutlinedInput-root': {
-                  color: '#666666',
-                  backgroundColor: '#FFFFFF',
+                  color: '#fff',
+                  backgroundColor: '#1a1a1a',
                   '& fieldset': {
-                    borderColor: 'rgba(107, 142, 35, 0.3)', // Changed to olive green
+                    borderColor: 'rgba(166, 255, 0, 0.3)',
                   },
                   '&:hover fieldset': {
-                    borderColor: '#6b8e23', // Changed to olive green
+                    borderColor: '#a6ff00',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#4a5d23', // Changed to darker olive green
+                    borderColor: '#fff',
                   }
                 },
                 '& .MuiInputLabel-root': {
-                  color: '#666666',
+                  color: '#a6ff00',
                   '&.Mui-focused': {
-                    color: '#4a5d23' // Changed to darker olive green
+                    color: '#fff'
                   }
                 },
               }}
@@ -246,19 +265,22 @@ const FeedbackModal = () => {
               disabled={!isValidPhone}
               onClick={handleFeedback}
               sx={{
-                bgcolor: '#6b8e23', // Changed to olive green
-                color: 'white',
+                bgcolor: '#a6ff00',
+                color: '#000',
                 py: 1.5,
                 textTransform: 'none',
                 fontSize: '1.1rem',
-                borderRadius: '28px',
+                fontWeight: 'bold',
+                borderRadius: '9999px',
                 '&:hover': {
-                  bgcolor: '#4a5d23' // Changed to darker olive green
+                  bgcolor: '#fff',
+                  transform: 'scale(1.05)',
                 },
                 '&.Mui-disabled': {
-                  bgcolor: 'rgba(107, 142, 35, 0.3)', // Changed to olive green
-                  color: 'rgba(255, 255, 255, 0.8)'
-                }
+                  bgcolor: 'rgba(166, 255, 0, 0.3)',
+                  color: 'rgba(0, 0, 0, 0.8)'
+                },
+                transition: 'all 0.3s ease'
               }}
             >
               Надіслати
@@ -266,7 +288,7 @@ const FeedbackModal = () => {
           </motion.div>
         </Box>
       </Dialog>
-    </>
+    </ThemeProvider>
   );
 };
 

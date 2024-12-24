@@ -14,8 +14,22 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import useStore from '../../store/store';
 import useInfoStore from '../../store/infoStore';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const steps = ['Введіть номер телефону', 'Підтвердження номеру телефону'];
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#a6ff00',
+    },
+  },
+});
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -28,6 +42,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
   const [skipped, setSkipped] = React.useState(new Set());
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
+  // Store hooks
   const requestPhoneChange = useStore(state => state.requestPhoneChange);
   const confirmPhoneChange = useStore(state => state.confirmPhoneChange);
   const uid = useStore(state => state.user.uid);
@@ -36,28 +51,21 @@ export default function EditPhone({open, handleClose, handleAction}) {
   const setLoader = useInfoStore(store => store.setLoader);
   const showAllert = useInfoStore(state => state.showAllert);
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
+  // Functions remain the same
+  const isStepSkipped = (step) => skipped.has(step);
   const handleNext = async () => {
     setIsSubmitting(true);
     setLoader(true);
 
     try {
-      let result
+      let result;
       if (activeStep === 0) {
-        // Очищаємо номер телефону від пробілів та '+'
         const cleanPhone = phone.replace(/\s+/g, '').replace(/^\+/, '');
         
-        console.log('Sending data:', uid, login, cleanPhone); // Для дебагу
-
-        // Перевіряємо наявність всіх необхідних даних
         if (!uid || !login || !cleanPhone) {
           throw new Error('Відсутні обов\'язкові дані');
         }
 
-        // Відправляємо параметри окремо, не як об'єкт
         const result = await requestPhoneChange(uid, login, cleanPhone);
 
         if (result && result.success) {
@@ -73,15 +81,12 @@ export default function EditPhone({open, handleClose, handleAction}) {
           throw new Error(result?.message || 'Помилка при відправці коду');
         }
       } else if (activeStep === 1) {
-        // Перевіряємо наявність всіх необхідних даних
         if (!uid || !login || !verificationCode || !phoneOld) {
           throw new Error('Відсутні обов\'язкові дані');
         }
 
-        // Відправляємо параметри окремо
         const cleanPhone = phone.replace(/\s+/g, '').replace(/^\+/, '');
-
-         result = await confirmPhoneChange(uid, login, verificationCode, phoneOld,cleanPhone);
+        result = await confirmPhoneChange(uid, login, verificationCode, phoneOld, cleanPhone);
 
         if (result && result.success) {
           showAllert(2,'Номер телефону успішно змінено');
@@ -110,7 +115,6 @@ export default function EditPhone({open, handleClose, handleAction}) {
   };
 
   const handleCodeChange = (event) => {
-    // Обмежуємо введення тільки цифрами
     const value = event.target.value.replace(/[^\d]/g, '');
     setVerificationCode(value);
   };
@@ -124,13 +128,19 @@ export default function EditPhone({open, handleClose, handleAction}) {
   };
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={darkTheme}>
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        PaperProps={{
+          style: {
+            backgroundColor: '#1a1a1a',
+            borderRadius: '16px',
+            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+          },
+        }}
       >
         <IconButton
           aria-label="close"
@@ -139,20 +149,42 @@ export default function EditPhone({open, handleClose, handleAction}) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            color: '#a6ff00',
+            '&:hover': {
+              color: '#fff',
+              transform: 'rotate(180deg)',
+            },
+            transition: 'all 0.3s ease'
           }}
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent>
+        <DialogContent className="bg-[#1a1a1a]">
           <div className="max-w-2xl mx-auto p-8">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-[#a6ff00]">
               {activeStep === 0 ? 'Введіть новий номер телефону' : 'Введіть код підтвердження'}
             </h2>
             <Box sx={{ width: '100%', display: 'flex', flexDirection: "column" }}>
               <Stepper 
                 orientation="vertical"
                 activeStep={activeStep}
+                sx={{
+                  '& .MuiStepLabel-label': {
+                    color: '#fff',
+                    '&.Mui-active': {
+                      color: '#a6ff00',
+                    }
+                  },
+                  '& .MuiStepIcon-root': {
+                    color: '#333',
+                    '&.Mui-active': {
+                      color: '#a6ff00',
+                    },
+                    '&.Mui-completed': {
+                      color: '#a6ff00',
+                    }
+                  }
+                }}
               >
                 {steps.map((label, index) => (
                   <Step key={label} {...(isStepSkipped(index) ? { completed: false } : {})}>
@@ -166,6 +198,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
                   <MuiTelInput
                     inputProps={{
                       maxLength: 16,
+                      style: { color: '#fff' }
                     }}
                     autoFocus
                     fullWidth
@@ -173,6 +206,22 @@ export default function EditPhone({open, handleClose, handleAction}) {
                     defaultCountry='UA'
                     value={phone}
                     onChange={handlePhoneChange}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#fff',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#a6ff00',
+                      }
+                    }}
                   />
                 ) : (
                   <TextField
@@ -181,28 +230,71 @@ export default function EditPhone({open, handleClose, handleAction}) {
                     value={verificationCode}
                     onChange={handleCodeChange}
                     helperText="Введіть код з SMS"
-                    sx={{ marginTop: 2 }}
                     autoFocus
                     inputProps={{
                       maxLength: 6,
-                      pattern: '[0-9]*'
+                      pattern: '[0-9]*',
+                      style: { color: '#fff' }
+                    }}
+                    sx={{
+                      marginTop: 2,
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#fff',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#a6ff00',
+                      },
+                      '& .MuiFormHelperText-root': {
+                        color: '#fff',
+                      }
                     }}
                   />
                 )}
                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                   <Button
-                    color="inherit"
                     disabled={activeStep === 0 || isSubmitting}
                     onClick={handleBack}
-                    sx={{ mr: 1 }}
+                    sx={{
+                      mr: 1,
+                      color: '#fff',
+                      '&:not(:disabled)': {
+                        '&:hover': {
+                          color: '#a6ff00',
+                        }
+                      }
+                    }}
                   >
                     Назад
                   </Button>
                   <Box sx={{ flex: '1 1 auto' }} />
                   <Button 
                     onClick={handleNext}
-                    sx={{ color: 'black' }}
                     disabled={isNextDisabled() || isSubmitting}
+                    sx={{
+                      backgroundColor: '#a6ff00',
+                      color: '#000',
+                      '&:hover': {
+                        backgroundColor: '#fff',
+                        transform: 'scale(1.05)',
+                      },
+                      '&:disabled': {
+                        backgroundColor: '#333',
+                        color: '#666'
+                      },
+                      transition: 'all 0.3s ease',
+                      borderRadius: '9999px',
+                      padding: '8px 24px',
+                      textTransform: 'none',
+                      fontWeight: 'bold',
+                    }}
                   >
                     {isSubmitting ? 'Зачекайте...' : (activeStep === steps.length - 1 ? 'Підтвердити' : 'Далі')}
                   </Button>
@@ -211,16 +303,37 @@ export default function EditPhone({open, handleClose, handleAction}) {
             </Box>
           </div>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={()=>{
-            setActiveStep(1)
-            setPhone("")
-            setVerificationCode("")
-            handleClose()}} sx={{ color: 'black' }} disabled={isSubmitting}>
+        <DialogActions className="bg-[#111111] p-4">
+          <Button 
+            onClick={() => {
+              setActiveStep(0);
+              setPhone("");
+              setVerificationCode("");
+              handleClose();
+            }}
+            disabled={isSubmitting}
+            sx={{
+              backgroundColor: '#333',
+              color: '#fff',
+              borderRadius: '9999px',
+              padding: '8px 24px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              '&:hover': {
+                backgroundColor: '#444',
+                transform: 'scale(1.05)',
+              },
+              '&:disabled': {
+                backgroundColor: '#222',
+                color: '#666'
+              },
+              transition: 'all 0.3s ease'
+            }}
+          >
             Закрити
           </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </ThemeProvider>
   );
 }

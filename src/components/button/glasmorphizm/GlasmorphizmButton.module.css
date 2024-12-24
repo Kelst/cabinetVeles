@@ -32,12 +32,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(107, 142, 35, 0.9); /* Changed to olive green */
-  box-shadow: 0 15px 35px rgba(107, 142, 35, 0.05); /* Changed to olive green */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(166, 255, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(166, 255, 0, 0.2);
+  border-bottom: 1px solid rgba(166, 255, 0, 0.2);
   border-radius: 30px;
-  color: #fff;
+  color: #000;
   z-index: 1;
   font-weight: 400;
   letter-spacing: 1px;
@@ -49,7 +49,7 @@
 .container .btn:hover span {
   letter-spacing: 2px;
   cursor: pointer;
-  background: rgba(74, 93, 35, 0.9); /* Changed to darker olive green */
+  background: rgba(166, 255, 0, 0.3);
 }
 
 .container .btn span::before {
@@ -59,7 +59,7 @@
   left: 0;
   width: 40%;
   height: 100%;
-  background: linear-gradient(to left, rgba(139, 154, 71, 0.15), transparent); /* Changed to lighter olive green */
+  background: linear-gradient(to left, rgba(166, 255, 0, 0.15), transparent);
   transform: skewX(45deg) translateX(0);
   transition: 0.5s;
 }
@@ -74,13 +74,13 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 12px;
-  background-color: #6b8e23; /* Changed to olive green */
-  color: white;
+  background-color: #a6ff00;
+  color: #000;
   border-radius: 4px;
   font-size: 14px;
   white-space: nowrap;
   z-index: 1000000;
-  box-shadow: 0 2px 4px rgba(107, 142, 35, 0.2); /* Changed to olive green */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   pointer-events: none;
   animation: tooltipFadeIn 0.2s ease-in-out;
 }
@@ -93,7 +93,7 @@
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
-  border-color: #6b8e23 transparent transparent transparent; /* Changed to olive green */
+  border-color: #a6ff00 transparent transparent transparent;
 }
 
 @keyframes tooltipFadeIn {

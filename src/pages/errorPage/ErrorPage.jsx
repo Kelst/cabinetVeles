@@ -1,8 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useRouteError } from 'react-router-dom';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, ThemeProvider, createTheme } from '@mui/material';
 import { WifiOff } from 'lucide-react';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#a6ff00',
+    },
+  },
+});
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -54,16 +67,15 @@ const ErrorPage = () => {
     tap: { scale: 0.95 }
   };
 
-  // Background animation
   const Circuit = () => (
     <motion.div
       className="absolute inset-0 overflow-hidden opacity-20"
       initial={{ pathLength: 0 }}
       animate={{
         background: [
-          "linear-gradient(45deg, #2E8B57 0%, transparent 70%)",
-          "linear-gradient(45deg, #3CB371 30%, transparent 80%)",
-          "linear-gradient(45deg, #2E8B57 0%, transparent 70%)",
+          "linear-gradient(45deg, #a6ff00 0%, transparent 70%)",
+          "linear-gradient(45deg, #d4ff66 30%, transparent 80%)",
+          "linear-gradient(45deg, #a6ff00 0%, transparent 70%)",
         ]
       }}
       transition={{
@@ -75,88 +87,94 @@ const ErrorPage = () => {
   );
 
   return (
-    <Box className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-950 via-black to-green-900">
-      <Circuit />
-      
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 mx-8 w-[400px] h-[350px] md:w-[500px] flex justify-center items-center 
-                   rounded-lg shadow-2xl bg-white/5 backdrop-blur-md flex-col"
-        style={{
-          border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}
-      >
+    <ThemeProvider theme={darkTheme}>
+      <Box className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] via-black to-[#1a1a1a]">
+        <Circuit />
+        
         <motion.div
-          variants={wifiIconVariants}
-          initial="initial"
-          animate="animate"
-          className="mb-6"
-        >
-          <WifiOff size={50} className="text-emerald-500" />
-        </motion.div>
-
-        <motion.div
-          variants={numberVariants}
-          initial="initial"
-          animate="animate"
-          className="mb-6"
-        >
-          <Typography 
-            variant="h1" 
-            sx={{ 
-              fontSize: { xs: '4rem', md: '5rem' },
-              fontFamily: 'monospace',
-              color: '#2E8B57',
-              textShadow: '0 0 20px rgba(46,139,87,0.5)'
-            }}
-          >
-            {error?.status || '404'}
-          </Typography>
-        </motion.div>
-
-        <Typography 
-          variant="h6" 
-          sx={{ 
-            color: 'rgba(255,255,255,0.9)',
-            textAlign: 'center',
-            mb: 4,
-            maxWidth: '80%',
-            textShadow: '0 0 10px rgba(255,255,255,0.2)'
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 mx-8 w-[400px] h-[350px] md:w-[500px] flex justify-center items-center 
+                     rounded-lg shadow-2xl bg-[#1a1a1a]/50 backdrop-blur-md flex-col"
+          style={{
+            border: '1px solid rgba(166, 255, 0, 0.1)',
+            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)'
           }}
         >
-          Схоже, що виникла помилка з'єднання. Перевірте підключення або поверніться на головну.
-        </Typography>
+          <motion.div
+            variants={wifiIconVariants}
+            initial="initial"
+            animate="animate"
+            className="mb-6"
+          >
+            <WifiOff size={50} className="text-[#a6ff00]" />
+          </motion.div>
 
-        <motion.div
-          variants={buttonVariants}
-          initial="initial"
-          whileHover="hover"
-          whileTap="tap"
-        >
-          <Button
-            variant="contained"
-            onClick={() => navigate('/')}
-            sx={{
-              bgcolor: 'rgba(46, 139, 87, 0.9)',
-              px: 4,
-              py: 1.5,
-              borderRadius: 2,
-              fontSize: '1rem',
-              textTransform: 'none',
-              color: 'white',
-              boxShadow: '0 0 30px rgba(46,139,87,0.3)',
-              '&:hover': {
-                bgcolor: 'rgba(46, 139, 87, 1)'
-              }
+          <motion.div
+            variants={numberVariants}
+            initial="initial"
+            animate="animate"
+            className="mb-6"
+          >
+            <Typography 
+              variant="h1" 
+              sx={{ 
+                fontSize: { xs: '4rem', md: '5rem' },
+                fontFamily: 'monospace',
+                color: '#a6ff00',
+                textShadow: '0 0 20px rgba(166, 255, 0, 0.5)'
+              }}
+            >
+              {error?.status || '404'}
+            </Typography>
+          </motion.div>
+
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: 'rgba(255,255,255,0.9)',
+              textAlign: 'center',
+              mb: 4,
+              maxWidth: '80%',
+              textShadow: '0 0 10px rgba(255,255,255,0.2)'
             }}
           >
-            Повернутись на головну
-          </Button>
+            Схоже, що виникла помилка з'єднання. Перевірте підключення або поверніться на головну.
+          </Typography>
+
+          <motion.div
+            variants={buttonVariants}
+            initial="initial"
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <Button
+              variant="contained"
+              onClick={() => navigate('/')}
+              sx={{
+                bgcolor: '#a6ff00',
+                px: 4,
+                py: 1.5,
+                borderRadius: '9999px',
+                fontSize: '1rem',
+                textTransform: 'none',
+                color: '#000',
+                fontWeight: 'bold',
+                boxShadow: '0 0 30px rgba(166, 255, 0, 0.3)',
+                '&:hover': {
+                  bgcolor: '#fff',
+                  transform: 'scale(1.05)',
+                },
+                transition: 'all 0.3s ease'
+              }}
+            >
+              Повернутись на головну
+            </Button>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </Box>
+      </Box>
+    </ThemeProvider>
   );
 };
 

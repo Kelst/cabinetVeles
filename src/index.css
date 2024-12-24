@@ -17,51 +17,80 @@
 }
 
 :root {
-  --brand-green: #95c11f;
-  --brand-gray: #58585a;
-  --soft-green: rgba(149, 193, 31, 0.3);
-  --soft-gray: rgba(88, 88, 90, 0.3);
+  --bright-lime: #a6ff00;
+  --lime-light: #c4ff47;
+  --lime-lighter: #ddff8e;
 }
 
 body {
-  background: linear-gradient(135deg, #aeb58f 0%, #f8f9f2 100%);
+  background: var(--bright-lime);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
+/* Діагональні чорні лінії - ширші в 10 разів */
 body::before {
   content: '';
-  background: linear-gradient(45deg, var(--brand-green) 0%, transparent 80%);
-  position: fixed;
-  inset: 0;
-  opacity: 0.1;
-  animation: gradientAnimation 12s ease-in-out infinite;
-  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 120px,
+    rgba(0, 0, 0, 0.1) 120px,
+    rgba(0, 0, 0, 0.1) 140px
+  );
   pointer-events: none;
 }
 
-body::after {
+/* Горизонтальна чорна смуга */
+.black-stripe {
+  background: rgba(0, 0, 0, 0.9);
+  position: relative;
+  padding: 20px;
+  clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+}
+
+/* Декоративні елементи */
+.decorative-line {
+  position: absolute;
+  height: 2px;
+  background: #000;
+  transform: skewX(-45deg);
+}
+
+.decorative-line.top {
+  top: 20px;
+}
+
+.decorative-line.bottom {
+  bottom: 20px;
+}
+
+.card {
+  position: relative;
+  background: var(--lime-light);
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Додаткові стилі для карток - також ширші лінії */
+.card::after {
   content: '';
-  background: linear-gradient(-45deg, var(--soft-green) 0%, transparent 80%);
-  position: fixed;
-  inset: 0;
-  opacity: 0.08;
-  animation: gradientAnimation 15s ease-in-out infinite reverse;
-  z-index: 0;
-  pointer-events: none;
-}
-
-
-.glass-effect {
-  background: rgba(149, 193, 31, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(149, 193, 31, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-}
-
-@media (min-width: 1024px) and (max-width: 1536px) {
-  .custom-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 30px,
+    rgba(0, 0, 0, 0.1) 30px,
+    rgba(0, 0, 0, 0.1) 50px
+  );
+  z-index: -1;
 }

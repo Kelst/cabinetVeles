@@ -14,7 +14,7 @@ import { CalendarToday, Description, AccountBalance, TrendingUp } from '@mui/ico
 import useStore from '../../store/store';
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  background: '#2d3338', // Darker gray with slight blue tint
+  background: '#000000', // Black background
   borderRadius: '16px',
   padding: '16px',
   height: '55vh',
@@ -23,14 +23,14 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     width: '8px',
   },
   '&::-webkit-scrollbar-track': {
-    background: '#3a4147', // Slightly lighter gray
+    background: '#353535', // Matte black
     borderRadius: '4px',
   },
   '&::-webkit-scrollbar-thumb': {
-    background: '#4a5d23', // Olive green
+    background: '#A4DE02', // Lime green
     borderRadius: '4px',
     '&:hover': {
-      background: '#6b8e23', // Lighter olive green on hover
+      background: '#90EE90', // Lighter lime green on hover
     },
   },
 }));
@@ -44,20 +44,20 @@ const StyledTable = styled(Table)({
     left: 0,
     right: 0,
     height: '2px',
-    background: 'linear-gradient(90deg, #4a5d23, #6b8e23, #4a5d23)', // Green gradient
+    background: 'linear-gradient(90deg, #353535, #A4DE02, #353535)', // Black and lime green gradient
     animation: 'gradient 3s ease infinite',
   },
 });
 
 const HeaderCell = styled(TableCell)(({ theme }) => ({
-  background: '#1e2327', // Very dark gray
-  color: '#ffffff',
+  background: '#000000', // Black
+  color: '#A4DE02', // Lime green
   fontWeight: '600',
   padding: '16px',
   fontSize: '0.9rem',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
-  borderBottom: '1px solid #3a4147',
+  borderBottom: '1px solid #353535',
   transition: 'all 0.3s ease',
   '&:first-of-type': {
     borderTopLeftRadius: '8px',
@@ -71,26 +71,26 @@ const DataCell = styled(TableCell)(({ theme }) => ({
   fontSize: '0.85rem',
   padding: '12px 16px',
   color: '#ffffff',
-  borderBottom: '1px solid #3a4147',
-  backgroundColor: '#2d3338',
+  borderBottom: '1px solid #353535',
+  backgroundColor: '#000000',
 }));
 
 const StyledTableRow = styled(TableRow)({
   transition: 'all 0.2s ease',
   '&:hover': {
-    backgroundColor: '#3a4147 !important',
+    backgroundColor: '#353535 !important',
     '& td': {
-      backgroundColor: '#3a4147 !important',
+      backgroundColor: '#353535 !important',
     }
   },
 });
 
 const SummaryRow = styled(TableRow)({
-  backgroundColor: '#3a4147',
+  backgroundColor: '#353535',
   '& td': {
     fontWeight: 'bold',
-    color: '#ffffff',
-    backgroundColor: '#3a4147 !important',
+    color: '#A4DE02', // Lime green
+    backgroundColor: '#353535 !important',
   },
 });
 
@@ -98,7 +98,7 @@ const IconWrapper = styled(Box)({
   display: 'inline-flex',
   alignItems: 'center',
   gap: '8px',
-  color: '#ffffff',
+  color: '#A4DE02', // Lime green
 });
 
 function formatDate(dateString) {
@@ -146,7 +146,7 @@ export default function DarkPaidTable() {
     <Box sx={{ 
       p: 2, 
       animation: 'fadeIn 0.5s ease-out',
-      background: 'linear-gradient(145deg, #2d3338, #3a4147)', // Darker grays gradient
+      background: 'linear-gradient(145deg, #000000, #353535)', // Black and matte black gradient
       borderRadius: '20px',
     }}>
       <StyledTableContainer component={Paper}>
@@ -155,25 +155,25 @@ export default function DarkPaidTable() {
             <TableRow>
               <HeaderCell>
                 <IconWrapper>
-                  <CalendarToday sx={{ fontSize: 18, color: '#6b8e23' }} /> {/* Changed to olive green */}
+                  <CalendarToday sx={{ fontSize: 18, color: '#A4DE02' }} /> {/* Lime green */}
                   <span>Дата</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <Description sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <Description sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Опис</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <TrendingUp sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <TrendingUp sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Сума</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <AccountBalance sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <AccountBalance sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Залишок</span>
                 </IconWrapper>
               </HeaderCell>
@@ -191,7 +191,7 @@ export default function DarkPaidTable() {
                 <DataCell 
                   align="center"
                   sx={{ 
-                    color: row.deposit < 0 ? '#9cb159' : '#ffffff', // Changed from red to light olive
+                    color: row.deposit < 0 ? '#A4DE02' : '#ffffff', // Changed to lime green
                     fontWeight: row.deposit < 0 ? 'bold' : 'normal'
                   }}
                 >
@@ -209,7 +209,7 @@ export default function DarkPaidTable() {
               <DataCell 
                 align="center"
                 sx={{ 
-                  color: paid.sum < 0 ? '#9cb159' : '#ffffff', // Changed from red to light olive
+                  color: paid.sum < 0 ? '#A4DE02' : '#ffffff', // Changed to lime green
                   fontWeight: 'bold'
                 }}
               >

@@ -20,14 +20,14 @@ const FAQItem = ({ item }) => {
         onHoverEnd={() => setIsHovered(false)}
         className={`w-full group relative overflow-hidden
           ${isOpen 
-            ? 'bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 rounded-t-xl' 
-            : 'bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl'
+            ? 'bg-gradient-to-r from-[#000000] via-[#353535] to-[#000000] rounded-t-xl' 
+            : 'bg-gradient-to-r from-[#000000] to-[#353535] rounded-xl'
           } 
           p-6 text-left transform transition-all duration-300
-          hover:shadow-[0_0_20px_rgba(107,142,35,0.3)]
-          border border-gray-700/50`}
+          hover:shadow-[0_0_15px_rgba(164,222,2,0.3)]
+          border border-[#A4DE02]`}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#6b8e23]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#A4DE02]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         <div className="relative flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -38,20 +38,20 @@ const FAQItem = ({ item }) => {
                   scale: isHovered ? 1.1 : 1,
                 }}
                 transition={{ duration: 0.3 }}
-                className="bg-gradient-to-tr from-[#6b8e23] to-[#4a5d23] p-2 rounded-lg shadow-lg"
+                className="bg-gradient-to-tr from-[#A4DE02] to-[#87B300] p-2 rounded-lg shadow-lg"
               >
-                <Zap className="w-5 h-5 text-white" />
+                <Zap className="w-5 h-5 text-black" />
               </motion.div>
               {isHovered && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -inset-1 bg-[#6b8e23]/20 rounded-lg blur-sm z-0"
+                  className="absolute -inset-1 bg-[#A4DE02]/20 rounded-lg blur-sm z-0"
                 />
               )}
             </div>
             <div>
-              <h3 className="font-bold text-lg text-white group-hover:text-[#6b8e23] transition-colors duration-300">
+              <h3 className="font-bold text-lg text-white group-hover:text-[#A4DE02] transition-colors duration-300">
                 {item.title}
               </h3>
             </div>
@@ -63,7 +63,7 @@ const FAQItem = ({ item }) => {
               scale: isHovered ? 1.1 : 1,
             }}
             transition={{ duration: 0.3 }}
-            className="text-[#6b8e23]"
+            className="text-[#A4DE02]"
           >
             <ChevronDown className="w-6 h-6" />
           </motion.div>
@@ -98,10 +98,10 @@ const FAQItem = ({ item }) => {
               initial={{ y: -20 }}
               animate={{ y: 0 }}
               exit={{ y: -20 }}
-              className="p-6 bg-gradient-to-b from-gray-800 to-gray-900 
-                rounded-b-xl border-t border-[#6b8e23]/20 shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
+              className="p-6 bg-[rgba(0,0,0,0.9)] backdrop-blur-[8px]  
+                rounded-b-xl border-t border-[#A4DE02] shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
             >
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 {item.description}
               </p>
             </motion.div>
@@ -120,18 +120,18 @@ const FAQ = () => {
   }, [getFaq]);
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black p-6 shadow-2xl">
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#000000] via-[#353535] to-[#000000] p-6 shadow-2xl text-white">
       <div className="max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative mb-12 text-center"
         >
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6b8e23] to-[#4a5d23] mb-4">
-            Часті запитання
+          <h2 className="text-3xl font-bold text-[#A4DE02] mb-4">
+            Часті запитання  
           </h2>
-          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-[#6b8e23] to-[#4a5d23] rounded-full" />
-          <div className="absolute -inset-1 bg-[#6b8e23]/20 filter blur-xl opacity-50 rounded-full" />
+          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-[#A4DE02] to-[#87B300] rounded-full" />
+          <div className="absolute -inset-1 bg-[#A4DE02]/20 filter blur-xl opacity-50 rounded-full" />
         </motion.div>
 
         <motion.div

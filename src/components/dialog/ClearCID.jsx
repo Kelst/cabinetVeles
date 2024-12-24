@@ -25,29 +25,31 @@ const AnimatedText = ({ children, delay = 0 }) => (
   </motion.div>
 );
 
-export default function ClearMAC({open, handleClose}) {
-  const user = useStore(state => state.user)
-  const clearCid = useStore(state => state.clearCid)
-  const setLoader = useInfoStore(store => store.setLoader)
-  const showAllert = useInfoStore(state => state.showAllert) 
-  let result
-  const handleOnClick = async () => {
+export default function StopPlayDialog({open, handleClose}) {
+  const user = useStore(state => state.user);
+  const stopPlayLogin = useStore(state => state.stopPlayLogin);
+  const setLoader = useInfoStore(store => store.setLoader);
+  const showAllert = useInfoStore(state => state.showAllert);
+
+  const handleOncklick = async () => {
+    let result;
     try {
-      setLoader(true)
-      result = await clearCid(user.uid)
-      
+      setLoader(true);
+      result = await stopPlayLogin(user.uid, user.login, user.balance, user.billId, user.payAll);
     } catch (error) {
-      showAllert(0, "Виникла помилка при очищенні MAC-адреси")
+      showAllert(0, "Виникла помилка при призупиненні/активації послуги");
     } finally {
-      if (result.success) {
-        showAllert(2, "MAC-адресу успішно очищено. Будь ласка, перезавантажте ваше інтернет-обладнання!")
+      handleClose();
+      setLoader(false);
+      if (result.disabled == '3') {
+        showAllert(2, "Послугу призупинено");
+      } else if (result.disabled == '0') {
+        showAllert(2, "Послугу активовано, Будь ласка перезавантажте ваше інтернет обладнання!");
       } else {
-        showAllert(0, "Виникла помилка при очищенні MAC-адреси")
+        showAllert(0, "Виникла помилка при призупиненні/активації послуги");
       }
-      setLoader(false)
-      handleClose()
     }
-  }
+  };
 
   return (
     <Dialog
@@ -58,14 +60,14 @@ export default function ClearMAC({open, handleClose}) {
       aria-describedby="alert-dialog-slide-description"
       PaperProps={{
         style: {
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#1a1a1a',
           borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-green-600 pb-4 border-b border-gray-300">
-        Очищення MAC-адреси
+      <DialogTitle className="text-center text-3xl font-bold text-[#a6ff00] pb-4 border-b border-[#a6ff00]">
+        Призупинити послугу
       </DialogTitle>
       <IconButton
         aria-label="close"
@@ -74,50 +76,66 @@ export default function ClearMAC({open, handleClose}) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: 'rgba(0, 0, 0, 0.5)',
+          color: '#a6ff00',
+          '&:hover': {
+            color: '#fff',
+            transform: 'rotate(180deg)',
+          },
+          transition: 'all 0.3s ease'
         }}
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent className="bg-white">
-        <div className="p-6 space-y-6 text-gray-800">
+      <DialogContent className="bg-[#1a1a1a]">
+        <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-green-600 mb-4">
-              Важлива інформація щодо очищення MAC-адреси:
+            <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
+              Важлива інформація щодо призупинення та відновлення послуг:
             </h2>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <p className="leading-relaxed">
-              Коли ви змінюєте пристрій доступу до інтернету, наприклад, роутер, необхідно очистити прив'язку по MAC-адресі, щоб встановити новий пристрій. Це забезпечить <span className="font-semibold text-green-500">безперебійний доступ до інтернету</span> з вашого нового обладнання.
-            </p>
+            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+              <p className="leading-relaxed">
+                Ми розуміємо, що іноді у вас можуть виникнути обставини, які вимагають тимчасового призупинення наших послуг. З радістю повідомляємо, що ви маєте можливість призупинити послуги протягом мінімального терміну – <span className="font-semibold text-[#a6ff00]">1 місяця</span>. Важливо зазначити, що ви можете в будь-який момент відновити послуги.
+              </p>
+            </div>
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
             <p className="leading-relaxed">
-              Процес очищення MAC-адреси <span className="font-semibold text-black">видаляє прив'язку</span> вашого поточного пристрою до нашої мережі. Після очищення ви зможете <span className="font-semibold text-black">підключити новий пристрій</span> без будь-яких проблем.
+              Це надає вам <span className="font-semibold text-[#a6ff00]">гнучкість</span> у керуванні своїм обліковим записом та можливість <span className="font-semibold text-[#a6ff00]">економії</span> в тих випадках, коли ви тимчасово не використовуєте наші послуги.
             </p>
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
-            <p className="leading-relaxed">
-              Пам'ятайте, що після очищення MAC-адреси вам потрібно буде <span className="font-semibold text-green-600">перезавантажити ваше нове інтернет-обладнання</span>, щоб зміни вступили в силу. Якщо у вас виникнуть будь-які питання під час цього процесу, наша служба підтримки завжди готова вам допомогти.
-            </p>
+            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00] mt-4">
+              <p className="leading-relaxed">
+                Якщо у вас виникли питання або вам потрібна додаткова інформація щодо процедури призупинення та відновлення послуг, будь ласка, <span className="font-semibold text-[#a6ff00]">звертайтеся до нашої служби підтримки</span>. Ми завжди готові допомогти вам у зручний для вас спосіб.
+              </p>
+            </div>
           </AnimatedText>
         </div>
       </DialogContent>
-      <DialogActions className="bg-gray-100 p-4">
+      <DialogActions className="bg-[#111111] p-4">
         <Button 
-          onClick={handleClose}
-          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          onClick={handleOncklick}
+          sx={{
+            backgroundColor: '#a6ff00',
+            color: '#000',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease'
+          }}
         >
-          Закрити вікно
-        </Button>
-        <Button 
-          onClick={handleOnClick}
-          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-        >
-          Очистити MAC-адресу
+          {user?.status ? 'Призупинити послугу' : 'Активувати послугу'}
         </Button>
       </DialogActions>
     </Dialog>

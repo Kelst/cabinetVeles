@@ -54,10 +54,18 @@ export default function ReloadSession({ open, handleClose }) {
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
+      PaperProps={{
+        style: {
+          backgroundColor: '#1a1a1a',
+          borderRadius: '16px',
+          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+        },
+      }}
     >
-      <div className="pt-8 pb-6 px-4 border-b border-gray-300 flex items-center justify-center">
-        <h2 className="text-3xl font-bold text-blue-600 flex items-center">
-          <RefreshIcon className="mr-2" />
+      <div className="pt-8 pb-6 px-4 border-b border-[#a6ff00] flex items-center justify-center">
+        <h2 className="text-3xl font-bold text-[#a6ff00] flex items-center">
+          <RefreshIcon className="mr-2" sx={{ color: '#a6ff00' }} />
+          Перезавантаження сесії
         </h2>
       </div>
 
@@ -68,63 +76,107 @@ export default function ReloadSession({ open, handleClose }) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: 'rgba(0, 0, 0, 0.5)',
+          color: '#a6ff00',
+          '&:hover': {
+            color: '#fff',
+            transform: 'rotate(180deg)',
+          },
+          transition: 'all 0.3s ease'
         }}
       >
         <CloseIcon />
       </IconButton>
 
-      <DialogContent>
-        <div className="p-6 space-y-6 text-gray-800">
+      <DialogContent className="bg-[#1a1a1a]">
+        <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-blue-600 mb-4">
+            <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
               Важлива інформація про перезавантаження сесії:
             </h2>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="leading-relaxed">
-              Ми розпочнемо процес <span className="font-semibold text-blue-500">адміністративного перезавантаження</span> вашої сесії. Це допоможе вирішити можливі проблеми з підключенням та оновити параметри вашого з'єднання.
+            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+              <p className="leading-relaxed">
+                Ми розпочнемо процес <span className="font-semibold text-[#a6ff00]">адміністративного перезавантаження</span> вашої сесії. Це допоможе вирішити можливі проблеми з підключенням та оновити параметри вашого з'єднання.
+              </p>
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
             <div className="leading-relaxed">
-              Для <span className="font-semibold text-black">швидшого відновлення</span> інтернет-з'єднання, рекомендуємо вам також <span className="font-semibold text-blue-600">перезавантажити ваш роутер</span>. Це забезпечить повне оновлення всіх налаштувань мережі.
+              Для <span className="font-semibold text-[#a6ff00]">швидшого відновлення</span> інтернет-з'єднання, рекомендуємо вам також <span className="font-semibold text-[#a6ff00]">перезавантажити ваш роутер</span>. Це забезпечить повне оновлення всіх налаштувань мережі.
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
-            <div className="leading-relaxed">
-              Кроки для перезавантаження роутера:
+            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+              <div className="leading-relaxed mb-2">Кроки для перезавантаження роутера:</div>
+              <ol className="space-y-2">
+                <li className="flex items-center">
+                  <span className="text-[#a6ff00] mr-2">1.</span>
+                  <span>Вимкніть роутер з електромережі</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-[#a6ff00] mr-2">2.</span>
+                  <span>Зачекайте 30 секунд</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-[#a6ff00] mr-2">3.</span>
+                  <span>Увімкніть роутер знову</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-[#a6ff00] mr-2">4.</span>
+                  <span>Дочекайтесь повного завантаження (1-2 хвилини)</span>
+                </li>
+              </ol>
             </div>
-            <ol className="list-decimal list-inside mt-2 space-y-1">
-              <li>Вимкніть роутер з електромережі</li>
-              <li>Зачекайте 30 секунд</li>
-              <li>Увімкніть роутер знову</li>
-              <li>Дочекайтесь повного завантаження (1-2 хвилини)</li>
-            </ol>
           </AnimatedText>
 
           <AnimatedText delay={0.5}>
             <div className="leading-relaxed">
-              Якщо після цих дій з'єднання не відновиться протягом 5 хвилин, будь ласка, <span className="font-semibold text-blue-600">зверніться до нашої служби підтримки</span> для додаткової допомоги.
+              Якщо після цих дій з'єднання не відновиться протягом 5 хвилин, будь ласка, <span className="font-semibold text-[#a6ff00]">зверніться до нашої служби підтримки</span> для додаткової допомоги.
             </div>
           </AnimatedText>
         </div>
       </DialogContent>
 
-      <DialogActions className="p-4">
+      <DialogActions className="bg-[#111111] p-4">
         <Button
           onClick={handleClose}
-          sx={{ color: 'gray' }}
-          className="mr-2"
+          sx={{
+            backgroundColor: '#333',
+            color: '#fff',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#444',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease',
+            marginRight: '8px'
+          }}
         >
           Скасувати
         </Button>
         <Button
           onClick={onConfirm}
-          sx={{ color: 'blue' }}
+          sx={{
+            backgroundColor: '#a6ff00',
+            color: '#000',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease'
+          }}
         >
           Перезавантажити сесію
         </Button>

@@ -2,7 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Joyride from 'react-joyride';
 import { HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip, ThemeProvider, createTheme } from '@mui/material';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#a6ff00',
+    },
+  },
+});
 
 const HomeTour = () => {
   const [run, setRun] = useState(false);
@@ -23,13 +36,9 @@ const HomeTour = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleStartTour = () => {
-    setRun(true);
-  };
-
+  const handleStartTour = () => setRun(true);
   const handleTourCallback = (data) => {
-    const { status } = data;
-    if (['finished', 'skipped'].includes(status)) {
+    if (['finished', 'skipped'].includes(data.status)) {
       setRun(false);
     }
   };
@@ -102,7 +111,7 @@ const HomeTour = () => {
   ];
 
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
       <motion.div
         variants={iconVariants}
         initial="initial"
@@ -114,12 +123,12 @@ const HomeTour = () => {
           placement="left"
           sx={{
             '& .MuiTooltip-tooltip': {
-              bgcolor: '#6b8e23', // Changed to olive green
-              color: '#ffffff',
+              bgcolor: '#1a1a1a',
+              color: '#a6ff00',
               fontSize: '0.875rem',
               fontWeight: 500,
-              boxShadow: '0 2px 8px rgba(107, 142, 35, 0.5)', // Changed to olive green
-              borderRadius: '4px',
+              boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+              borderRadius: '8px',
               padding: '6px 12px'
             }
           }}
@@ -127,10 +136,14 @@ const HomeTour = () => {
           <IconButton 
             onClick={handleStartTour}
             sx={{ 
-              bgcolor: '#6b8e23', // Changed to olive green
-              color: 'white',
-              '&:hover': { bgcolor: '#4a5d23' }, // Changed to darker olive green
-              boxShadow: '0 0 20px rgba(107, 142, 35, 0.5)' // Changed to olive green
+              bgcolor: '#a6ff00',
+              color: '#000',
+              '&:hover': { 
+                bgcolor: '#fff',
+                transform: 'scale(1.05)',
+              },
+              boxShadow: '0 0 20px rgba(166, 255, 0, 0.5)',
+              transition: 'all 0.3s ease'
             }}
           >
             <HelpCircle size={28} />
@@ -149,11 +162,11 @@ const HomeTour = () => {
         styles={{
           options: {
             zIndex: 10000,
-            primaryColor: '#6b8e23', // Changed to olive green
-            backgroundColor: '#ffffff',
-            textColor: '#666666',
-            arrowColor: '#ffffff',
-            overlayColor: 'rgba(0, 0, 0, 0.4)'
+            primaryColor: '#a6ff00',
+            backgroundColor: '#1a1a1a',
+            textColor: '#ffffff',
+            arrowColor: '#1a1a1a',
+            overlayColor: 'rgba(0, 0, 0, 0.8)'
           },
           tooltip: {
             fontSize: isMobile ? '14px' : '16px',
@@ -162,8 +175,10 @@ const HomeTour = () => {
             whiteSpace: 'pre-line',
             textAlign: 'left',
             backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(107, 142, 35, 0.3)', // Added olive green border
-            boxShadow: '0 8px 16px rgba(107, 142, 35, 0.1)' // Added olive green shadow
+            border: '1px solid rgba(166, 255, 0, 0.2)',
+            boxShadow: '0 8px 16px rgba(166, 255, 0, 0.1)',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff'
           },
           tooltipContent: {
             padding: isMobile ? '8px' : '12px',
@@ -171,16 +186,27 @@ const HomeTour = () => {
           },
           tooltipTitle: {
             textAlign: 'left',
-            color: '#4a5d23' // Changed to darker olive green
+            color: '#a6ff00'
           },
           buttonNext: {
-            backgroundColor: '#6b8e23', // Changed to olive green
+            backgroundColor: '#a6ff00',
+            color: '#000000',
+            fontWeight: 'bold',
             '&:hover': {
-              backgroundColor: '#4a5d23' // Changed to darker olive green
+              backgroundColor: '#ffffff'
             }
           },
           buttonBack: {
-            color: '#6b8e23' // Changed to olive green
+            color: '#ffffff',
+            '&:hover': {
+              color: '#a6ff00'
+            }
+          },
+          buttonSkip: {
+            color: '#ffffff',
+            '&:hover': {
+              color: '#a6ff00'
+            }
           }
         }}
         floaterProps={{
@@ -194,7 +220,7 @@ const HomeTour = () => {
           nextLabelWithProgress: 'Далі (Крок {step} із {steps})',
         }}
       />
-    </>
+    </ThemeProvider>
   );
 };
 

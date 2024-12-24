@@ -7,7 +7,7 @@ import Slide from '@mui/material/Slide';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { motion } from 'framer-motion';
-import { Button, Input, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import useStore from '../../store/store';
 import useInfoStore from '../../store/infoStore';
 
@@ -93,13 +93,13 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
       aria-describedby="alert-dialog-slide-description"
       PaperProps={{
         style: {
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#1a1a1a',
           borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-green-600 pb-4 border-b border-gray-300">
+      <DialogTitle className="text-center text-3xl font-bold text-[#a6ff00] pb-4 border-b border-[#a6ff00]">
         Статична IP-адреса
       </DialogTitle>
       <IconButton
@@ -109,25 +109,43 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: 'rgba(0, 0, 0, 0.5)',
+          color: '#a6ff00',
+          '&:hover': {
+            color: '#fff'
+          }
         }}
       >
         <CloseIcon />
       </IconButton>
 
-      <DialogContent className="bg-white">
-        <div className="p-6 space-y-6 text-gray-800">
+      <DialogContent className="bg-[#1a1a1a]">
+        <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.2}>
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-green-600">Для чого потрібна статична IP-адреса?</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Віддалений доступ до пристроїв і домашніх серверів</li>
-                <li>Надійна робота онлайн-ігор та стрімінгових сервісів</li>
-                <li>Стабільний доступ до систем відеоспостереження</li>
-                <li>Захищений доступ до корпоративних мереж (VPN)</li>
-                <li>Хостинг веб-серверів та інших мережевих сервісів</li>
+              <h3 className="text-2xl font-semibold text-[#a6ff00] mb-4">Для чого потрібна статична IP-адреса?</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#a6ff00]">•</span>
+                  <span>Віддалений доступ до пристроїв і домашніх серверів</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#a6ff00]">•</span>
+                  <span>Надійна робота онлайн-ігор та стрімінгових сервісів</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#a6ff00]">•</span>
+                  <span>Стабільний доступ до систем відеоспостереження</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#a6ff00]">•</span>
+                  <span>Захищений доступ до корпоративних мереж (VPN)</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#a6ff00]">•</span>
+                  <span>Хостинг веб-серверів та інших мережевих сервісів</span>
+                </li>
               </ul>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-gray-400 mt-4">
                 Статична IP-адреса залишається незмінною при кожному підключенні, що гарантує стабільність роботи ваших сервісів.
               </p>
             </div>
@@ -135,9 +153,9 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
       
           {!isSubmitted ? (
             <AnimatedText delay={0.4}>
-              <form className="space-y-4">
+              <form className="space-y-4 mt-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-[#a6ff00] mb-2">
                     Ваш номер телефону
                   </label>
                   <TextField
@@ -145,21 +163,38 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
                     placeholder="38"
                     value={phone}
                     onChange={handlePhoneChange}
-                    className="w-full p-2 border rounded"
                     required
                     error={phone.length > 0 && !isValid}
                     helperText={phone.length > 0 && !isValid ? "Номер повинен починатись з 38 та містити 12 цифр" : ""}
+                    sx={{
+                      width: '100%',
+                      '& .MuiOutlinedInput-root': {
+                        color: '#fff',
+                        '& fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#fff',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#a6ff00',
+                        }
+                      },
+                      '& .MuiFormHelperText-root': {
+                        color: '#ff4444',
+                      }
+                    }}
                   />
                 </div>
               </form>
             </AnimatedText>
           ) : (
             <AnimatedText delay={0.1}>
-              <div className="text-center p-4 bg-gray-100 rounded-lg">
-                <h3 className="text-xl font-semibold text-green-600 mb-2">
+              <div className="text-center p-6 bg-[#111111] rounded-lg border border-[#a6ff00] mt-6">
+                <h3 className="text-xl font-semibold text-[#a6ff00] mb-2">
                   Дякуємо за заявку!
                 </h3>
-                <p className="text-gray-800">
+                <p className="text-white">
                   Ми зв'яжемося з вами найближчим часом для підключення послуги.
                 </p>
               </div>
@@ -168,10 +203,23 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
         </div>
       </DialogContent>
 
-      <DialogActions className="bg-gray-100 p-4">
+      <DialogActions className="bg-[#111111] p-4">
         <Button 
           onClick={handleClose}
-          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          sx={{
+            backgroundColor: '#a6ff00',
+            color: '#000',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease'
+          }}
         >
           Закрити вікно
         </Button>
@@ -179,10 +227,21 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
           <Button 
             onClick={handleSubmit}
             disabled={!isValid}
-            className={`font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 
-              ${isValid 
-                ? 'bg-green-600 hover:bg-green-700 text-white' 
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+            sx={{
+              backgroundColor: isValid ? '#a6ff00' : '#333',
+              color: isValid ? '#000' : '#666',
+              borderRadius: '9999px',
+              padding: '8px 24px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              '&:hover': isValid ? {
+                backgroundColor: '#fff',
+                color: '#000',
+                transform: 'scale(1.05)',
+              } : {},
+              transition: 'all 0.3s ease',
+              cursor: isValid ? 'pointer' : 'not-allowed'
+            }}
           >
             Замовити статичну IP-адресу
           </Button>

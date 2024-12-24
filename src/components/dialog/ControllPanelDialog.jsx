@@ -27,9 +27,9 @@ const AnimatedText = ({ children, delay = 0 }) => (
 
 const HelpSection = ({ title, content, delay }) => (
   <AnimatedText delay={delay}>
-    <div className="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-green-100">
-      <h2 className="text-2xl font-semibold text-green-600 mb-2">{title}</h2>
-      <p className="leading-relaxed text-gray-800 mb-4">{content}</p>
+    <div className="p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border border-[#a6ff00]">
+      <h2 className="text-2xl font-semibold text-black mb-2">{title}</h2>
+      <p className="leading-relaxed text-black mb-4">{content}</p>
     </div>
   </AnimatedText>
 );
@@ -76,7 +76,7 @@ export default function ControlPanelDialog({ open, handleClose }) {
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-green-600 pb-4 border-b border-green-100">
+      <DialogTitle className="text-center text-3xl font-bold text-black pb-4 border-b border-[#a6ff00]">
         Довідка
         <IconButton
           aria-label="close"
@@ -85,9 +85,9 @@ export default function ControlPanelDialog({ open, handleClose }) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: 'rgb(22, 163, 74)',
+            color: '#000',
             '&:hover': {
-              color: 'rgb(21, 128, 61)',
+              color: '#a6ff00',
               transform: 'scale(1.1)',
             },
             transition: 'all 0.3s ease'
@@ -118,18 +118,19 @@ export default function ControlPanelDialog({ open, handleClose }) {
           })}
         </div>
       </DialogContent>
-      <DialogActions className="bg-gray-50 p-4 border-t border-green-100">
+      <DialogActions className="bg-gray-50 p-4 border-t border-[#a6ff00]">
         <Button 
           onClick={handleClose}
           sx={{
-            backgroundColor: 'rgb(22, 163, 74)',
-            color: 'white',
+            backgroundColor: '#a6ff00',
+            color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',
             textTransform: 'none',
             fontWeight: 'bold',
             '&:hover': {
-              backgroundColor: 'rgb(21, 128, 61)',
+              backgroundColor: '#000',
+              color: '#a6ff00',
               transform: 'scale(1.05)',
             },
             transition: 'all 0.3s ease'

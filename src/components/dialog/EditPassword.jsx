@@ -13,14 +13,27 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import useStore from '../../store/store';
 import useInfoStore from '../../store/infoStore';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const steps = ['Введіть поточний пароль', 'Введіть новий пароль', 'Підтвердження'];
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#a6ff00',
+    },
+  },
+});
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-// Функція для генерації випадкового простого математичного виразу
 const generateCaptcha = () => {
   const num1 = Math.floor(Math.random() * 10) + 1;
   const num2 = Math.floor(Math.random() * 10) + 1;
@@ -65,7 +78,6 @@ export default function EditPassword({open, handleClose, handleAction}) {
   const setLoader = useInfoStore(store => store.setLoader);
   const showAllert = useInfoStore(state => state.showAllert);
 
-  // Генеруємо нову капчу при відкритті діалогу або при переході на крок капчі
   React.useEffect(() => {
     if (activeStep === 2) {
       const newCaptcha = generateCaptcha();
@@ -75,20 +87,12 @@ export default function EditPassword({open, handleClose, handleAction}) {
     }
   }, [activeStep]);
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
+  const isStepSkipped = (step) => skipped.has(step);
 
   const validatePassword = (password) => {
-    if (password.length < 6) {
-      return 'Пароль повинен містити мінімум 6 символів';
-    }
-    if (!/[A-Z]/.test(password)) {
-      return 'Пароль повинен містити хоча б одну велику літеру';
-    }
-    if (!/\d/.test(password)) {
-      return 'Пароль повинен містити хоча б одну цифру';
-    }
+    if (password.length < 6) return 'Пароль повинен містити мінімум 6 символів';
+    if (!/[A-Z]/.test(password)) return 'Пароль повинен містити хоча б одну велику літеру';
+    if (!/\d/.test(password)) return 'Пароль повинен містити хоча б одну цифру';
     return '';
   };
 
@@ -127,17 +131,14 @@ export default function EditPassword({open, handleClose, handleAction}) {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }
       else if (activeStep === 2) {
-        // Перевіряємо капчу
         if (parseInt(captchaInput) !== captcha.answer) {
           setCaptchaError('Невірна відповідь. Спробуйте ще раз');
-          // Генеруємо нову капчу
           const newCaptcha = generateCaptcha();
           setCaptcha(newCaptcha);
           setCaptchaInput('');
           throw new Error('Невірна відповідь капчі');
         }
 
-        // Якщо капча вірна, відправляємо запит на зміну пароля
         const result = await requestPasswordChange(
           user.uid, 
           user.login, 
@@ -191,33 +192,31 @@ export default function EditPassword({open, handleClose, handleAction}) {
   };
 
   const isNextDisabled = () => {
-    if (activeStep === 0) {
-      return currentPassword.length === 0;
-    }
-    if (activeStep === 1) {
-      return newPassword.length === 0 || confirmPassword.length === 0 || passwordError !== '';
-    }
+    if (activeStep === 0) return currentPassword.length === 0;
+    if (activeStep === 1) return newPassword.length === 0 || confirmPassword.length === 0 || passwordError !== '';
     return captchaInput === '';
   };
 
   const getPasswordHelperText = () => {
-    if (passwordError) {
-      return passwordError;
-    }
-    if (!newPassword) {
-      return "Пароль повинен містити мінімум 6 символів, 1 велику літеру та 1 цифру";
-    }
+    if (passwordError) return passwordError;
+    if (!newPassword) return "Пароль повинен містити мінімум 6 символів, 1 велику літеру та 1 цифру";
     return "";
   };
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={darkTheme}>
       <Dialog
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+        PaperProps={{
+          style: {
+            backgroundColor: '#1a1a1a',
+            borderRadius: '16px',
+            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+          },
+        }}
       >
         <IconButton
           aria-label="close"
@@ -226,14 +225,19 @@ export default function EditPassword({open, handleClose, handleAction}) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            color: '#a6ff00',
+            '&:hover': {
+              color: '#fff',
+              transform: 'rotate(180deg)',
+            },
+            transition: 'all 0.3s ease'
           }}
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent>
+        <DialogContent className="bg-[#1a1a1a]">
           <div className="max-w-2xl mx-auto p-8">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-[#a6ff00]">
               {activeStep === 0 ? 'Зміна пароля' : 
                activeStep === 1 ? 'Введіть новий пароль' : 
                'Підтвердіть дію'}
@@ -242,6 +246,23 @@ export default function EditPassword({open, handleClose, handleAction}) {
               <Stepper 
                 orientation="vertical"
                 activeStep={activeStep}
+                sx={{
+                  '& .MuiStepLabel-label': {
+                    color: '#fff',
+                    '&.Mui-active': {
+                      color: '#a6ff00',
+                    }
+                  },
+                  '& .MuiStepIcon-root': {
+                    color: '#333',
+                    '&.Mui-active': {
+                      color: '#a6ff00',
+                    },
+                    '&.Mui-completed': {
+                      color: '#a6ff00',
+                    }
+                  }
+                }}
               >
                 {steps.map((label, index) => (
                   <Step key={label} {...(isStepSkipped(index) ? { completed: false } : {})}>
@@ -260,6 +281,25 @@ export default function EditPassword({open, handleClose, handleAction}) {
                     label="Поточний пароль"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
+                    inputProps={{
+                      style: { color: '#fff' }
+                    }}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#fff',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#a6ff00',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#a6ff00',
+                      }
+                    }}
                   />
                 ) : activeStep === 1 ? (
                   <Box>
@@ -272,6 +312,28 @@ export default function EditPassword({open, handleClose, handleAction}) {
                       onChange={handleNewPasswordChange}
                       error={!!passwordError}
                       helperText={getPasswordHelperText()}
+                      inputProps={{
+                        style: { color: '#fff' }
+                      }}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                          '&:hover fieldset': {
+                            borderColor: '#fff',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                        },
+                        '& .MuiInputLabel-root': {
+                          color: '#a6ff00',
+                        },
+                        '& .MuiFormHelperText-root': {
+                          color: passwordError ? '#f44336' : '#fff',
+                        }
+                      }}
                     />
                     <TextField
                       fullWidth
@@ -282,14 +344,36 @@ export default function EditPassword({open, handleClose, handleAction}) {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       error={confirmPassword !== '' && confirmPassword !== newPassword}
                       helperText={confirmPassword !== '' && confirmPassword !== newPassword ? "Паролі не співпадають" : ""}
+                      inputProps={{
+                        style: { color: '#fff' }
+                      }}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                          '&:hover fieldset': {
+                            borderColor: '#fff',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                        },
+                        '& .MuiInputLabel-root': {
+                          color: '#a6ff00',
+                        },
+                        '& .MuiFormHelperText-root': {
+                          color: confirmPassword !== '' && confirmPassword !== newPassword ? '#f44336' : '#fff',
+                        }
+                      }}
                     />
                   </Box>
                 ) : (
                   <Box>
-                    <div className="text-lg mb-4">
+                    <div className="text-lg mb-4 text-white">
                       Для підтвердження зміни пароля, будь ласка, вирішіть приклад:
                     </div>
-                    <div className="text-2xl font-bold mb-4 text-center">
+                    <div className="text-2xl font-bold mb-4 text-center text-[#a6ff00]">
                       {captcha.expression}
                     </div>
                     <TextField
@@ -303,25 +387,68 @@ export default function EditPassword({open, handleClose, handleAction}) {
                       autoFocus
                       inputProps={{
                         inputMode: 'numeric',
-                        pattern: '[0-9]*'
+                        pattern: '[0-9]*',
+                        style: { color: '#fff' }
+                      }}
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                          '&:hover fieldset': {
+                            borderColor: '#fff',
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#a6ff00',
+                          },
+                        },
+                        '& .MuiInputLabel-root': {
+                          color: '#a6ff00',
+                        },
+                        '& .MuiFormHelperText-root': {
+                          color: captchaError ? '#f44336' : '#fff',
+                        }
                       }}
                     />
                   </Box>
                 )}
                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                   <Button
-                    color="inherit"
                     disabled={activeStep === 0 || isSubmitting}
                     onClick={handleBack}
-                    sx={{ mr: 1 }}
+                    sx={{
+                      mr: 1,
+                      color: '#fff',
+                      '&:not(:disabled)': {
+                        '&:hover': {
+                          color: '#a6ff00',
+                        }
+                      }
+                    }}
                   >
                     Назад
                   </Button>
                   <Box sx={{ flex: '1 1 auto' }} />
                   <Button 
                     onClick={handleNext}
-                    sx={{ color: 'black' }}
                     disabled={isNextDisabled() || isSubmitting}
+                    sx={{
+                      backgroundColor: '#a6ff00',
+                      color: '#000',
+                      '&:hover': {
+                        backgroundColor: '#fff',
+                        transform: 'scale(1.05)',
+                      },
+                      '&:disabled': {
+                        backgroundColor: '#333',
+                        color: '#666'
+                      },
+                      transition: 'all 0.3s ease',
+                      borderRadius: '9999px',
+                      padding: '8px 24px',
+                      textTransform: 'none',
+                      fontWeight: 'bold',
+                    }}
                   >
                     {isSubmitting ? 'Зачекайте...' : (activeStep === steps.length - 1 ? 'Змінити пароль' : 'Далі')}
                   </Button>
@@ -330,7 +457,7 @@ export default function EditPassword({open, handleClose, handleAction}) {
             </Box>
           </div>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="bg-[#111111] p-4">
           <Button 
             onClick={() => {
               setActiveStep(0);
@@ -341,14 +468,30 @@ export default function EditPassword({open, handleClose, handleAction}) {
               setCaptchaInput('');
               setCaptchaError('');
               handleClose();
-            }} 
-            sx={{ color: 'black' }} 
+            }}
             disabled={isSubmitting}
+            sx={{
+              backgroundColor: '#333',
+              color: '#fff',
+              borderRadius: '9999px',
+              padding: '8px 24px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              '&:hover': {
+                backgroundColor: '#444',
+                transform: 'scale(1.05)',
+              },
+              '&:disabled': {
+                backgroundColor: '#222',
+                color: '#666'
+              },
+              transition: 'all 0.3s ease'
+            }}
           >
             Закрити
           </Button>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </ThemeProvider>
   );
 }

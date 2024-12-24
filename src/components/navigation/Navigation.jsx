@@ -27,7 +27,7 @@ const Navigation = () => {
       await logOut();
       navigate("/login");
     } catch (e) {
-      console.log('Помилка виходу з акаунта');
+      console.log('Помилка виходу з акаунта');  
     }
   };
 
@@ -42,12 +42,12 @@ const Navigation = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="p-3 m-4 rounded-full bg-white shadow-lg hover:shadow-red-200/50"
+        className="p-3 m-4 rounded-full bg-black shadow-lg hover:shadow-[#A4DE02]/50"
       >
         <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
-          <div className="h-0.5 bg-black rounded-full" />
-          <div className="h-0.5 bg-black rounded-full" />
-          <div className="h-0.5 bg-black rounded-full" />
+          <div className="h-0.5 bg-white rounded-full" />
+          <div className="h-0.5 bg-white rounded-full" />
+          <div className="h-0.5 bg-white rounded-full" />
         </div>
       </motion.button>
 
@@ -57,16 +57,16 @@ const Navigation = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-white/95 backdrop-blur-sm flex items-center justify-center"
+            className="fixed inset-0 bg-black/90 backdrop-blur-[8px] flex items-center justify-center"
           >
             <motion.button
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-red-50"
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-[rgba(164,222,2,0.1)]"
             >
-              <CloseIcon className="w-8 h-8 text-black" />
+              <CloseIcon className="w-8 h-8 text-white" />
             </motion.button>
 
             <div className="flex flex-col items-center justify-center w-full max-w-md mx-auto space-y-8">
@@ -110,28 +110,28 @@ const Navigation = () => {
                 >
                   <NavItem 
                     to="/"
-                    icon={<PermIdentityIcon className="text-green-800" />}
+                    icon={<PermIdentityIcon className="text-[#A4DE02]" />}
                     text="Загальне"
                     isActive={activeItem === 'Item1'}
                     onClick={() => handleNavItemClick('Item1')}
                   />
                   <NavItem 
                     to="/payment"
-                    icon={<PaidIcon className="text-green-800" />}
+                    icon={<PaidIcon className="text-[#A4DE02]" />}
                     text="Оплати"
                     isActive={activeItem === 'Item2'}
                     onClick={() => handleNavItemClick('Item2')}
                   />
                   <NavItem 
                     to="/info"
-                    icon={<InfoIcon className="text-green-800" />}
+                    icon={<InfoIcon className="text-[#A4DE02]" />}
                     text="Додатково"
                     isActive={activeItem === 'Item3'}
                     onClick={() => handleNavItemClick('Item3')}
                   />
                   <NavItem 
                     to="/news"
-                    icon={<NewspaperIcon className="text-green-800" />}
+                    icon={<NewspaperIcon className="text-[#A4DE02]" />}
                     text="Новини"
                     isActive={activeItem === 'Item4'}
                     onClick={() => handleNavItemClick('Item4')}
@@ -139,7 +139,7 @@ const Navigation = () => {
                   {configCabinet.additional?.showStore && (
                     <NavItem 
                       to="/intelekt-shop"
-                      icon={<ShoppingBasketIcon className="text-green-800" />}
+                      icon={<ShoppingBasketIcon className="text-[#A4DE02]" />}
                       text="Магазин"
                       isActive={activeItem === 'Item5'}
                       onClick={() => handleNavItemClick('Item5')}
@@ -157,9 +157,9 @@ const Navigation = () => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setExitDialogOpen(true)}
-                      className="w-full flex items-center p-3 rounded-lg text-black hover:bg-red-50 transition-colors justify-center gap-2"
+                      className="w-full flex items-center p-3 rounded-lg text-white hover:bg-[rgba(164,222,2,0.1)] transition-colors justify-center gap-2"
                     >
-                      <LogoutIcon className="text-green-800" />
+                      <LogoutIcon className="text-[#A4DE02]" />  
                       <span>LogOut</span>
                     </motion.button>
                   </motion.li>
@@ -173,7 +173,7 @@ const Navigation = () => {
       <ExitDialog 
         open={exitDialogOpen}
         handleClose={() => setExitDialogOpen(false)}
-        handleLogOuth={handleLogOut}
+        handleLogOuth={handleLogOut}  
       />
     </div>
   );
@@ -183,7 +183,7 @@ const NavItem = ({ to, icon, text, isActive, onClick }) => (
   <motion.li
     variants={{
       open: { opacity: 1, y: 0 },
-      closed: { opacity: 0, y: 20 }
+      closed: { opacity: 0, y: 20 }  
     }}
   >
     <NavLink
@@ -191,10 +191,10 @@ const NavItem = ({ to, icon, text, isActive, onClick }) => (
       onClick={onClick}
       className={`
         flex items-center p-3 rounded-lg
-        transition-all duration-200
+        transition-all duration-200  
         ${isActive 
-          ? 'bg-red-50 text-black shadow-sm' 
-          : 'text-black hover:bg-red-50'
+          ? 'bg-[rgba(164,222,2,0.1)] text-black shadow-sm' 
+          : 'text-white hover:bg-[rgba(164,222,2,0.1)]'
         }
       `}
     >

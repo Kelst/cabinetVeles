@@ -44,13 +44,13 @@ const InfoTooltip = ({ children, tooltipText }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="absolute z-50 w-80 p-4 text-sm bg-gray-800 text-gray-100 rounded-md shadow-lg transform -translate-x-1/2 left-1/2 -translate-y-full -top-2"
+            className="absolute z-50 w-80 p-4 text-sm bg-black/90 text-lime-100 rounded-md shadow-lg transform -translate-x-1/2 left-1/2 -translate-y-full -top-2 border border-lime-500/20"
           >
             <div className="relative">
               <p>
                 Для використання тарифного плану зі швидкістю Інтернету від 300 до 1000 Мбіт/с необхідно використовувати спеціальний потужний роутер(мережеву карту) з підтримкою відповідного показника швидкості.
               </p>
-              <div className="absolute w-3 h-3 bg-gray-800 rotate-45 -bottom-1.5 left-1/2 transform -translate-x-1/2" />
+              <div className="absolute w-3 h-3 bg-black rotate-45 -bottom-1.5 left-1/2 transform -translate-x-1/2 border-r border-b border-lime-500/20" />
             </div>
           </motion.div>
         )}
@@ -61,10 +61,10 @@ const InfoTooltip = ({ children, tooltipText }) => {
 
 const InfoItem = ({ icon: Icon, label, value }) => (
   <motion.div 
-    className="flex items-center py-3 border-b border-gray-600 last:border-b-0"
+    className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
     whileHover={{ 
       x: 5,
-      backgroundColor: "rgba(255, 255, 255, 0.05)",
+      backgroundColor: "rgba(163, 230, 53, 0.05)",
       transition: { duration: 0.2 }
     }}
   >
@@ -73,15 +73,15 @@ const InfoItem = ({ icon: Icon, label, value }) => (
       variants={iconVariants}
       animate="animate"
     >
-      <Icon className="w-5 h-5 flex-shrink-0 text-gray-400" />
+      <Icon className="w-5 h-5 flex-shrink-0 text-lime-400" />
     </motion.div>
     <motion.div 
       className={`flex flex-col ${label === 'Тарифний план' ? 'sm:flex-col' : 'sm:flex-row'} sm:justify-between sm:items-center w-full`}
-      whileHover={{ color: "#6b8e23" }} // Changed from indigo to olive green
+      whileHover={{ color: "#84cc16" }}
     >
-      <span className="text-sm text-gray-400 sm:text-base sm:mr-4">{label}</span>
+      <span className="text-sm text-lime-200/70 sm:text-base sm:mr-4">{label}</span>
       <motion.span 
-        className="font-medium text-gray-200 mt-1 sm:mt-0"
+        className="font-medium text-lime-100 mt-1 sm:mt-0"
         whileHover={{ scale: 1.05 }}
       >
         {value || 'N/A'}
@@ -94,7 +94,7 @@ const UAHIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 96.08 122.88"
-    fill="white"
+    fill="currentColor"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
@@ -122,10 +122,10 @@ const InternetInfo = ({ style }) => {
 
   return (
     <motion.div 
-      className={`bg-gray-800 p-4 sm:p-6 rounded-md shadow-md ${style.animationBorder}`} // Changed from black to dark gray
-      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }} // Changed from red to olive green
+      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style.animationBorder}`}
+      whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
-      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-green-600 flex items-center"> {/* Changed from red to green */}
+      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-lime-400 flex items-center">
         <motion.div 
           className="mr-2 perspective-400"
           variants={iconVariants}

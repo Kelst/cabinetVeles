@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 
 const getIcon = (type) => {
   switch(type) {
-    case 'Підключення': return <Cable className="w-6 h-6 md:w-8 md:h-8 text-[#6b8e23]" />; // Changed to olive green
-    case 'Ремонт': return <Wrench className="w-6 h-6 md:w-8 md:h-8 text-[#6b8e23]" />; // Changed to olive green
-    case 'Додаткові послуги': return <Radio className="w-6 h-6 md:w-8 md:h-8 text-[#6b8e23]" />; // Changed to olive green
-    case 'Магазин': return <ShoppingCart className="w-6 h-6 md:w-8 md:h-8 text-[#6b8e23]" />; // Changed to olive green
+    case 'Підключення': return <Cable className="w-6 h-6 md:w-8 md:h-8 text-[#A4DE02]" />; // Lime green
+    case 'Ремонт': return <Wrench className="w-6 h-6 md:w-8 md:h-8 text-[#A4DE02]" />; // Lime green
+    case 'Додаткові послуги': return <Radio className="w-6 h-6 md:w-8 md:h-8 text-[#A4DE02]" />; // Lime green
+    case 'Магазин': return <ShoppingCart className="w-6 h-6 md:w-8 md:h-8 text-[#A4DE02]" />; // Lime green
     default: return null;
   }
 };
@@ -24,17 +24,17 @@ const getStatusText = (status) => {
 
 const getStatusColor = (status) => {
   switch(status) {
-    case 0: return 'text-[#8B9A47]'; // Lighter olive green
-    case 1: return 'text-[#6b8e23]'; // Olive green
-    case 2: return 'text-[#4a5d23]'; // Darker olive green
+    case 0: return 'text-[#90EE90]'; // Lighter lime green
+    case 1: return 'text-[#A4DE02]'; // Lime green
+    case 2: return 'text-[#353535]'; // Matte black
     default: return 'text-gray-500';
   }
 };
 
 const EmptyState = () => (
-  <div className="flex flex-col items-center justify-center p-8 bg-gray-900 rounded-xl border-2 border-dashed border-[#6b8e23] mt-4"> {/* Changed border color */}
-    <div className="bg-gray-800 p-4 rounded-full mb-4">
-      <Wrench className="w-12 h-12 text-[#6b8e23]" /> {/* Changed to olive green */}
+  <div className="flex flex-col items-center justify-center p-8 bg-black rounded-xl border-2 border-dashed border-[#A4DE02] mt-4"> {/* Changed border color */}
+    <div className="bg-[#353535] p-4 rounded-full mb-4">
+      <Wrench className="w-12 h-12 text-[#A4DE02]" /> {/* Changed to lime green */}
     </div>
     <h3 className="text-xl font-semibold text-white mb-2">
       Заявок немає
@@ -60,14 +60,13 @@ const LoadingSpinner = () => {
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-4 h-4 bg-[#6b8e23] rounded-full" // Changed to olive green
+            className="w-4 h-4 bg-[#A4DE02] rounded-full" // Changed to lime green
             variants={dotVariants}
             animate="animate"
             style={{ animationDelay: `${i * 0.2}s` }}
           />
         ))}
       </div>
-     
     </div>
   );
 };
@@ -116,7 +115,7 @@ const MyTaskViewer = () => {
   if (error) {
     return (
       <div className="container mx-auto p-4">
-        <div className="bg-gray-900 border border-[#6b8e23] rounded-lg p-4 text-[#6b8e23]"> {/* Changed colors */}
+        <div className="bg-black border border-[#A4DE02] rounded-lg p-4 text-[#A4DE02]"> {/* Changed colors */}
           {error}
         </div>
       </div>
@@ -139,7 +138,7 @@ const MyTaskViewer = () => {
             {getStatusText(task.status)}
           </p>
           {task.cartJson && (
-            <div className="mt-2 p-2 bg-gray-800 rounded-lg">
+            <div className="mt-2 p-2 bg-[#353535] rounded-lg">
               <p className="text-sm text-gray-300">
                 Замовлення: {task.cartJson}
               </p>
@@ -150,7 +149,7 @@ const MyTaskViewer = () => {
     } else {
       return (
         <>
-          <p className={`text-sm sm:text-lg ${task.avaible ? 'text-[#4a5d23]' : 'text-[#6b8e23]'} font-medium mb-1 sm:mb-2`}> {/* Changed colors */}
+          <p className={`text-sm sm:text-lg ${task.avaible ? 'text-[#353535]' : 'text-[#A4DE02]'} font-medium mb-1 sm:mb-2`}> {/* Changed colors */}
             {task.avaible ? 'Виконано' : 'Не виконано'}
           </p>
           <p className="text-xs sm:text-sm text-gray-400 mb-1">
@@ -182,8 +181,8 @@ const MyTaskViewer = () => {
               onClick={() => setSelectedType(type)}
               className={`px-2 py-1 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full ${
                 selectedType === type
-                  ? 'bg-[#6b8e23] text-white' // Changed to olive green
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  ? 'bg-[#A4DE02] text-black' // Changed to lime green
+                  : 'bg-[#353535] text-gray-300 hover:bg-gray-700'
               } transition-colors duration-200`}
             >
               {type}
@@ -197,13 +196,13 @@ const MyTaskViewer = () => {
           <div 
             key={task.id} 
             className="
-              bg-gray-900 rounded-lg sm:rounded-xl shadow p-3 sm:p-6 
+              bg-black rounded-lg sm:rounded-xl shadow p-3 sm:p-6 
               transform transition duration-300 hover:scale-105 
-              hover:shadow-lg border border-[#6b8e23]/30 hover:border-[#6b8e23]
+              hover:shadow-lg border border-[#A4DE02]/30 hover:border-[#A4DE02]
             "
           >
             <div className="flex items-center justify-between mb-2 sm:mb-4">
-              <span className="text-lg sm:text-2xl font-bold text-[#6b8e23]">#{task.id}</span> {/* Changed to olive green */}
+              <span className="text-lg sm:text-2xl font-bold text-[#A4DE02]">#{task.id}</span> {/* Changed to lime green */}
               <div className="text-gray-400">
                 {getIcon(task.type)}
               </div>

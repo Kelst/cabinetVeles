@@ -48,7 +48,7 @@ export default function News() {
           transition={{ type: "spring", stiffness: 300 }}
         >
           <div
-            className="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
+            className="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 cursor-pointer transform transition-all duration-300 hover:shadow-[0_0_15px_rgba(164,222,2,0.3)]"
             onClick={() => handleOpenDialog(article)}
           >
             <motion.img 
@@ -59,7 +59,7 @@ export default function News() {
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             />
-            <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed transition duration-300 ease-in-out hover:bg-[hsla(0,0%,98.4%,.15)]">
+            <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed transition duration-300 ease-in-out hover:bg-[hsla(0,0%,0%,.5)]">
             </div>
           </div>
         </motion.div>
@@ -70,10 +70,10 @@ export default function News() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: index * 0.3 }}
         >
-          <h3 className="mb-3 text-2xl font-bold hover:text-blue-400 transition-colors duration-300">
+          <h3 className="mb-3 text-2xl font-bold hover:text-[#A4DE02] transition-colors duration-300">
             {article.title}
           </h3>
-          <div className="mb-3 flex items-center text-sm font-medium text-blue-400 dark:text-blue-300 md:justify-start">
+          <div className="mb-3 flex items-center text-sm font-medium text-[#A4DE02] dark:text-[#87B300] md:justify-start">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2"
               stroke="currentColor" className="mr-2 h-5 w-5">
               <path strokeLinecap="round" strokeLinejoin="round"
@@ -83,10 +83,10 @@ export default function News() {
           </div>
           <p className="mb-6 text-neutral-400 dark:text-neutral-300">
             <small>Опубліковано <u>{new Date(article.date).toLocaleDateString()}</u> by
-              <a href="#!" className="hover:text-blue-400 transition-colors duration-300"> {article.author}</a>
+              <a href="#!" className="hover:text-[#A4DE02] transition-colors duration-300"> {article.author}</a>
             </small>
           </p>
-          <div className="text-neutral-400 dark:text-neutral-300 hover:text-neutral-300 transition-colors duration-300">
+          <div className="text-neutral-400 dark:text-neutral-300 hover:text-neutral-200 transition-colors duration-300">
             <MysteriousText>
               {article.preview}
             </MysteriousText>
@@ -97,7 +97,7 @@ export default function News() {
   };
 
   return (
-    <div className={`${style.animationBorderSM} text-white relative min-h-screen`}>
+    <div className={`${style.animationBorderSM} text-white relative min-h-screen bg-gradient-to-b from-black via-[#353535] to-black`}>
       <div className="container my-12 md:my-24 mx-auto md:px-6">
         <section className="mb-32 text-center md:text-left">
           <motion.div 
@@ -112,35 +112,35 @@ export default function News() {
             <div className="relative">
               <div className="flex flex-col items-center">
                 <motion.div 
-                  className="w-24 h-1 bg-blue-500 mb-8 rounded-full glow-effect"
+                  className="w-24 h-1 bg-[#A4DE02] mb-8 rounded-full glow-effect"
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <motion.h2 
-                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 text-[#A4DE02]"
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
                   <MysteriousText>Останні новини</MysteriousText>
                 </motion.h2>
-                <p className="text-gray-400 text-center max-w-2xl mx-auto mb-8 text-base md:text-lg">
+                <p className="text-white text-center max-w-2xl mx-auto mb-8 text-base md:text-lg">
                   <MysteriousText>
                     Будьте в курсі останніх оновлень та спеціальних пропозицій від Opticom
                   </MysteriousText>
                 </p>
                 <div className="flex items-center gap-4 mb-12">
                   <motion.div 
-                    className="w-12 h-[2px] bg-gray-700"
+                    className="w-12 h-[2px] bg-[#353535]"
                     animate={{ scaleX: [1, 1.5, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                   <motion.div 
-                    className="w-3 h-3 rounded-full bg-blue-500"
+                    className="w-3 h-3 rounded-full bg-[#A4DE02]"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   />
                   <motion.div 
-                    className="w-12 h-[2px] bg-gray-700"
+                    className="w-12 h-[2px] bg-[#353535]"
                     animate={{ scaleX: [1, 1.5, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
@@ -151,7 +151,7 @@ export default function News() {
 
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#A4DE02]"></div>
             </div>
           ) : (
             <AnimatePresence>
@@ -168,7 +168,7 @@ export default function News() {
         fullScreen={window.innerWidth < 600}
         PaperProps={{
           sx: {
-            bgcolor: '#1F2937',
+            bgcolor: 'rgba(0,0,0,0.9)',
             width: '100%',
             maxWidth: { 
               xs: '100% !important',
@@ -180,6 +180,8 @@ export default function News() {
             height: { xs: '100%', sm: 'auto' },
             maxHeight: { xs: '100%', sm: '90vh' },
             borderRadius: { xs: 0, sm: 2 },
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #A4DE02'
           }
         }}
       >

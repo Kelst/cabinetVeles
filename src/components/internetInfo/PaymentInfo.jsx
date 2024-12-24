@@ -52,11 +52,11 @@ const StatusDisplay = ({ user }) => {
     <CountdownTimer />
   ) : (
     <motion.div 
-      className="flex items-center justify-center p-4 bg-green-100 rounded-lg shadow-md animate-pulse" // Changed from red to green
+      className="flex items-center justify-center p-4 bg-lime-900/20 rounded-lg border border-lime-600/20 animate-pulse"
       whileHover={{ scale: 1.02 }}
     >
-      <Pause className="w-6 h-6 text-green-600 mr-2 animate-bounce" /> {/* Changed from red to green */}
-      <span className="text-green-700 font-semibold text-lg"> {/* Changed from red to green */}
+      <Pause className="w-6 h-6 text-lime-400 mr-2 animate-bounce" />
+      <span className="text-lime-400 font-semibold text-lg">
         Послугу призупинено
       </span>
     </motion.div>
@@ -65,10 +65,10 @@ const StatusDisplay = ({ user }) => {
 
 const InfoItem = ({ icon: Icon, label, value, children }) => (
   <motion.div 
-    className="flex items-center py-3 border-b border-gray-600 last:border-b-0" // Changed from 700 to 600
+    className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
     whileHover={{ 
       x: 5,
-      backgroundColor: "rgba(255, 255, 255, 0.05)",
+      backgroundColor: "rgba(163, 230, 53, 0.05)",
       transition: { duration: 0.2 }
     }}
   >
@@ -77,15 +77,15 @@ const InfoItem = ({ icon: Icon, label, value, children }) => (
       variants={iconVariants}
       animate="animate"
     >
-      <Icon className="w-5 h-5 flex-shrink-0 text-gray-400" />
+      <Icon className="w-5 h-5 flex-shrink-0 text-lime-400" />
     </motion.div>
     <motion.div 
       className="flex flex-col sm:flex-row sm:justify-between sm:items-center w-full"
-      whileHover={{ color: "#6b8e23" }} // Changed from indigo to olive green
+      whileHover={{ color: "#84cc16" }}
     >
-      <span className="text-sm text-gray-400 sm:text-base sm:mr-4">{label}</span>
+      <span className="text-sm text-lime-200/70 sm:text-base sm:mr-4">{label}</span>
       <motion.span 
-        className="font-medium text-gray-200 mt-1 sm:mt-0"
+        className="font-medium text-lime-100 mt-1 sm:mt-0"
         whileHover={{ scale: 1.02 }}
       >
         {value}
@@ -98,9 +98,9 @@ const InfoItem = ({ icon: Icon, label, value, children }) => (
 const AdditionalServices = ({ addServicePrice }) => {
   return (
     <motion.div 
-      className="flex flex-col py-3 border-b border-gray-600 last:border-b-0 bg-gradient-to-r from-green-900/20 to-transparent" // Changed border and gradient
+      className="flex flex-col py-3 border-b border-lime-600/20 last:border-b-0 bg-gradient-to-r from-lime-900/20 to-transparent"
       whileHover={{ 
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        backgroundColor: "rgba(163, 230, 53, 0.05)",
         scale: 1.01,
         transition: { duration: 0.2 }
       }}
@@ -111,9 +111,9 @@ const AdditionalServices = ({ addServicePrice }) => {
           variants={iconVariants}
           animate="animate"
         >
-          <Package className="w-5 h-5 flex-shrink-0 text-green-400" /> {/* Changed from red to green */}
+          <Package className="w-5 h-5 flex-shrink-0 text-lime-400" />
         </motion.div>
-        <span className="text-sm text-gray-400 sm:text-base">Додаткові послуги</span>
+        <span className="text-sm text-lime-200/70 sm:text-base">Додаткові послуги</span>
       </div>
       
       <div className="ml-8 space-y-2">
@@ -125,20 +125,20 @@ const AdditionalServices = ({ addServicePrice }) => {
                 className="flex justify-between items-center"
                 whileHover={{ x: 2, transition: { duration: 0.2 } }}
               >
-                <span className="text-sm text-gray-400">{service.name}</span>
-                <span className="text-green-300">{service.price} грн</span> {/* Changed from red to green */}
+                <span className="text-sm text-lime-200/70">{service.name}</span>
+                <span className="text-lime-400">{service.price} грн</span>
               </motion.div>
             ))}
             <motion.div 
-              className="flex justify-between items-center pt-2 border-t border-gray-600" // Changed from 700 to 600
+              className="flex justify-between items-center pt-2 border-t border-lime-600/20"
               whileHover={{ x: 2, transition: { duration: 0.2 } }}
             >
-              <span className="text-sm font-medium text-gray-400">Загалом:</span>
-              <span className="font-medium text-green-300">{addServicePrice.total_price} грн</span> {/* Changed from red to green */}
+              <span className="text-sm font-medium text-lime-200/70">Загалом:</span>
+              <span className="font-medium text-lime-400">{addServicePrice.total_price} грн</span>
             </motion.div>
           </>
         ) : (
-          <span className="text-sm text-gray-500 italic">Додаткові послуги відсутні</span>
+          <span className="text-sm text-lime-200/50 italic">Додаткові послуги відсутні</span>
         )}
       </div>
     </motion.div>
@@ -152,7 +152,7 @@ const PayButton = ({ style }) => (
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
-      <span className="absolute inset-0 flex items-center justify-center w-full h-full duration-300 -translate-x-full bg-green-600 group-hover:translate-x-0 ease"> {/* Changed from red to green */}
+      <span className="absolute inset-0 flex items-center justify-center w-full h-full duration-300 -translate-x-full bg-lime-500 group-hover:translate-x-0 ease">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
         </svg>
@@ -183,10 +183,10 @@ const PaymentInfo = ({ style }) => {
 
   return (
     <motion.div 
-      className={`bg-gray-800 p-4 sm:p-6 rounded-md shadow-md ${style.animationBorder}`} // Changed from black to gray
-      whileHover={{ boxShadow: "0 0 15px rgba(107, 142, 35, 0.3)" }} // Changed from red to olive green
+      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style.animationBorder}`}
+      whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
-      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-green-600 flex items-center"> {/* Changed from red to green */}
+      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-lime-400 flex items-center">
         <motion.div
           className="mr-2 perspective-400"
           variants={iconVariants}
@@ -198,7 +198,7 @@ const PaymentInfo = ({ style }) => {
       </h2>
       <div className="space-y-2 sm:space-y-0">
         <InfoItem icon={UAHIcon} label="Стан рахунку" value={`${user?.balance} грн.`} />
-        <div className="flex flex-col sm:flex-row sm:justify-between py-3 border-b border-gray-600"> {/* Changed from 700 to 600 */}
+        <div className="flex flex-col sm:flex-row sm:justify-between py-3 border-b border-lime-600/20">
           <InfoItem icon={CardIcon} label="Кредит" value={`${user?.deposit} грн.`} />
           <InfoItem 
             icon={CreditDateIcon} 

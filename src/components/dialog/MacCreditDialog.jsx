@@ -71,7 +71,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-green-600 pb-4 border-b border-gray-300">
+      <DialogTitle className="text-center text-3xl font-bold text-black pb-4 border-b border-[#a6ff00]">
         Встановити кредит 
       </DialogTitle>
       <IconButton
@@ -81,15 +81,18 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: 'rgba(0, 0, 0, 0.5)',
+          color: '#000',
+          '&:hover': {
+            color: '#a6ff00'
+          }
         }}
       >
         <CloseIcon />
       </IconButton>
       <DialogContent className="bg-white">
-        <div className="p-6 space-y-6 text-gray-800">
+        <div className="p-6 space-y-6 text-black">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-green-600 mb-4">
+            <h2 className="text-2xl font-semibold text-black mb-4">
               Додаткові 5 днів Інтернету
             </h2>
           </AnimatedText>
@@ -101,7 +104,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
-            <h2 className="text-2xl font-semibold text-green-600 mb-4">
+            <h2 className="text-2xl font-semibold text-black mb-4">
               Одна унікальна можливість щомісяця
             </h2>
           </AnimatedText>
@@ -116,13 +119,39 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
       <DialogActions className="bg-gray-100 p-4">
         <Button 
           onClick={handleClose}
-          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          sx={{
+            backgroundColor: '#a6ff00',
+            color: '#000',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#000',
+              color: '#a6ff00',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease'
+          }}
         >
           Закрити вікно
         </Button>
         <Button 
           onClick={handleSetCredit}
-          className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          sx={{
+            backgroundColor: '#a6ff00',
+            color: '#000',
+            borderRadius: '9999px',
+            padding: '8px 24px',
+            textTransform: 'none',
+            fontWeight: 'bold',
+            '&:hover': {
+              backgroundColor: '#000',
+              color: '#a6ff00',
+              transform: 'scale(1.05)',
+            },
+            transition: 'all 0.3s ease'
+          }}
         >
           Продовжити послугу
         </Button>

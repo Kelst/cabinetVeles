@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const RainDrop = ({ delay }) => {
   return (
     <motion.div
-      className="absolute bg-green-400 w-0.5 h-2 rounded-full"
+      className="absolute bg-[#A4DE02] w-0.5 h-2 rounded-full" 
       initial={{ opacity: 0, y: 0 }}
       animate={{ 
         opacity: [0, 1, 0],
@@ -57,7 +57,7 @@ export default function Loader() {
             y: 0,
             transition: {
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: "reverse", 
                 duration: 0.5
             }
         }
@@ -68,7 +68,9 @@ export default function Loader() {
             sx={{ 
                 color: '#fff', 
                 zIndex: (theme) => theme.zIndex.drawer + 1000,
-                backgroundColor: 'rgba(0, 0, 0, 0.8)' // Darker backdrop
+                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid #A4DE02'
             }}
             open={openLoader}
         >
@@ -78,16 +80,16 @@ export default function Loader() {
                         className='absolute top-[-120px] z-[1000000000000000] left-[60px] w-[60px] h-[60px] mb-1 animate-spin'
                         src={bigW} 
                         alt="Big W"
-                        style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }} // Makes the image green
+                        style={{ filter: 'invert(76%) sepia(92%) saturate(369%) hue-rotate(39deg) brightness(106%) contrast(101%)' }} 
                     />
                     <img  
                         className='absolute top-[-80px] z-[1000000000000000] left-[115px] w-[40px] h-[40px] mb-1 animate-reverse-spin'
                         src={bigW} 
                         alt="Small W"
-                        style={{ filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }} // Makes the image green
+                        style={{ filter: 'invert(76%) sepia(92%) saturate(369%) hue-rotate(39deg) brightness(106%) contrast(101%)' }}
                     />
                     <motion.h2 
-                        className='text-white relative z-10'
+                        className='text-[#A4DE02] relative z-10' 
                         variants={loadingVariants}
                         initial="hidden"
                         animate="visible"

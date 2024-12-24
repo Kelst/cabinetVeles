@@ -56,13 +56,8 @@ function a11yProps(index) {
 export default function MenuTV() {
   const [value, setValue] = React.useState(0);
   const tariff = useStore(state => state.user.tariff);
-  const [expandedPanel, setExpandedPanel] = React.useState(false);
   const [openDialogTariff, setOpenDialogTariff] = React.useState(false);
   const configCabinet = useConfigPage(state => state.configCabinet);
-
-  function handleDisplayTariff() {
-    setOpenDialogTariff(true);
-  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -80,21 +75,22 @@ export default function MenuTV() {
       {!tariff.includes("TV") ? (
         <Alert 
           severity="info" 
-          icon={<InfoIcon sx={{ color: '#16A34A' }} />}
+          icon={<InfoIcon sx={{ color: '#A4DE02' }} />}
           sx={{
-            backgroundColor: '#f0fdf4',
-            color: '#15803d',
-            border: '1px solid #dcfce7',
+            backgroundColor: 'rgba(0,0,0,0.9)',
+            color: '#ffffff', 
+            border: '1px solid #A4DE02',
             '& .MuiAlert-icon': {
-              color: '#16A34A',
+              color: '#A4DE02',
             },
             '& .MuiAlert-message': {
               width: '100%',
             },
+            backdropFilter: 'blur(8px)'
           }}
         >
           <AlertTitle sx={{ 
-            color: '#16A34A', 
+            color: '#A4DE02', 
             fontWeight: 'bold',
             fontSize: '1.1rem',
             mb: 2 
@@ -103,14 +99,14 @@ export default function MenuTV() {
           </AlertTitle>
           <div className="space-y-2">
             <div className="flex items-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-600 mt-2"></div>
-              <Typography className="text-gray-700">
+              <div className="w-2 h-2 rounded-full bg-[#A4DE02] mt-2"></div>
+              <Typography className="text-white">
                 INTELEKT TV доступне тільки для абонентів з активним тарифним планом, що включає телебачення
               </Typography>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-600 mt-2"></div>
-              <Typography className="text-gray-700">
+              <div className="w-2 h-2 rounded-full bg-[#A4DE02] mt-2"></div>
+              <Typography className="text-white">
                 Для активації сервісу зверніться до служби підтримки або оберіть відповідний тарифний план у особистому кабінеті
               </Typography>
             </div>
@@ -122,18 +118,20 @@ export default function MenuTV() {
       ) : null}
     </div>
   );
-
+  
   return (
     <Box sx={{ 
       width: '100%',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'rgba(0, 0, 0, 0.9)',
       borderRadius: '16px',
       overflow: 'hidden',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      backdropFilter: 'blur(8px)',
+      border: '1px solid #A4DE02'
     }}>
       <Box sx={{ 
-        borderBottom: '1px solid #dcfce7',
-        backgroundColor: '#f0fdf4'
+        borderBottom: '1px solid #A4DE02',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)'
       }}>
         <Tabs 
           value={value} 
@@ -141,7 +139,7 @@ export default function MenuTV() {
           variant="fullWidth"
           sx={{
             '& .MuiTabs-indicator': {
-              backgroundColor: '#16A34A',
+              backgroundColor: '#A4DE02',
             },
           }}
         >
@@ -149,9 +147,9 @@ export default function MenuTV() {
             icon={<TvIcon />}
             label="INTELEKT TV"
             sx={{
-              color: 'rgba(0, 0, 0, 0.7)',
+              color: 'white',
               '&.Mui-selected': {
-                color: '#16A34A',
+                color: '#A4DE02',
               },
               textTransform: 'uppercase',
               fontWeight: 'bold',
@@ -163,9 +161,9 @@ export default function MenuTV() {
               icon={<TvIcon />}
               label="MEGOGO"
               sx={{
-                color: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
                 '&.Mui-selected': {
-                  color: '#16A34A',
+                  color: '#A4DE02',
                 },
                 textTransform: 'uppercase',
                 fontWeight: 'bold',
@@ -175,26 +173,27 @@ export default function MenuTV() {
           ) : null}
         </Tabs>
       </Box>
-
+      
       <CustomTabPanel value={value} index={0}>
         <div className="space-y-4">
           <InfoBanner />
           
-          <div className="flex items-center gap-4 flex-wrap p-4 bg-green-50 rounded-lg">
+          <div className="flex items-center gap-4 flex-wrap p-4 bg-black rounded-lg shadow-[0_0_15px_rgba(164,222,2,0.3)]">
             <Tooltip title="Для пристроїв Android/Android TV" placement="bottom">
-              <Typography className="text-gray-700 font-medium">
-                Завантажити APK файл
+              <Typography className="text-white font-medium">
+                Завантажити APK файл  
               </Typography>
             </Tooltip>
             <Button
               onClick={handleDownload}
               startIcon={<BrowserUpdatedIcon />}
-              sx={{
-                color: '#16A34A',
-                borderColor: '#16A34A',
+              sx={{  
+                color: '#A4DE02',
+                borderColor: '#A4DE02',
                 '&:hover': {
-                  borderColor: '#15803d',
-                  backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                  borderColor: '#A4DE02',
+                  backgroundColor: 'rgba(164, 222, 2, 0.1)',
+                  boxShadow: '0 0 15px rgba(164, 222, 2, 0.3)' 
                 },
               }}
               variant="outlined"
@@ -202,7 +201,7 @@ export default function MenuTV() {
               Завантажити
             </Button>
           </div>
-
+          
           {[
             {
               title: '1. ЦИФРОВА ЯКІСТЬ СУПУТНИКА',
@@ -222,7 +221,7 @@ export default function MenuTV() {
             },
             {
               title: '5. НАЙКРАЩИЙ КОНТЕНТ',
-              content: 'СТВОРЮЙТЕ ВЛАСНИЙ СПИСОК УЛЮБЛЕНИХ КАНАЛІВ',
+              content: 'СТВОРЮЙТЕ ВЛАСНИЙ СПИСОК УЛЮБЛЕНИХ КАНАЛІВ', 
             },
             {
               title: '6. ДОДАТОК ДО ПРИСТРОЇВ',
@@ -232,33 +231,36 @@ export default function MenuTV() {
             <Accordion
               key={index}
               sx={{
-                backgroundColor: '#f0fdf4',
-                color: '#15803d',
+                backgroundColor: 'rgba(0,0,0,0.9)',
+                color: '#ffffff',
                 borderRadius: '8px !important',
                 marginBottom: '8px',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                 '&:before': {
                   display: 'none',
                 },
                 '&.Mui-expanded': {
                   margin: '8px 0',
                 },
+                borderColor: '#A4DE02',
+                border: '1px solid'
               }}
             >
               <AccordionSummary
-                expandIcon={<SettingsIcon sx={{ color: '#16A34A' }} />}
+                expandIcon={<SettingsIcon sx={{ color: '#A4DE02' }} />}
                 sx={{
                   '&.Mui-expanded': {
-                    backgroundColor: '#dcfce7',
+                    backgroundColor: 'black',
                     borderRadius: '8px 8px 0 0',
                   },
                 }}
               >
-                <Typography className="font-bold text-gray-700">
+                <Typography className="font-bold text-white">
                   {item.title}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ backgroundColor: '#ffffff' }}>
-                <Typography className="text-sm text-gray-600">
+              <AccordionDetails sx={{ backgroundColor: 'rgba(0,0,0,0.9)' }}>
+                <Typography className="text-sm text-white">
                   {item.content}
                 </Typography>
               </AccordionDetails>
@@ -266,13 +268,13 @@ export default function MenuTV() {
           ))}
         </div>
       </CustomTabPanel>
-
+      
       {configCabinet.additional.megogo ? (
         <CustomTabPanel value={value} index={1}>
           <div className="space-y-4">
             {[
               {
-                title: 'Питання 1',
+                title: 'Питання 1',  
                 content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
               },
               {
@@ -283,8 +285,8 @@ export default function MenuTV() {
               <Accordion
                 key={index}
                 sx={{
-                  backgroundColor: '#f0fdf4',
-                  color: '#15803d',
+                  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                  color: '#ffffff',
                   borderRadius: '8px !important',
                   marginBottom: '8px',
                   '&:before': {
@@ -293,23 +295,24 @@ export default function MenuTV() {
                   '&.Mui-expanded': {
                     margin: '8px 0',
                   },
+                  border: '1px solid #A4DE02'
                 }}
               >
                 <AccordionSummary
-                  expandIcon={<SettingsIcon sx={{ color: '#16A34A' }} />}
+                  expandIcon={<SettingsIcon sx={{ color: '#A4DE02' }} />}
                   sx={{
                     '&.Mui-expanded': {
-                      backgroundColor: '#dcfce7',
+                      backgroundColor: 'black',
                       borderRadius: '8px 8px 0 0',
                     },
                   }}
                 >
-                  <Typography className="font-bold text-gray-700">
+                  <Typography className="font-bold text-white">
                     {item.title}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails sx={{ backgroundColor: '#ffffff' }}>
-                  <Typography className="text-sm text-gray-600">
+                <AccordionDetails sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
+                  <Typography className="text-sm text-white">
                     {item.content}
                   </Typography>
                 </AccordionDetails>
@@ -318,7 +321,7 @@ export default function MenuTV() {
           </div>
         </CustomTabPanel>
       ) : null}
-
+      
       <TariffDialog open={openDialogTariff} handleClose={() => {setOpenDialogTariff(false)}} />
     </Box>
   );

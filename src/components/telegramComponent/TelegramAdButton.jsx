@@ -1,8 +1,10 @@
 import React from 'react';
-import { Fab, Dialog, DialogTitle, DialogContent, 
-         DialogContentText, Button, Box, List, 
-         ListItem, ListItemIcon, ListItemText, ThemeProvider, createTheme,
-         IconButton, Tooltip } from '@mui/material';
+import { 
+  Fab, Dialog, DialogTitle, DialogContent, 
+  DialogContentText, Button, Box, List, 
+  ListItem, ListItemIcon, ListItemText, ThemeProvider, createTheme,
+  IconButton, Tooltip 
+} from '@mui/material';
 import { keyframes } from '@mui/system';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,13 +16,13 @@ import useConfigPage from '../../store/configPage';
 
 const pulse = keyframes`
   0% {
-    box-shadow: 0 0 0 0 rgba(107, 142, 35, 0.7);
+    box-shadow: 0 0 0 0 rgba(166, 255, 0, 0.7);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(107, 142, 35, 0);
+    box-shadow: 0 0 0 15px rgba(166, 255, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(107, 142, 35, 0);
+    box-shadow: 0 0 0 0 rgba(166, 255, 0, 0);
   }
 `;
 
@@ -33,13 +35,18 @@ const rotate = keyframes`
   }
 `;
 
-const theme = createTheme({
+const darkTheme = createTheme({
   palette: {
-    primary: { main: '#6b8e23' }, // Changed to olive green
-    background: { paper: '#ffffff' },
+    mode: 'dark',
+    primary: {
+      main: '#a6ff00',
+    },
+    background: {
+      paper: '#1a1a1a',
+    },
     text: {
-      primary: '#000000',
-      secondary: '#666666',
+      primary: '#ffffff',
+      secondary: '#a6ff00',
     },
   },
 });
@@ -49,46 +56,38 @@ const TelegramAdButton = () => {
   const [isRotating, setIsRotating] = React.useState(false);
   const configCabinet = useConfigPage(state => state.configCabinet);
 
-  const handleHover = () => {
-    setIsRotating(true);
-  };
-
-  const handleHoverEnd = () => {
-    setIsRotating(false);
-  };
-
   const benefits = [
     {
-      icon: <NotificationsActiveIcon sx={{ color: '#6b8e23' }} />, // Changed to olive green
+      icon: <NotificationsActiveIcon sx={{ color: '#a6ff00' }} />,
       text: 'Миттєві сповіщення про акції та знижки'
     },
     {
-      icon: <AutoAwesomeIcon sx={{ color: '#6b8e23' }} />,
+      icon: <AutoAwesomeIcon sx={{ color: '#a6ff00' }} />,
       text: 'Персональні пропозиції та рекомендації'
     },
     {
-      icon: <SupportAgentIcon sx={{ color: '#6b8e23' }} />,
+      icon: <SupportAgentIcon sx={{ color: '#a6ff00' }} />,
       text: 'Цілодобова підтримка 24/7'
     },
     {
-      icon: <CheckCircleOutlineIcon sx={{ color: '#6b8e23' }} />,
+      icon: <CheckCircleOutlineIcon sx={{ color: '#a6ff00' }} />,
       text: 'Розширені можливості та функції'
     }
   ];
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <Tooltip 
         title="Telegram бот" 
         placement="left"
         sx={{
           '& .MuiTooltip-tooltip': {
-            bgcolor: '#6b8e23',
-            color: '#ffffff',
+            bgcolor: '#1a1a1a',
+            color: '#a6ff00',
             fontSize: '0.875rem',
             fontWeight: 500,
-            boxShadow: '0 2px 8px rgba(107, 142, 35, 0.5)',
-            borderRadius: '4px',
+            boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+            borderRadius: '8px',
             padding: '6px 12px'
           }
         }}
@@ -99,8 +98,8 @@ const TelegramAdButton = () => {
             top: '96px',
             right: '29px',
             zIndex: 20,
-            bgcolor: '#6b8e23', // Changed to olive green
-            color: 'white',
+            bgcolor: '#a6ff00',
+            color: '#000',
             width: '48px',
             height: '48px',
             minHeight: 'unset',
@@ -110,14 +109,14 @@ const TelegramAdButton = () => {
               fontSize: '28px',
             },
             '&:hover': {
-              bgcolor: '#4a5d23', // Darker olive green for hover
+              bgcolor: '#fff',
               transform: 'scale(1.1)',
             },
             transition: 'all 0.3s'
           }}
           onClick={() => setOpen(true)}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleHoverEnd}
+          onMouseEnter={() => setIsRotating(true)}
+          onMouseLeave={() => setIsRotating(false)}
         >
           <TelegramIcon />
         </Fab>
@@ -130,9 +129,9 @@ const TelegramAdButton = () => {
         fullWidth
         PaperProps={{
           sx: {
-            borderRadius: 2,
-            boxShadow: '0 40px 20px rgba(0,0,0,0.1)',
-            position: 'relative'
+            bgcolor: '#1a1a1a',
+            borderRadius: '16px',
+            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
           }
         }}
       >
@@ -143,12 +142,12 @@ const TelegramAdButton = () => {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: 'grey.500',
+            color: '#a6ff00',
             '&:hover': {
-              color: '#6b8e23', // Changed to olive green
-              transform: 'rotate(90deg)',
-              transition: 'all 0.3s'
-            }
+              color: '#fff',
+              transform: 'rotate(180deg)',
+            },
+            transition: 'all 0.3s ease'
           }}
         >
           <CloseIcon />
@@ -158,7 +157,7 @@ const TelegramAdButton = () => {
           textAlign: 'center', 
           fontSize: '1.5rem', 
           fontWeight: 'bold',
-          color: '#6b8e23', // Changed to olive green
+          color: '#a6ff00',
           pt: 3,
           pr: 6
         }}>
@@ -176,7 +175,7 @@ const TelegramAdButton = () => {
                   primary={benefit.text}
                   sx={{ 
                     '& .MuiListItemText-primary': {
-                      color: '#000000'
+                      color: '#fff'
                     }
                   }}
                 />
@@ -187,7 +186,7 @@ const TelegramAdButton = () => {
           <DialogContentText sx={{ 
             textAlign: 'center', 
             my: 2,
-            color: '#666666'
+            color: 'rgba(255, 255, 255, 0.7)'
           }}>
             Будьте на зв'язку та отримуйте найсвіжіші новини та пропозиції першими!
           </DialogContentText>
@@ -200,15 +199,19 @@ const TelegramAdButton = () => {
               href={`https://t.me/${configCabinet.telegram_id?.slice(1)}`}
               target="_blank"
               sx={{
-                borderRadius: '28px',
+                borderRadius: '9999px',
                 px: 4,
                 py: 1.5,
                 textTransform: 'none',
                 fontSize: '1.1rem',
-                bgcolor: '#6b8e23', // Changed to olive green
+                bgcolor: '#a6ff00',
+                color: '#000',
+                fontWeight: 'bold',
                 '&:hover': {
-                  bgcolor: '#4a5d23' // Darker olive green for hover
-                }
+                  bgcolor: '#fff',
+                  transform: 'scale(1.05)',
+                },
+                transition: 'all 0.3s ease'
               }}
             >
               Підключитися до боту

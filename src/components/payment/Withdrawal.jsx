@@ -15,7 +15,7 @@ import { CalendarToday, Description, AccountBalance, TrendingUp, Category } from
 import useStore from '../../store/store';
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  background: '#2d3338', // Changed from black to dark gray
+  background: '#000000', // Black background
   borderRadius: '16px',
   padding: '16px',
   height: '55vh',
@@ -24,14 +24,14 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     width: '8px',
   },
   '&::-webkit-scrollbar-track': {
-    background: '#3a4147', // Lighter gray
+    background: '#353535', // Matte black
     borderRadius: '4px',
   },
   '&::-webkit-scrollbar-thumb': {
-    background: '#4a5d23', // Dark olive green
+    background: '#A4DE02', // Lime green
     borderRadius: '4px',
     '&:hover': {
-      background: '#6b8e23', // Lighter olive green
+      background: '#90EE90', // Lighter lime green
     },
   },
 }));
@@ -45,21 +45,21 @@ const StyledTable = styled(Table)({
     left: 0,
     right: 0,
     height: '2px',
-    background: 'linear-gradient(90deg, #4a5d23, #6b8e23, #4a5d23)', // Green gradient
+    background: 'linear-gradient(90deg, #353535, #A4DE02, #353535)', // Black and lime green gradient
     animation: 'gradient 3s ease infinite',
     backgroundSize: '200% 100%',
   },
 });
 
 const HeaderCell = styled(TableCell)(({ theme }) => ({
-  background: '#1e2327', // Very dark gray
-  color: '#ffffff',
+  background: '#000000', // Black
+  color: '#A4DE02', // Lime green
   fontWeight: '600',
   padding: '16px',
   fontSize: '0.9rem',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
-  borderBottom: '1px solid #3a4147',
+  borderBottom: '1px solid #353535',
   whiteSpace: 'nowrap',
 }));
 
@@ -67,26 +67,26 @@ const DataCell = styled(TableCell)(({ theme }) => ({
   fontSize: '0.85rem',
   padding: '12px 16px',
   color: '#ffffff',
-  borderBottom: '1px solid #3a4147',
-  backgroundColor: '#2d3338',
+  borderBottom: '1px solid #353535',
+  backgroundColor: '#000000',
 }));
 
 const StyledTableRow = styled(TableRow)({
   transition: 'all 0.2s ease',
   '&:hover': {
-    backgroundColor: '#3a4147 !important',
+    backgroundColor: '#353535 !important',
     '& td': {
-      backgroundColor: '#3a4147 !important',
+      backgroundColor: '#353535 !important',
     }
   },
 });
 
 const SummaryRow = styled(TableRow)({
-  backgroundColor: '#3a4147',
+  backgroundColor: '#353535',
   '& td': {
     fontWeight: 'bold',
-    color: '#ffffff',
-    backgroundColor: '#3a4147 !important',
+    color: '#A4DE02', // Lime green
+    backgroundColor: '#353535 !important',
   },
 });
 
@@ -94,18 +94,8 @@ const IconWrapper = styled(Box)({
   display: 'inline-flex',
   alignItems: 'center',
   gap: '8px',
-  color: '#ffffff',
+  color: '#A4DE02', // Lime green
 });
-
-const TypeBadge = styled('span')(({ type }) => ({
-  padding: '4px 8px',
-  borderRadius: '4px',
-  fontSize: '0.75rem',
-  fontWeight: '500',
-  backgroundColor: '#3a4147',
-  color: '#ffffff',
-  border: '1px solid #4a5d23', // Olive green border
-}));
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -152,7 +142,7 @@ export default function WithdrawalTable() {
     <Box sx={{ 
       p: 2, 
       animation: 'fadeIn 0.5s ease-out',
-      background: 'linear-gradient(145deg, #2d3338, #3a4147)', // Darker grays gradient
+      background: 'linear-gradient(145deg, #000000, #353535)', // Black and matte black gradient
       borderRadius: '20px',
     }}>
       <StyledTableContainer component={Paper}>
@@ -161,25 +151,25 @@ export default function WithdrawalTable() {
             <TableRow>
               <HeaderCell>
                 <IconWrapper>
-                  <CalendarToday sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <CalendarToday sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Дата</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <Description sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <Description sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Опис</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <TrendingUp sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <TrendingUp sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Сума</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <AccountBalance sx={{ fontSize: 18, color: '#6b8e23' }} />
+                  <AccountBalance sx={{ fontSize: 18, color: '#A4DE02' }} />
                   <span>Залишок</span>
                 </IconWrapper>
               </HeaderCell>

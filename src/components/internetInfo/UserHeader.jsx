@@ -52,7 +52,7 @@ const UserHeader = () => {
   });
 
   const nameAnimation = useSpring({
-    color: isHovered ? '#4a5d23' : '#6b8e23', // Changed from red to green
+    color: isHovered ? '#000000' : '#1a1a1a', // Changed to black on hover
     transform: `perspective(600px) rotateX(${isHovered ? '20deg' : '0deg'})`,
     config: { mass: 5, tension: 350, friction: 40 }
   });
@@ -61,8 +61,8 @@ const UserHeader = () => {
     if (!allLogins.length) {
       return (
         <div className="flex justify-center items-center mt-4">
-          <span className="px-6 py-2.5 text-base font-medium bg-white bg-opacity-90 backdrop-blur-md 
-                        rounded-xl shadow-lg text-gray-900 border-2 border-green-600"> {/* Changed from red to green */}
+          <span className="px-6 py-2.5 text-base font-medium bg-lime-400 backdrop-blur-md 
+                        rounded-xl shadow-lg text-black border-2 border-black">
             {user.login}
           </span>
         </div>
@@ -80,8 +80,8 @@ const UserHeader = () => {
                 px-3 py-1.5 text-sm rounded-lg shadow-md transition-all duration-300 
                 transform hover:scale-105
                 ${loginUser.uid === user.uid
-                  ? 'bg-white bg-opacity-90 backdrop-blur-md text-gray-900 border-2 border-green-600' // Changed from red to green
-                  : 'bg-white bg-opacity-70 backdrop-blur-sm text-gray-700 hover:bg-opacity-90 hover:text-gray-900'
+                  ? 'bg-lime-400 backdrop-blur-md text-black border-2 border-black'
+                  : 'bg-lime-300 backdrop-blur-sm text-black hover:bg-lime-400'
                 }
               `}
             >
@@ -94,12 +94,12 @@ const UserHeader = () => {
   };
 
   if (!user) {
-    return <div>Loading user data...</div>;
+    return <div className="text-black">Loading user data...</div>;
   }
 
   return (
     <animated.div style={fadeIn} className="mb-8 text-center">
-      <div className="p-8 rounded-lg bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg shadow-lg">
+      <div className="p-8 rounded-lg bg-lime-400 bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-lg border-2 border-black">
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -111,7 +111,6 @@ const UserHeader = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             <TextAnimation text={user.name || 'Ім\'я користувача недоступне'} />
-            {/* <RandomAvatar userId={user.uid} /> */}
           </animated.h1>
         </motion.div>
 
