@@ -63,11 +63,22 @@ export default function MenuTV() {
     setValue(newValue);
   };
 
-  const handleDownload = () => {
-    const downloadLink = document.createElement('a');
-    downloadLink.href = 'https://tv.intelekt.net/files/intelekt.apk';
-    downloadLink.download = 'intelekt.apk';
-    downloadLink.click();
+  const handleDownload = async () => {
+    try {
+      const response = await fetch('http://194.8.147.150:5300/api/binary-files');
+      const data = await response.json();
+      
+      if (data.docs && data.docs.length > 0) {
+        const file = data.docs[0]; // беремо перший файл
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = file.url;
+        downloadLink.download = file.filename;
+        downloadLink.click();
+      }
+    } catch (error) {
+      console.error('Помилка завантаження:', error);
+    }
   };
 
   const InfoBanner = () => (
