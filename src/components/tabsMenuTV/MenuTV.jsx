@@ -156,7 +156,7 @@ export default function MenuTV() {
         >
           <Tab
             icon={<TvIcon />}
-            label="INTELEKT TV"
+            label="OPTICOMPLUS TV"
             sx={{
               color: 'white',
               '&.Mui-selected': {
