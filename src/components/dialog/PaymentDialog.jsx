@@ -56,13 +56,6 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function generatePrivatbankPaymentLink(amount, acc) {
-  const baseUrl = 'https://my-payments.privatbank.ua/mypayments/customauth/identification/fp/static';
-  const staticToken = '2bc390c2d56f7e662830e89fbb154578u6a94p9f';
-  const formattedAmount = parseFloat(amount).toFixed(2);
-  return `${baseUrl}?staticToken=${staticToken}&acc=${acc}&amount=${formattedAmount}`;
-}
-
 export default function PaymentDialog({open, handleClose, type}) {
   const [selectedLoginIndex, setSelectedLoginIndex] = React.useState('0');
   const [subLogin, setSubLogin] = React.useState([]);
@@ -72,50 +65,19 @@ export default function PaymentDialog({open, handleClose, type}) {
   const getPortmoneLink = useStore(state => state.getPortmoneLink);
   const getEasypayLink = useStore(state => state.getEasypayLink);
   const getPrivat24Link = useStore(state => state.getPrivat24Link);
-  
   const getLiqPayLink = useStore(state => state.getLiqPayLink);
-  const makerLinksToFastPayEasyPay = useStore(state => state.makerLinksToFastPayEasyPay);
 
   const isValidAmount = Number(sumText) >= 3;
 
-  const handleSumChange = (event) => {
-    const value = event.target.value;
-    if (value === '' || /^\d+$/.test(value)) {
-      setSumText(value);
+  useEffect(() => {
+    if (type === 'city24' && open) {
+      const newWindow = window.open('https://city24.ua/ua/popolnit-internet/opticom-plus', '_blank');
+      if (newWindow) {
+        newWindow.opener = null;
+      }
+      handleClose();
     }
-  };
-
-  const getSelectedLogin = () => {
-    return subLogin[selectedLoginIndex]?.login || user.login;
-  };
-
-  const handleRedirectTo = async(type) => {
-    const amount = Number(sumText);
-    if (amount < 3) return;
-
-    const selectedLogin = getSelectedLogin();
-
-    switch (type) {
-      case 'easypay':
-        const dataEasypay = await getEasypayLink(selectedLogin, sumText);
-        window.open(dataEasypay.link, '_blank');
-        break;
-      case 'portmone':
-        const dataPortmone = await getPortmoneLink(selectedLogin, sumText);
-        window.open(dataPortmone.link, '_blank');
-        break;
-      case 'liqpay':
-        const dataLiqpay = await getLiqPayLink(selectedLogin, sumText);
-        window.open(dataLiqpay.link, '_blank');
-        break;
-      case 'privat24':
-        const dataPrivat24 = await getPrivat24Link(selectedLogin, sumText);
-        window.open(dataPrivat24.link, '_blank');
-        break;
-      default:
-        break;
-    }
-  };
+  }, [type, open, handleClose]);
 
   useEffect(() => {
     if (user) {
@@ -137,6 +99,45 @@ export default function PaymentDialog({open, handleClose, type}) {
     }
   }, [user]);
 
+  const handleSumChange = (event) => {
+    const value = event.target.value;
+    if (value === '' || /^\d+$/.test(value)) {
+      setSumText(value);
+    }
+  };
+
+  const getSelectedLogin = () => {
+    return subLogin[selectedLoginIndex]?.login || user.login;
+  };
+
+  const handleRedirectTo = async(paymentType) => {
+    const amount = Number(sumText);
+    if (amount < 3) return;
+
+    const selectedLogin = getSelectedLogin();
+
+    switch (paymentType) {
+      case 'easypay':
+        const dataEasypay = await getEasypayLink(selectedLogin, sumText);
+        window.open(dataEasypay.link, '_blank');
+        break;
+      case 'portmone':
+        const dataPortmone = await getPortmoneLink(selectedLogin, sumText);
+        window.open(dataPortmone.link, '_blank');
+        break;
+      case 'liqpay':
+        const dataLiqpay = await getLiqPayLink(selectedLogin, sumText);
+        window.open(dataLiqpay.link, '_blank');
+        break;
+      case 'privat24':
+        const dataPrivat24 = await getPrivat24Link(selectedLogin, sumText);
+        window.open(dataPrivat24.link, '_blank');
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleShowDiscount = () => {
     setOpenDiscount(true);
   };
@@ -155,6 +156,10 @@ export default function PaymentDialog({open, handleClose, type}) {
     const selectedLogin = subLogin[selectedLoginIndex];
     return selectedLogin ? selectedLogin.monthlyPayment : '0';
   };
+
+  if (type === 'city24') {
+    return null;
+  }
 
   return (
     <React.Fragment>
