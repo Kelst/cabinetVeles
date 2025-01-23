@@ -40,7 +40,7 @@ const useConfigPage = create((set) => ({
   imageUrl:{},
   async getConfigCabinet(provider) {
     try {
-      const response = await $api.get(`http://194.8.147.150:5000/api/getConfigCabinet?typePage=${provider}`)
+      const response = await $api.get(`https://cabinet.biz.ua/api/getConfigCabinet?typePage=${provider}`)
       const result = response.data.configCabinet
       set({ configCabinet: result })
       return result
@@ -51,7 +51,7 @@ const useConfigPage = create((set) => ({
   },
   async getImageUrl(provider) {
     try {
-      const response = await $api.get(`http://194.8.147.150:5000/api/getImageUrl?type=${provider}`)
+      const response = await $api.get(`https://cabinet.biz.ua/api/getImageUrl?type=${provider}`)
       const result = response.data
       console.log(result,"RESULLLT");
       
@@ -64,7 +64,7 @@ const useConfigPage = create((set) => ({
   },
   async getNews(provider) {
     try {
-      const response = await $api.get(`http://194.8.147.150:5000/api/getNewsById?provider=${provider}`)
+      const response = await $api.get(`https://cabinet.biz.ua/api/getNewsById?provider=${provider}`)
       const newsData = response.data.map(item => ({
         provider: item.provider,
         title: item.title,
@@ -85,7 +85,7 @@ const useConfigPage = create((set) => ({
 
   async getFaq(provider) {
     try {
-      const response = await $api.get(`http://194.8.147.150:5000/api/getFaq?provider=${provider}`)
+      const response = await $api.get(`https://cabinet.biz.ua/api/getFaq?provider=${provider}`)
       const faqData = response.data.providerResult.map(item => ({
         id: item._id,
         provider: item.provider,
@@ -103,7 +103,7 @@ const useConfigPage = create((set) => ({
 
   async getPayments(provider) {
     try {
-      const response = await $api.get(`http://194.8.147.150:5000/api/getPaymentsModel?provider=${provider}`)
+      const response = await $api.get(`https://cabinet.biz.ua/api/getPaymentsModel?provider=${provider}`)
       const paymentsData = response.data.paymentsResult
         .filter(item => item.show)
         .map(item => ({

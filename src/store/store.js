@@ -179,7 +179,7 @@ async logOut(){
 },
 async handleVeriffyCode(code, phone) {
   try {
-    const response = await axios.post(`http://194.8.147.150:5000/api/confirmCodePhone`, {
+    const response = await axios.post(`https://cabinet.biz.ua/api/confirmCodePhone`, {
       code,
       phone
     });
@@ -220,7 +220,7 @@ async checkAuth(){
 },
  async checkBillingApi(){
   try {
-  const user= await axios.get(`http://194.8.147.150:5000/api/checkIpBilling?provider=${'Opticom'}`)
+  const user= await axios.get(`https://cabinet.biz.ua/api/checkIpBilling?provider=${'Opticom'}`)
   if(user.status=='200'){
 return user.data
   } else {
@@ -232,7 +232,7 @@ return user.data
  },
  async checkBillingApiGuest(guestIp){
   try {
-  const user= await axios.get(`http://194.8.147.150:5000/api/checkBillingApiGuest?guestIp=${guestIp}&provider=${'Opticom'}`)
+  const user= await axios.get(`https://cabinet.biz.ua/api/checkBillingApiGuest?guestIp=${guestIp}&provider=${'Opticom'}`)
   if(user.status=='200'){
 return user.data
   } else {
@@ -245,7 +245,7 @@ return user.data
  
  async reloadSession(uid) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/reloadSession', { uid })
+    const response = await $api.post('https://cabinet.biz.ua/api/reloadSession', { uid })
     const result = response.data
     if (result.flag) {
       console.log("Session reloaded successfully:", result.reloadResult.message)
@@ -266,7 +266,7 @@ return user.data
 },
 async unlinkPhone(uid, uidPrime, phone, loginOld) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/unlinkPhone', { 
+    const response = await $api.post('https://cabinet.biz.ua/api/unlinkPhone', { 
       uid, 
       uidPrime, 
       phone, 
@@ -304,7 +304,7 @@ async unlinkPhone(uid, uidPrime, phone, loginOld) {
 },
 async stopPlayLogin(uid,login,balance,billId,feesM) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/toogleStopPlayLogin', { uid,login,balance,billId,feesM})
+    const response = await $api.post('https://cabinet.biz.ua/api/toogleStopPlayLogin', { uid,login,balance,billId,feesM})
     const result = response.data
     if (result.disabled==0) {
       console.log("Логін активовано")
@@ -344,7 +344,7 @@ async stopPlayLogin(uid,login,balance,billId,feesM) {
 },
 async clearCid(uid) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/clearCid', { uid })
+    const response = await $api.post('https://cabinet.biz.ua/api/clearCid', { uid })
     const result = response.data
     if (result.flag) {
       console.log("Мак очищено", result.reloadResult.message)
@@ -368,7 +368,7 @@ async clearCid(uid) {
 },
 async addCredit(uid,login) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/addCredit', { uid,login })
+    const response = await $api.post('https://cabinet.biz.ua/api/addCredit', { uid,login })
     const result = response.data
     if (result.status) {
       function addFiveDaysToToday() {
@@ -401,7 +401,7 @@ async addCredit(uid,login) {
 },
 async requestPhoneChange(uid,login,newPhone) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/request-phone-change', { uid,login,newPhone,provider:'Opticom'})
+    const response = await $api.post('https://cabinet.biz.ua/api/request-phone-change', { uid,login,newPhone,provider:'Opticom'})
     const result = response.data
     return result
   } catch (error) {
@@ -411,7 +411,7 @@ async requestPhoneChange(uid,login,newPhone) {
 },
 async confirmPhoneChange(uid,login,code,phone,newPhone) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/confirm-phone-change', {uid,login,code,phone})
+    const response = await $api.post('https://cabinet.biz.ua/api/confirm-phone-change', {uid,login,code,phone})
     const result = response.data
     if(result.success){
       set(state => ({ 
@@ -434,7 +434,7 @@ async confirmPhoneChange(uid,login,code,phone,newPhone) {
 
 async requestPasswordChange(uid,login,oldPassword,newPassword) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/request-password-change', {uid,login,oldPassword,newPassword})
+    const response = await $api.post('https://cabinet.biz.ua/api/request-password-change', {uid,login,oldPassword,newPassword})
     const result = response.data
     return result
   } catch (error) {
@@ -444,7 +444,7 @@ async requestPasswordChange(uid,login,oldPassword,newPassword) {
 },
 async getPayments(uid) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getPayments?uid=${uid}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getPayments?uid=${uid}`)
     const result = response.data
     return result
   } catch (error) {
@@ -454,7 +454,7 @@ async getPayments(uid) {
 },
 async getFees(uid) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getFees?uid=${uid}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getFees?uid=${uid}`)
     const result = response.data
     return result
   } catch (error) {
@@ -464,7 +464,7 @@ async getFees(uid) {
 },
 async getTaskUser(uid) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getTaskUser?uid=${uid}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getTaskUser?uid=${uid}`)
     const result = response.data
     return result
   } catch (error) {
@@ -474,7 +474,7 @@ async getTaskUser(uid) {
 },
 async getListTariffAvaible(uid) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getAvailableTariffUID?uid=${uid}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getAvailableTariffUID?uid=${uid}`)
     const result = response.data
     return result
   } catch (error) {
@@ -484,7 +484,7 @@ async getListTariffAvaible(uid) {
 },
 async getPortmoneLink(login,suma) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getPortmoneLink?login=${login}&suma=${suma}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getPortmoneLink?login=${login}&suma=${suma}`)
     const result = response.data
     return result
   } catch (error) {
@@ -495,7 +495,7 @@ async getPortmoneLink(login,suma) {
 
 async getPrivat24Link(login,suma) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getPrivat24Link?login=${login}&suma=${suma}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getPrivat24Link?login=${login}&suma=${suma}`)
     const result = response.data
     return result
   } catch (error) {
@@ -505,7 +505,7 @@ async getPrivat24Link(login,suma) {
 },
 async getEasypayLink(login,suma) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getEasypayLink?login=${login}&suma=${suma}&provider=Opticom`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getEasypayLink?login=${login}&suma=${suma}&provider=Opticom`)
     const result = response.data
     return result
   } catch (error) {
@@ -515,7 +515,7 @@ async getEasypayLink(login,suma) {
 },
 async getLiqPayLink(login,suma) {
   try {
-    const response = await $api.get(`http://194.8.147.150:5000/api/getLiqPayLink?login=${login}&suma=${suma}`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getLiqPayLink?login=${login}&suma=${suma}`)
     const result = response.data
     return result
   } catch (error) {
@@ -526,7 +526,7 @@ async getLiqPayLink(login,suma) {
 
 async changeTariffPlan(uid, internetId, tpId) {
   try {
-    const response = await $api.post('http://194.8.147.150:5000/api/changeTariffPlan', { uid, internetId, tpId });
+    const response = await $api.post('https://cabinet.biz.ua/api/changeTariffPlan', { uid, internetId, tpId });
     const result = response.data;
     if (result.success) {
       // Знаходимо вибраний тариф по tpId із state
@@ -567,7 +567,7 @@ async changeTariffPlan(uid, internetId, tpId) {
 },
 async getDataOnu(uid) {
   try {
-    const response = await $api.post(`http://194.8.147.150:5000/api/get-info-hard`,{ uid,})
+    const response = await $api.post(`https://cabinet.biz.ua/api/get-info-hard`,{ uid,})
     const result = response.data
     console.log(result);
     
@@ -580,7 +580,7 @@ async getDataOnu(uid) {
 async addAdditionalService(uid,login,phone,description) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/addAdditionalService', { uid, login, phone,description,provider:'Opticom' });
+    const response = await $api.post('https://cabinet.biz.ua/api/addAdditionalService', { uid, login, phone,description,provider:'Opticom' });
     const result = response.data;
     return result;
   } catch (error) {
@@ -591,7 +591,7 @@ async addAdditionalService(uid,login,phone,description) {
 async addStaticRequest(login,phone) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/addStaticRequest', {login, phone,provider:'Opticom' });
+    const response = await $api.post('https://cabinet.biz.ua/api/addStaticRequest', {login, phone,provider:'Opticom' });
     const result = response.data;
     return result;
   } catch (error) {
@@ -602,7 +602,7 @@ async addStaticRequest(login,phone) {
 async addFeedBack(feedBack,phone,login) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/addFeedback', {feedBack,phone,login,provider:"Opticom" });
+    const response = await $api.post('https://cabinet.biz.ua/api/addFeedback', {feedBack,phone,login,provider:"Opticom" });
     const result = response.data;
     return result;
   } catch (error) {
@@ -613,7 +613,7 @@ async addFeedBack(feedBack,phone,login) {
 async addFeedBackU(login,phone,message,sublogin) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/addFeedbackU', {login,phone,message,sublogin,provider:"Opticom" });
+    const response = await $api.post('https://cabinet.biz.ua/api/addFeedbackU', {login,phone,message,sublogin,provider:"Opticom" });
     const result = response.data;
     return result;
   } catch (error) {
@@ -624,7 +624,7 @@ async addFeedBackU(login,phone,message,sublogin) {
 async removeStaticRequest(login) {
   try {
 
-    const response = await $api.post('http://194.8.147.150:5000/api/removeStaticRequest', {login,provider:'Opticom'});
+    const response = await $api.post('https://cabinet.biz.ua/api/removeStaticRequest', {login,provider:'Opticom'});
     const result = response.data;
     return result;
   } catch (error) {

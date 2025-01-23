@@ -32,18 +32,18 @@ const dataStore = create((set) => ({
    tasks:[],
    
 async getDataUid(uid){
-  const dataUserUid= await $api.get(`http://194.8.147.150:5000/api/getDataUid?uid:${uid}&provider=${'Opticom'}`)
+  const dataUserUid= await $api.get(`https://cabinet.biz.ua/api/getDataUid?uid:${uid}&provider=${'Opticom'}`)
   const data=dataUserUid.data
   set(state=>({...state,user:data}))
 },
 
 async getTariff(uid){
-  const dataTariff= await $api.get(`http://194.8.147.150:5000/api/getListTariffAvaible?uid=${uid}`)
+  const dataTariff= await $api.get(`https://cabinet.biz.ua/api/getListTariffAvaible?uid=${uid}`)
   const data=dataTariff.data
   set(state=>({...state,tariffAvaibles:data}))
 },
 async getTaskUser(uid){
-  const dataUserTask= await $api.get(`http://194.8.147.150:5000/api/getTaskUser?uid=${uid}`)
+  const dataUserTask= await $api.get(`https://cabinet.biz.ua/api/getTaskUser?uid=${uid}`)
   const data=dataUserTask.data
   set(state=>({...state,tasks:data}))
 },
