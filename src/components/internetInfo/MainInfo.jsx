@@ -8,7 +8,8 @@ import {
   RefreshCw as RefreshIcon,
   Lock as PasswordIcon,
   Router,
-  AlertCircle
+  AlertCircle,
+  HelpCircle
 } from 'lucide-react';
 import { IconButton, Tooltip } from '@mui/material';
 import ModeEditOutlineTwoToneIcon from '@mui/icons-material/ModeEditOutlineTwoTone';
@@ -37,11 +38,38 @@ const iconVariants = {
   }
 };
 
+const EmptyValuePlaceholder = ({ message = "Дані відсутні" }) => (
+  <motion.div 
+    className="inline-flex items-center gap-2 text-lime-600/60"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    whileHover={{ scale: 1.05 }}
+  >
+    <HelpCircle className="w-4 h-4" />
+    <span className="text-sm">{message}</span>
+  </motion.div>
+);
+
 const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSession, handleCid, handleEditPassword }) => {
   const user = useStore(state => state.userData);
   const configCabinet = useConfigPage(state => state.configCabinet);
+
+  const formatValue = (value, defaultMessage, type = 'default') => {
+    if (type === 'address') {
+      if (!value || 
+          value.split(' ').every(part => part === 'undefined' || part === 'null') ||
+          value.includes('undefined undefined')) {
+        return <EmptyValuePlaceholder message={defaultMessage} />;
+      }
+    }
+    
+    if (value === undefined || value === null || value === '') {
+      return <EmptyValuePlaceholder message={defaultMessage} />;
+    }
+    return value;
+  };
   
-  const InfoItem = ({ icon: Icon, label, value, children }) => (
+  const InfoItem = ({ icon: Icon, label, value, defaultMessage = "Дані відсутні", type = 'default', children }) => (
     <motion.div 
       className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
       whileHover={{ 
@@ -66,7 +94,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
           className="font-medium text-lime-100 mt-1 sm:mt-0 flex items-center"
           whileHover={{ scale: 1.02 }}
         >
-          {value}
+          {formatValue(value, defaultMessage, type)}
           {children}
         </motion.div>
       </motion.div>
@@ -74,7 +102,11 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
   );
 
   const renderConnectionStatus = () => {
-    if (user?.guestIp?.startsWith('10.')) {
+    if (!user?.guestIp) {
+      return <EmptyValuePlaceholder message="IP адреса недоступна" />;
+    }
+
+    if (user.guestIp.startsWith('10.')) {
       return (
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
@@ -105,11 +137,15 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
       );
     }
   
-    return user?.statusInternet ? (
-      <div className="inline-flex justify-center items-center gap-2">
+    if (user?.statusInternet === undefined) {
+      return <EmptyValuePlaceholder message="Статус з'єднання невідомий" />;
+    }
+  
+    return user.statusInternet ? (
+      <div className="inline-flex justify-center items-center gap-2 text-lime-100">
         <AnimatedRocket type="active" />
         Active
-        {configCabinet.home.reloadSesion &&
+        {configCabinet?.home?.reloadSesion &&
           <Tooltip title="Перезавантажити сесію" arrow>
             <IconButton size="small" className="ml-2" onClick={handleReloadSession}>
               <RefreshIcon className="w-4 h-4 text-lime-300" />
@@ -118,15 +154,29 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         }
       </div>
     ) : (
-      <div className="inline-flex justify-center items-center gap-2">
-        <AnimatedRocket type="inactive" /> Inactive <NetworkDiagnostics/>
+      <div className="inline-flex justify-center items-center gap-2 text-lime-100">
+        <AnimatedRocket type="inactive" /> 
+        Inactive 
+        <NetworkDiagnostics/>
       </div>
     );
   };
 
+  if (!user) {
+    return (
+      <motion.div 
+        className="bg-black/80 p-6 rounded-lg shadow-lg border border-lime-500/20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <EmptyValuePlaceholder message="Дані користувача недоступні" />
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div 
-      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style.animationBorder}`}
+      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style?.animationBorder || ''}`}
       whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
       <TelegramAdButton/>
@@ -146,9 +196,10 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         <InfoItem 
           icon={PhoneIcon} 
           label="Телефон" 
-          value={user?.phone}
+          value={user.phone}
+          defaultMessage="Номер телефону не вказано"
         >
-          {configCabinet.home.editPhone &&
+          {configCabinet?.home?.editPhone &&
             <Tooltip title="Змінити номер телефону" arrow>
               <IconButton 
                 aria-label="edited" 
@@ -160,7 +211,13 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
             </Tooltip>
           }
         </InfoItem>
-        <InfoItem icon={AddressIcon} label="Адреса" value={user?.address} />
+        <InfoItem 
+          icon={AddressIcon} 
+          label="Адреса" 
+          value={user.address}
+          defaultMessage="Адреса не вказана"
+          type="address" 
+        />
         <InfoItem 
           icon={InternetIcon} 
           label="Стан з'єднання" 
@@ -170,28 +227,34 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
           icon={Router} 
           label="MAC" 
           value={
-            <Tooltip title="Інтернет сесія працює на цьому mac-адресі" arrow>
-              <IconButton size="small" className="ml-2">
-                <div className='text-lime-100'>{user?.cid}</div> 
-              </IconButton>
-            </Tooltip>
-          } 
+            user.cid ? (
+              <Tooltip title="Інтернет сесія працює на цьому mac-адресі" arrow>
+                <IconButton size="small" className="ml-2">
+                  <div className="text-lime-100">{user.cid}</div> 
+                </IconButton>
+              </Tooltip>
+            ) : undefined
+          }
+          defaultMessage="MAC адреса не доступна"
         />
         <InfoItem 
           icon={UserIcon} 
           label="Статус" 
           value={
-            user?.status 
-              ? <div className="inline-flex gap-x-2"><AnimatedLoginShield /> Активний</div>
-              : <div className="inline-flex gap-x-2"><PauseIcon /> На паузі</div>
-          } 
+            user.status !== undefined ? (
+              user.status 
+                ? <div className="inline-flex gap-x-2 text-lime-100"><AnimatedLoginShield /> Активний</div>
+                : <div className="inline-flex gap-x-2 text-lime-100"><PauseIcon /> На паузі</div>
+            ) : undefined
+          }
+          defaultMessage="Статус невідомий"
         />
         <InfoItem 
           icon={PasswordIcon} 
           label="Пароль" 
           value="********"
         >
-          {configCabinet.home.changePassword &&
+          {configCabinet?.home?.changePassword &&
             <Tooltip title="Змінити пароль для входу" arrow>
               <IconButton 
                 aria-label="change password" 
@@ -208,9 +271,9 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         className="mt-4"
         whileHover={{ scale: 1.02 }}
       >
-        {configCabinet.home.stopPlayLogin &&
+        {configCabinet?.home?.stopPlayLogin &&
           <GlasmorphizmButton 
-            label={user?.status ? `Призупинити логін` : 'Активувати логін'} 
+            label={user.status ? `Призупинити логін` : 'Активувати логін'} 
             handleAction={handleStopPlayLogin} 
           />
         }

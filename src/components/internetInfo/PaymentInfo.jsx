@@ -9,7 +9,8 @@ import {
   Percent as PercentS,
   Clock as LastPaymentIcon,
   Package,
-  Pause
+  Pause,
+  CalendarDays
 } from 'lucide-react';
 import MysteriousText from '../MysteriousText/MysteriousText';
 import CountdownTimer from '../сountdownTimer/CountdownTimer';
@@ -63,6 +64,67 @@ const StatusDisplay = ({ user }) => {
   );
 };
 
+const calculateMonthsAndPayment = (balance, monthlyPayment) => {
+  if (!monthlyPayment || monthlyPayment === 0) return null;
+  
+  const fullMonths = Math.floor(balance / monthlyPayment);
+  const remainingBalance = balance % monthlyPayment;
+  const additionalPaymentNeeded = monthlyPayment - remainingBalance;
+  
+  return {
+    fullMonths,
+    remainingBalance,
+    additionalPaymentNeeded
+  };
+};
+
+const BalanceInfo = ({ balance, payAll, reduction }) => {
+  if (reduction === 100 || balance < 0) {
+    return null;
+  }
+
+  const monthsInfo = calculateMonthsAndPayment(balance, payAll);
+  if (!monthsInfo) return null;
+
+  const { fullMonths, remainingBalance, additionalPaymentNeeded } = monthsInfo;
+
+  return (
+    <motion.div 
+      className="ml-8 mt-2 space-y-2 py-2 px-3 bg-lime-900/20 rounded-lg border border-lime-600/20"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      {balance >= payAll ? (
+        <>
+          <div className="flex items-center text-sm text-lime-300">
+            <CalendarDays className="w-4 h-4 mr-2 text-lime-400" />
+            <span>
+              Коштів вистачить на {fullMonths} {fullMonths === 1 ? 'місяць' : fullMonths < 5 ? 'місяці' : 'місяців'}
+            </span>
+          </div>
+          {remainingBalance > 0 && (
+            <div className="text-sm text-lime-400">
+              {additionalPaymentNeeded > 0 && (
+                <div className="mt-1 text-lime-400">
+                  При доплаті {additionalPaymentNeeded} грн вистачить на {fullMonths + 1} {fullMonths + 1 === 1 ? 'місяць' : fullMonths + 1 < 5 ? 'місяці' : 'місяців'}
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="flex items-center text-sm text-lime-300">
+          <CalendarDays className="w-4 h-4 mr-2 text-yellow-400" />
+          <span>
+            Для наступної абонплати потрібно доплатити {payAll - balance} грн
+          </span>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
 const InfoItem = ({ icon: Icon, label, value, children }) => (
   <motion.div 
     className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
@@ -105,7 +167,7 @@ const AdditionalServices = ({ addServicePrice }) => {
         transition: { duration: 0.2 }
       }}
     >
-      <div className="flex items-center mb-2">
+     {addServicePrice?.services.length > 0 ? ( <div className="flex items-center mb-2">
         <motion.div
           className="mr-3 perspective-400"
           variants={iconVariants}
@@ -114,7 +176,7 @@ const AdditionalServices = ({ addServicePrice }) => {
           <Package className="w-5 h-5 flex-shrink-0 text-lime-400" />
         </motion.div>
         <span className="text-sm text-lime-200/70 sm:text-base">Додаткові послуги</span>
-      </div>
+      </div>):<></>}
       
       <div className="ml-8 space-y-2">
         {addServicePrice?.services.length > 0 ? (
@@ -138,7 +200,7 @@ const AdditionalServices = ({ addServicePrice }) => {
             </motion.div>
           </>
         ) : (
-          <span className="text-sm text-lime-200/50 italic">Додаткові послуги відсутні</span>
+          <></>
         )}
       </div>
     </motion.div>
@@ -197,7 +259,14 @@ const PaymentInfo = ({ style }) => {
         <MysteriousText>Оплата</MysteriousText>
       </h2>
       <div className="space-y-2 sm:space-y-0">
-        <InfoItem icon={UAHIcon} label="Стан рахунку" value={`${user?.balance} грн.`} />
+        <div>
+          <InfoItem icon={UAHIcon} label="Стан рахунку" value={`${user?.balance} грн.`} />
+          <BalanceInfo 
+            balance={user?.balance} 
+            payAll={user?.payAll}
+            reduction={user?.reduction}
+          />
+        </div>
         <div className="flex flex-col sm:flex-row sm:justify-between py-3 border-b border-lime-600/20">
           <InfoItem icon={CardIcon} label="Кредит" value={`${user?.deposit} грн.`} />
           <InfoItem 

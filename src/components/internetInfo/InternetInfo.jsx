@@ -138,9 +138,9 @@ const InternetInfo = ({ style }) => {
       <div className="space-y-2 sm:space-y-0">
         <InfoItem icon={WifiIcon} label="Тарифний план" value={user?.tariff} />
         <InfoTooltip tooltipText="Для використання тарифного плану...">
-          <InfoItem icon={SpeedIcon} label="Швидкість до" value={tariffInfo.speed} />
+          <InfoItem icon={SpeedIcon} label="Швидкість до" value={`${user.tariffExtentionSpeed} Мбіт`} />
         </InfoTooltip>
-        <InfoItem icon={UAHIcon} label="Вартість" value={tariffInfo.price} />
+        <InfoItem icon={UAHIcon} label="Вартість" value={`${user.monthlyPayment} грн.`} />
         <InfoItem icon={IpIcon} label="IP" value={user?.ip} />
         {isStaticIp && <CancelStaticIpButton/>}
         <InfoItem icon={DurationIcon} label="Тривалість" value={user?.duration} />

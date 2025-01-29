@@ -56,6 +56,117 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+function generatePrivatbankPaymentLink(amount, acc) {
+  const baseUrl = 'https://my-payments.privatbank.ua/mypayments/customauth/identification/fp/static';
+  const staticToken = '2bc390c2d56f7e662830e89fbb154578u6a94p9f';
+  const formattedAmount = parseFloat(amount).toFixed(2);
+  return `${baseUrl}?staticToken=${staticToken}&acc=${acc}&amount=${formattedAmount}`;
+}
+
+const calculateRequiredAmount = (login) => {
+  const monthlyPayment = login.payAll === 0 ? login.monthlyPayment : login.payAll;
+  const currentBalance = login.balance;
+  
+  if (currentBalance < 0) {
+    // Якщо баланс від'ємний, потрібно погасити борг + внести абонплату
+    return Math.abs(currentBalance) + monthlyPayment;
+  } else {
+    // Якщо баланс додатній, але менший за місячну плату
+    return Math.max(0, monthlyPayment - currentBalance);
+  }
+};
+
+const getPaymentInfo = (selectedLogin) => {
+  if (!selectedLogin) return null;
+
+  const monthlyPayment = selectedLogin.payAll === 0 ? selectedLogin.monthlyPayment : selectedLogin.payAll;
+  const currentBalance = selectedLogin.balance;
+  const requiredAmount = calculateRequiredAmount(selectedLogin);
+
+  if (currentBalance < 0) {
+    return (
+      <div 
+        style={{
+          backgroundColor: '#f8f9fa',
+          padding: '16px',
+          borderRadius: '8px',
+          border: '1px solid #e0e0e0',
+          marginTop: '16px'
+        }}
+      >
+        <div style={{
+          borderBottom: '2px solid #ef5350',
+          marginBottom: '16px',
+          paddingBottom: '8px'
+        }}>
+          <div style={{
+            color: '#d32f2f',
+            fontSize: '18px',
+            fontWeight: 500,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            <span style={{
+              backgroundColor: '#ffebee',
+              padding: '4px 8px',
+              borderRadius: '4px'
+            }}>
+              Заборгованість: {Math.abs(currentBalance)} грн
+            </span>
+          </div>
+        </div>
+        
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px'
+        }}>
+          <div style={{
+            padding: '12px',
+            backgroundColor: '#fff',
+            borderRadius: '6px',
+            border: '1px solid #e0e0e0'
+          }}>
+            <div style={{ fontWeight: 500, marginBottom: '4px', color: '#424242' }}>
+              Для користування послугами інтернету до кінця поточного місяця будь ласка погасіть заборгованість:
+            </div>
+            <div style={{ color: '#2196f3', fontSize: '16px', fontWeight: 500 }}>
+              {Math.abs(currentBalance)} грн
+            </div>
+          </div>
+
+          <div style={{
+            padding: '12px',
+            backgroundColor: '#fff',
+            borderRadius: '6px',
+            border: '1px solid #e0e0e0'
+          }}>
+            <div style={{ fontWeight: 500, marginBottom: '4px', color: '#424242' }}>
+              Для користування послугами інтернету до кінця поточного місяця та оплати наступного місяця ви можете оплатити:
+            </div>
+            <div style={{ color: '#2196f3', fontSize: '16px', fontWeight: 500 }}>
+              {requiredAmount} грн
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  } else if (requiredAmount > 0) {
+    return (
+      <div className="flex flex-col gap-2">
+        <div>
+          Поточний баланс: {currentBalance} грн
+        </div>
+        <div>
+          Для користування інтернетом у наступному місяці необхідно доплатити: {requiredAmount} грн
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
+
 export default function PaymentDialog({open, handleClose, type}) {
   const [selectedLoginIndex, setSelectedLoginIndex] = React.useState('0');
   const [subLogin, setSubLogin] = React.useState([]);
@@ -84,6 +195,7 @@ export default function PaymentDialog({open, handleClose, type}) {
       const result = [
         {
           monthlyPayment: user.monthlyPayment,
+          payAll: user.payAll,
           balance: user.balance,
           login: user.login
         }
@@ -94,7 +206,9 @@ export default function PaymentDialog({open, handleClose, type}) {
       }
   
       setSubLogin(result);
-      setSumText(user.monthlyPayment || '0');
+      
+      const requiredAmount = calculateRequiredAmount(result[0]);
+      setSumText(requiredAmount > 0 ? requiredAmount.toString() : '0');
       setSelectedLoginIndex('0');
     }
   }, [user]);
@@ -147,14 +261,15 @@ export default function PaymentDialog({open, handleClose, type}) {
     setSelectedLoginIndex(selectedIndex);
     
     const selectedLogin = subLogin[selectedIndex];
-    if (selectedLogin && selectedLogin.monthlyPayment) {
-      setSumText(selectedLogin.monthlyPayment);
+    if (selectedLogin) {
+      const requiredAmount = calculateRequiredAmount(selectedLogin);
+      setSumText(requiredAmount > 0 ? requiredAmount.toString() : '0');
     }
   };
 
   const getCurrentMonthlyPayment = () => {
     const selectedLogin = subLogin[selectedLoginIndex];
-    return selectedLogin ? selectedLogin.monthlyPayment : '0';
+    return selectedLogin ? (selectedLogin.payAll === 0 ? selectedLogin.monthlyPayment : selectedLogin.payAll) : '0';
   };
 
   if (type === 'city24') {
@@ -205,6 +320,9 @@ export default function PaymentDialog({open, handleClose, type}) {
               ))}
             </Select>
             <FormHelperText>Виберіть необхідний логін</FormHelperText>
+            <div className="mt-4">
+              {getPaymentInfo(subLogin[selectedLoginIndex])}
+            </div>
             <div className='flex flex-col gap-1 sm:flex-row'>
               <TextField
                 id="outlined-helperText"

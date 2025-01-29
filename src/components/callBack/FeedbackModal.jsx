@@ -262,7 +262,7 @@ const FeedbackModal = () => {
             <Button
               fullWidth
               variant="contained"
-              disabled={!isValidPhone}
+              disabled={!isValidPhone||message.length<7}
               onClick={handleFeedback}
               sx={{
                 bgcolor: '#a6ff00',
