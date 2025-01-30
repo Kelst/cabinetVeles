@@ -21,6 +21,7 @@ import NetworkInfo from "../components/networkComponent/NetworkInfo";
 import NetworkDetector from "../components/networkDetector/NetworkDetector";
 import LocalIPFinder from "../components/networkDetector/NetworkDetector";
 import NetworkIdentifier from "../components/networkDetector/NetworkDetector";
+import NoMoney from "../components/noMoney/NoMoney";
 
 async function rootLoader() {
   try {
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     loader: loginLoader,
+  },
+  {
+    path: "/nomoney/opticom/*",  // Використовуємо * для перехоплення всіх підшляхів
+    element: <NoMoney />,
   },
  
 ]);

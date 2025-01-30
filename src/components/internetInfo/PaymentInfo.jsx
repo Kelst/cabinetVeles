@@ -107,7 +107,7 @@ const BalanceInfo = ({ balance, payAll, reduction }) => {
             <div className="text-sm text-lime-400">
               {additionalPaymentNeeded > 0 && (
                 <div className="mt-1 text-lime-400">
-                  При доплаті {additionalPaymentNeeded} грн вистачить на {fullMonths + 1} {fullMonths + 1 === 1 ? 'місяць' : fullMonths + 1 < 5 ? 'місяці' : 'місяців'}
+                  При доплаті {Math.ceil(additionalPaymentNeeded)} грн вистачить на {fullMonths + 1} {fullMonths + 1 === 1 ? 'місяць' : fullMonths + 1 < 5 ? 'місяці' : 'місяців'}
                 </div>
               )}
             </div>
