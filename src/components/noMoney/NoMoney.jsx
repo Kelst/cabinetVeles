@@ -15,22 +15,22 @@ const NoMoney = () => {
   }, [location, navigate]);
 
   return (
-    <div className="min-h-screen bg-white p-5">
-      <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg">
-        <div className="text-center">
-          <div className="flex justify-center items-center mb-8">
+    <div className="fixed inset-0 bg-white flex items-center justify-center">
+      <div className="max-w-4xl w-full px-4">
+        <div className="flex flex-col items-center">
+          <div className="mb-6">
             <img 
               src={Logo} 
-              className="w-96 h-64 object-contain" 
+              className="w-80 h-48 object-contain" 
               alt="Logo" 
             />
           </div>
 
-          <div className="text-gray-800 text-xl">
-            <h2 className="text-2xl font-semibold mb-4">
+          <div className="text-center max-w-2xl">
+            <h2 className="text-3xl font-light mb-6 text-gray-900">
               Шановний абонент!
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-4 text-lg text-gray-600 font-light">
               <p>
                 Ми зафіксували недостатньо коштів на вашому рахунку...
               </p>
@@ -43,9 +43,10 @@ const NoMoney = () => {
           <div className="mt-8">
             <a
               href="https://my.opticom.plus/"
-              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg 
-                       transition-all duration-300 hover:bg-blue-700
-                       transform hover:-translate-y-1 hover:shadow-xl"
+              className="inline-block px-12 py-5 bg-blue-500 
+                       text-white text-lg font-light rounded-full
+                       transition-all duration-300 hover:bg-blue-600
+                       hover:shadow-2xl hover:scale-105 transform"
             >
               Особистий кабінет
             </a>
