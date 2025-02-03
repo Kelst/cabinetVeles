@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TextField, Button, Container, Typography, Paper, Alert } from '@mui/material';
@@ -5,7 +6,19 @@ import { CommentRounded, SendRounded, PhoneRounded, ErrorOutline, AccessTime } f
 import useStore from '../../store/store';
 import useInfoStore from '../../store/infoStore';
 
-const FEEDBACK_COOLDOWN = 60 * 60 * 1000; // 1 hour in milliseconds
+const FEEDBACK_COOLDOWN = 60 * 60 * 1000;
+
+const commonTextFieldStyles = {
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-focused fieldset': { borderColor: '#A4DE02' },
+    '&:hover fieldset': { borderColor: '#A4DE02' },
+    '& fieldset': { borderColor: '#fff' }
+  },
+  '& .MuiInputBase-input': { color: '#fff' },
+  '& label.Mui-focused': { color: '#A4DE02' },
+  '& label': { color: '#fff' },
+  '& .MuiInput-underline:after': { borderBottomColor: '#A4DE02' }
+};
 
 const FeedbackForm = () => {
   const [feedback, setFeedback] = useState('');
@@ -142,37 +155,7 @@ const FeedbackForm = () => {
                 helperText={errors.feedback || `Залишилось символів: ${200 - feedback.length}`}
                 sx={{
                   mb: 3,
-                  '& .MuiOutlinedInput-root': {
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#A4DE02',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#A4DE02',
-                    },
-                  },
-                  '& .MuiInputBase-input': {
-                    color: '#fff'
-                  },
-                  '& label.Mui-focused': {
-                    color: '#A4DE02'
-                  },
-                  '& label': {
-                    color: '#fff'  
-                  },
-                  '& .MuiInput-underline:after': {
-                    borderBottomColor: '#A4DE02'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: '#fff'
-                    }, 
-                    '&:hover fieldset': {
-                      borderColor: '#A4DE02'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#A4DE02'
-                    }
-                  }
+                  ...commonTextFieldStyles
                 }}
                 disabled={!canSubmit}
               />
@@ -195,37 +178,7 @@ const FeedbackForm = () => {
                 }}
                 sx={{
                   mb: 3,
-                  '& .MuiOutlinedInput-root': {
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#A4DE02',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#A4DE02',  
-                    },
-                  },
-                  '& .MuiInputBase-input': {
-                    color: '#fff'
-                  },
-                  '& label.Mui-focused': {
-                    color: '#A4DE02'
-                  },
-                  '& label': {
-                    color: '#fff'  
-                  },
-                  '& .MuiInput-underline:after': {
-                    borderBottomColor: '#A4DE02'
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: '#fff'
-                    }, 
-                    '&:hover fieldset': {
-                      borderColor: '#A4DE02'
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#A4DE02'
-                    }
-                  }
+                  ...commonTextFieldStyles
                 }}
                 disabled={!canSubmit}
               />
