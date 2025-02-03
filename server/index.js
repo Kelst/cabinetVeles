@@ -13,6 +13,6 @@ app.get("/*", (_req, res) => {
   })
 
 // Запускаємо сервер
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(5006, '0.0.0.0', () => {
+  console.log('Server running on port 5006');
 });
