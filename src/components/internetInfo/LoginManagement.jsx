@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Settings as SettingsIcon,
-  HelpCircle as HelpIcon
+  HelpCircle as HelpIcon,
+  FileText as ContractIcon
 } from 'lucide-react';
 import MysteriousText from '../MysteriousText/MysteriousText';
 import GlasmorphizmButton from '../button/glasmorphizm/GlasmorphizmButton';
@@ -39,6 +40,12 @@ const LoginManagement = ({
   const configCabinet = useConfigPage(state => state.configCabinet);
   const user = useStore(state => state.userData);
 
+  const handleOpenContract = () => {
+    if (configCabinet.contract_pdf) {
+      window.open(configCabinet.contract_pdf, '_blank');
+    }
+  };
+
   const actions = [
     { 
       label: 'Очистити MAC', 
@@ -69,6 +76,27 @@ const LoginManagement = ({
     { 
       label: 'Вийти з особистого кабінету', 
       action: handleExitDialogOpen 
+    },
+    {
+      label: (
+        <div className="flex items-center justify-center space-x-2">
+          <ContractIcon className="w-4 h-4" />
+          <span className="text-sm">Договір публічної оферти</span>
+        </div>
+      ),
+      action: handleOpenContract,
+      customButton: (action) => (
+        <motion.button
+          onClick={action.action}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0 0 20px rgba(132, 204, 22, 0.4)",
+          }}
+          className="w-full h-full min-h-[40px] px-4 py-2 rounded-lg bg-lime-950/20 hover:bg-lime-900/30 border border-lime-500/20 text-lime-100 font-medium"
+        >
+          {action.label}
+        </motion.button>
+      )
     }
   ];
 
@@ -116,7 +144,7 @@ const LoginManagement = ({
         }}
       >
         {actions.map((action, index) => {
-          const shouldShow = {
+          const shouldShow = action.customButton ? true : {
             'Очистити MAC': configCabinet.home.clearMac,
             'Встановити кредит': configCabinet.home.setCredit,
             'Додаткові послуги': configCabinet.home.additionalService,
@@ -135,13 +163,17 @@ const LoginManagement = ({
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <GlasmorphizmButton 
-                handleAction={action.action}
-                label={action.label}
-                disabled={action.disabled}
-                disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
-                className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20"
-              />
+              {action.customButton ? (
+                action.customButton(action)
+              ) : (
+                <GlasmorphizmButton 
+                  handleAction={action.action}
+                  label={action.label}
+                  disabled={action.disabled}
+                  disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
+                  className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20"
+                />
+              )}
             </motion.div>
           ) : null;
         })}

@@ -36,9 +36,9 @@ export default function ReloadSession({ open, handleClose }) {
       setLoader(true);
       const result = await reloadSession(uid);
       if (result.flag) {
-        console.log("Session reloaded successfully");
+       //console.log("Session reloaded successfully");
       } else {
-        console.log("Failed to reload session");
+       //console.log("Failed to reload session");
       }
     } catch (error) {
     } finally {

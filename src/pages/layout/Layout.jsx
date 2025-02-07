@@ -23,7 +23,7 @@ export default function Layout() {
   useEffect(() => {
     const checkAuthData = () => {
         const authData = localStorage.getItem('authData');
-        console.log('Current auth data:', authData ? JSON.parse(authData) : null);
+       //console.log('Current auth data:', authData ? JSON.parse(authData) : null);
     };
     
     checkAuthData();

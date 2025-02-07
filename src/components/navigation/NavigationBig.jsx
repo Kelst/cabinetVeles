@@ -45,7 +45,7 @@ export default function NavigationBig() {
 
     }
     catch (e){
-          console.log('помилка виходу з акаунта');
+         //console.log('помилка виходу з акаунта');
     }
 
 }
@@ -64,7 +64,7 @@ const handleClickOpen = () => {
     setOpenExit(false);
   };
   const handleSetActive=(item)=>{
-    console.log(item);
+   //console.log(item);
 setActiveItem(item)
   }
   return (

@@ -36,7 +36,7 @@ const UserHeader = () => {
       result = await logIn(loginData.login, loginData.password);
       await getData(loginData.uid);
     } catch (error) {
-      console.log("switch error", error);
+     //console.log("switch error", error);
     } finally {
       if (result?.flag) {
         showAllert(2, `Обліковий запис ${loginData.login}`);

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const CustomAlertOld = ({ open, type, handleClose, message }) => {
   useEffect(()=>{
-    console.log("FROM CWSTUM ", open, type, handleClose, message );
+   //console.log("FROM CWSTUM ", open, type, handleClose, message );
     
   },[open])
   return (

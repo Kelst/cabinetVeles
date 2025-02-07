@@ -39,9 +39,9 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
       result = await addCredit(uid, login);
       
       if (result.status) {
-        console.log("Session reloaded successfully");
+       //console.log("Session reloaded successfully");
       } else {
-        console.log("Failed to reload session");
+       //console.log("Failed to reload session");
       }
     } catch (error) {
       

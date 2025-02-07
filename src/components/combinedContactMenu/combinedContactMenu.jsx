@@ -59,7 +59,7 @@ const CombinedContactMenu = () => {
         <MenuItem 
           onClick={() => {
             // Add your Telegram button click handler here
-            console.log("Telegram clicked");
+           //console.log("Telegram clicked");
             handleClose();
           }}
           className="hover:bg-red-500/20"
@@ -72,7 +72,7 @@ const CombinedContactMenu = () => {
         <MenuItem 
           onClick={() => {
             // Add your Feedback modal click handler here
-            console.log("Feedback clicked");
+           //console.log("Feedback clicked");
             handleClose();
           }}
           className="hover:bg-red-500/20"

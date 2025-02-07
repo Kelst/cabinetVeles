@@ -27,7 +27,7 @@ const Navigation = () => {
       await logOut();
       navigate("/login");
     } catch (e) {
-      console.log('Помилка виходу з акаунта');  
+     //console.log('Помилка виходу з акаунта');  
     }
   };
 

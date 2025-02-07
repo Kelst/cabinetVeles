@@ -25,14 +25,14 @@ const useStore = create((set) => ({
 async checkUser(){
   try {
     let data= await UserService.checkUser()
-    console.log(data,"Check User");
+   //console.log(data,"Check User");
     
     set(state=>({...state,isAuth:data}))
     return {isAuth: data}
     
   } catch (error) {
     return {isAuth: false}
-    console.log("Error check user");
+   //console.log("Error check user");
   }
 
 },
@@ -41,11 +41,11 @@ async LoadData(login,password){
     const response=await AuthService.login(login,password)
     localStorage.setItem('token',response.data.accessToken);
     localStorage.setItem('uid',response.data.user.uid);
-    console.log("UID",response.data);
+   //console.log("UID",response.data);
     set(state=>({...state,isAuth:true,errorMessage:'',user:{...state.user,...response.data.user}}))
     return {flag:true,errText:''}
   } catch (error) {
-    console.log(error.response?.data?.message,"MESSAge ERROR");
+   //console.log(error.response?.data?.message,"MESSAge ERROR");
     set(state=>({...state,errorMessage:error.response?.data?.message}))
     return {flag:false,errText:error?.response?.data?.message}
   }
@@ -54,7 +54,7 @@ async LoadData(login,password){
 async getData(uid) {
   try {
     const response = await UserService.fetchUsers(uid)
-    console.log( response,"From get Data");
+   //console.log( response,"From get Data");
     
     set(state => ({ 
       ...state, 
@@ -66,14 +66,14 @@ async getData(uid) {
     }))
     
   } catch (e) {
-    console.log(e)
+   //console.log(e)
   }
 },
 // async changeUser(uid) {
 //   try {
 //     localStorage.setItem('uid', uid);
 //     const response = await UserService.fetchUsers(uid)
-//     console.log( response,"From changeUser");
+//    //console.log( response,"From changeUser");
     
 //     set(state => ({ 
 //       ...state, 
@@ -85,7 +85,7 @@ async getData(uid) {
 //     }))
     
 //   } catch (e) {
-//     console.log(e)
+//    //console.log(e)
 //   }
 // },
 async logIn(login, password) {
@@ -109,7 +109,7 @@ async logIn(login, password) {
     if (response.data.accessToken) {
       localStorage.setItem('token', response.data.accessToken);
       localStorage.setItem('uid', response.data.user.uid);
-      console.log("UID", response.data);
+     //console.log("UID", response.data);
       
       set(state => ({
         ...state,
@@ -131,7 +131,7 @@ async logIn(login, password) {
     throw new Error('Неочікувана відповідь від сервера')
     
   } catch (error) {
-    console.log(error.response?.data?.message, "MESSAGE ERROR");
+   //console.log(error.response?.data?.message, "MESSAGE ERROR");
     
     const errorMessage = error.response?.data?.message || error.message || 'Помилка авторизації'
     
@@ -157,7 +157,7 @@ async logInPhone(phone){
     set(state=>({...state,token:token,isCheckedPhone:true,errorMessage:''}))
     return true
   } catch (error) {
-    console.log(error.response?.data?.message);
+   //console.log(error.response?.data?.message);
     set(state=>({...state,errorMessage:error.response?.data?.message}))
     return false
   }
@@ -165,15 +165,15 @@ async logInPhone(phone){
 },
 async logOut(){
   try {
-    console.log(localStorage.getItem('uid'),"FDFDD");
+   //console.log(localStorage.getItem('uid'),"FDFDD");
     const response=await AuthService.logouth()
-    console.log(response,"LOGOUT");
+   //console.log(response,"LOGOUT");
     localStorage.removeItem('token');
     localStorage.removeItem('uid');
     set(state=>({...state,token:'',isAuth:false,user:{uid:"",id:""},userData:null}))
   } catch (error) {
-    console.log("HUI");
-    console.log(error.response?.data?.message);
+   //console.log("HUI");
+   //console.log(error.response?.data?.message);
   }
 
 },
@@ -184,7 +184,7 @@ async handleVeriffyCode(code, phone) {
       phone
     });
     
-    console.log('Server response:', response.data); // Для дебагу
+   //console.log('Server response:', response.data); // Для дебагу
     
     // Перевіряємо успішну відповідь і наявність токена
     if (response.data) {
@@ -248,9 +248,9 @@ return user.data
     const response = await $api.post('https://cabinet.biz.ua/api/reloadSession', { uid })
     const result = response.data
     if (result.flag) {
-      console.log("Session reloaded successfully:", result.reloadResult.message)
+     //console.log("Session reloaded successfully:", result.reloadResult.message)
     } else {
-      console.log("Failed to reload session:", result.reloadResult.message)
+     //console.log("Failed to reload session:", result.reloadResult.message)
     }
     return result
   } catch (error) {
@@ -285,9 +285,9 @@ async unlinkPhone(uid, uidPrime, phone, loginOld) {
         }
       }));
       
-      console.log("Session reloaded successfully:", result.unlinkResult.message);
+     //console.log("Session reloaded successfully:", result.unlinkResult.message);
     } else {
-      console.log("Failed to reload session:", result.unlinkResult.message);
+     //console.log("Failed to reload session:", result.unlinkResult.message);
     }
     
     return result;
@@ -307,7 +307,7 @@ async stopPlayLogin(uid,login,balance,billId,feesM) {
     const response = await $api.post('https://cabinet.biz.ua/api/toogleStopPlayLogin', { uid,login,balance,billId,feesM})
     const result = response.data
     if (result.disabled==0) {
-      console.log("Логін активовано")
+     //console.log("Логін активовано")
       set(state => ({ 
         ...state, 
         userData: {...state.userData,status :true},
@@ -318,7 +318,7 @@ async stopPlayLogin(uid,login,balance,billId,feesM) {
         }
       }))
     }else if (result.disabled==3) {
-      console.log("Логін призупинено")
+     //console.log("Логін призупинено")
       set(state => ({ 
         ...state, 
         userData: {...state.userData,status :false},
@@ -329,7 +329,7 @@ async stopPlayLogin(uid,login,balance,billId,feesM) {
         }
       }))
     } else {
-      console.log("помилка при активації/призупиненні логіна");
+     //console.log("помилка при активації/призупиненні логіна");
     }
     return {
       flag:result.disabled!=1,
@@ -347,7 +347,7 @@ async clearCid(uid) {
     const response = await $api.post('https://cabinet.biz.ua/api/clearCid', { uid })
     const result = response.data
     if (result.flag) {
-      console.log("Мак очищено", result.reloadResult.message)
+     //console.log("Мак очищено", result.reloadResult.message)
       set(state => ({ 
         ...state, 
         userData: {...state.userData,cid :""},
@@ -358,7 +358,7 @@ async clearCid(uid) {
         }
       }))
     } else {
-      console.log("Failed to clear mac:", result.message)
+     //console.log("Failed to clear mac:", result.message)
     }
     return result
   } catch (error) {
@@ -379,7 +379,7 @@ async addCredit(uid,login) {
                String(today.getMonth() + 1).padStart(2, '0') + '-' + 
                String(today.getDate()).padStart(2, '0');
       }
-      console.log("Кредит встановлено", result.message)
+     //console.log("Кредит встановлено", result.message)
       set(state => ({ 
         ...state, 
         userData: {...state.userData,deposit :"4444",dateOfEndCredits:addFiveDaysToToday()},
@@ -391,7 +391,7 @@ async addCredit(uid,login) {
         }
       }))
     } else {
-      console.log("Failed to set credit:", result.message)
+     //console.log("Failed to set credit:", result.message)
     }
     return result
   } catch (error) {
@@ -559,9 +559,9 @@ async changeTariffPlan(uid, internetId, tpId) {
 },
  makerLinksToFastPayEasyPay  (amount, login)  {
   const param = `account=${login}&amount=${amount}&readonly=account`;
-  console.log(param);
+ //console.log(param);
   const encodedData = btoa(param);
-  console.log(encodedData);
+ //console.log(encodedData);
 
   return encodedData;
 },
@@ -569,7 +569,7 @@ async getDataOnu(uid) {
   try {
     const response = await $api.post(`https://cabinet.biz.ua/api/get-info-hard`,{ uid,})
     const result = response.data
-    console.log(result);
+   //console.log(result);
     
     return result
   } catch (error) {

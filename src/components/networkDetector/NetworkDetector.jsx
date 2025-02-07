@@ -23,7 +23,7 @@ const RouterDetector = () => {
             
            
         } catch (e) {
-            console.log(`Router not found at ${ip}`, e);
+           //console.log(`Router not found at ${ip}`, e);
             return null;
         }
     };

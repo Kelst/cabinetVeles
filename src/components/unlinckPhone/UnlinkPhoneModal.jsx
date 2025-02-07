@@ -79,7 +79,7 @@ const UnlinkPhoneModal = ({ open, onClose, accounts = [] }) => {
       setLoader(true);
       result = await unlinkPhone(uid, user.uid, user.phone, login);
       if (result.flag) {
-        console.log("unlinkPhone reloaded successfully");
+       //console.log("unlinkPhone reloaded successfully");
       }
     } catch (error) {
     } finally {

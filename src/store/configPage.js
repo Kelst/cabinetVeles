@@ -53,7 +53,7 @@ const useConfigPage = create((set) => ({
     try {
       const response = await $api.get(`https://cabinet.biz.ua/api/getImageUrl?type=${provider}`)
       const result = response.data
-      console.log(result,"RESULLLT");
+     //console.log(result,"RESULLLT");
       
       set({ imageUrl:result })
       return result

@@ -72,7 +72,7 @@ const handleLogOut = async () => {
     await logOut();
     navigate("/login");
   } catch (e) {
-    console.log('Помилка виходу з акаунта');
+   //console.log('Помилка виходу з акаунта');
   }
 };
 function handleExitDialogOpen() {
