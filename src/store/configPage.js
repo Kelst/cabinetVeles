@@ -64,22 +64,37 @@ const useConfigPage = create((set) => ({
   },
   async getNews(provider) {
     try {
-      const response = await $api.get(`https://cabinet.biz.ua/api/getNewsById?provider=${provider}`)
-      const newsData = response.data.map(item => ({
+      console.log('Making API request for provider:', provider);
+      const response = await $api.get(`http://194.8.147.150:5000/api/getNewsById?provider=${provider}`);
+      console.log('Raw API response:', response.data);
+      
+      // Extract the docs array from the response
+      const newsArray = response.data.docs || [];
+      
+      const newsData = newsArray.map(item => ({
         provider: item.provider,
-        title: item.title,
-        url: item.image?.url || '',
-        date: item.date,
-        author: item.author,
-        category: item.category,
-        preview: item.preview,
-        content: item.content
-      }))
-      set({ news: newsData })
-      return newsData
+        title: item.title || '',
+        url: item.image?.url || item.image?.sizes?.card?.url || item.image?.sizes?.thumbnail?.url || '',
+        date: item.date || new Date().toISOString(),
+        author: item.author || 'Unknown',
+        category: item.category || 'News',
+        preview: item.preview || '',
+        content: parseHTML(item.content?.[0]?.children?.[0]?.text || item.content || '')
+      }));
+      
+     // console.log('Processed news data:', newsData);
+      set({ news: newsData });
+      return newsData;
     } catch (error) {
-      console.error("Error getting news:", error)
-      return null
+      console.error("Error getting news:", error);
+      console.error("Error details:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      // Set empty array on error to prevent UI issues
+      set({ news: [] });
+      throw error;
     }
   },
 

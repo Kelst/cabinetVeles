@@ -2,94 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Базові налаштування */
+:root {
+  /* Основна палітра кольорів */
+  --bright-lime: #86cc0f;
+  --lime-light: #9fce3a;
+  --lime-lighter: #d8f589;
+  
+  /* Додаткові кольори для різних станів */
+  --lime-hover: #7ab90e;
+  --lime-active: #6ca60d;
+  --lime-disabled: rgba(134, 204, 15, 0.5);
+  
+  /* Кольори для тексту */
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-disabled: rgba(0, 0, 0, 0.38);
+  
+  /* Тіні */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Скидання стилів та базові налаштування */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Покращене приховування скролбару */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
-* {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  font-family: 'Lato', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bright-lime: #a6ff00;
-  --lime-light: #c4ff47;
-  --lime-lighter: #ddff8e;
-}
-
+/* Базові стилі для тексту */
 body {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: var(--text-primary);
   background: var(--bright-lime);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  transition: background-color 0.3s ease;
 }
 
-/* Діагональні чорні лінії - ширші в 10 разів */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 120px,
-    rgba(0, 0, 0, 0.1) 120px,
-    rgba(0, 0, 0, 0.1) 140px
-  );
-  pointer-events: none;
-}
-
-/* Горизонтальна чорна смуга */
+/* Покращена чорна смуга */
 .black-stripe {
   background: rgba(0, 0, 0, 0.9);
   position: relative;
-  padding: 20px;
+  padding: 1.25rem;
   clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
-/* Декоративні елементи */
+.black-stripe:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Покращені декоративні лінії */
 .decorative-line {
   position: absolute;
   height: 2px;
-  background: #000;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   transform: skewX(-45deg);
+  transition: all 0.3s ease;
 }
 
 .decorative-line.top {
   top: 20px;
+  animation: lineGlow 2s ease-in-out infinite;
 }
 
 .decorative-line.bottom {
   bottom: 20px;
+  animation: lineGlow 2s ease-in-out infinite reverse;
 }
 
+@keyframes lineGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Покращена картка */
 .card {
   position: relative;
   background: var(--lime-light);
   border: 2px solid rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
-/* Додаткові стилі для карток - також ширші лінії */
-.card::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 30px,
-    rgba(0, 0, 0, 0.1) 30px,
-    rgba(0, 0, 0, 0.1) 50px
-  );
-  z-index: -1;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .black-stripe {
+    padding: 1rem;
+    clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+  }
+}
+
+/* Утиліти для доступності */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Утиліти для темної теми */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: rgba(255, 255, 255, 0.87);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-disabled: rgba(255, 255, 255, 0.38);
+  }
+
+  .card {
+    background: rgba(159, 206, 58, 0.9);
+  }
 }

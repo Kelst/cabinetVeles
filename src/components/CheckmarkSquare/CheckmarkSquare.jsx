@@ -4,10 +4,10 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 const AnimatedVerifiedIcon = () => {
   const { scale, rotate, color } = useSpring({
-    from: { scale: 1, rotate: 0, color: '#4CAF50' },
+    from: { scale: 1, rotate: 0, color: '#a6ff00' },
     to: async (next) => {
       while (true) {
-        await next({ scale: 1.2, rotate: 360, color: '#4CAF50' });
+        await next({ scale: 1.2, rotate: 360, color: '#a6ff00' });
         await next({ scale: 1, rotate: 0, color: '#2196F3' });
       }
     },

@@ -7,9 +7,9 @@
 
 :root{
     --clr: #a9abb3;
-    --bright-lime: #90d80a;
-    --lime-light: #9fce3a;
-    --lime-lighter: #ddff8e;
+    --bright-lime: #86cc0f;    /* Трохи м'якший основний */
+    --lime-light: #9fce3a;     /* Цей можна залишити, він збалансований */
+    --lime-lighter: #d8f589;   /* Менш насичений світлий відтінок */
 }
 
 .navigation{

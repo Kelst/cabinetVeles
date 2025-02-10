@@ -13,13 +13,26 @@ import useInfoStore from '../../store/infoStore';
 
 const iconVariants = {
   animate: {
-    rotateY: [0, 10, 0, -10, 0],
-    rotateX: [0, 5, 10, 5, 0],
-    filter: ["brightness(1)", "brightness(1.2)", "brightness(1.4)", "brightness(1.2)", "brightness(1)"],
+    rotate: [0, 5, 0, -5, 0],
+    scale: [1, 1.1, 1, 1.1, 1],
+    filter: ["brightness(1)", "brightness(1.2)", "brightness(1)", "brightness(1.2)", "brightness(1)"],
     transition: {
-      duration: 5,
+      duration: 4,
       repeat: Infinity,
       ease: "easeInOut"
+    }
+  }
+};
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.3,
+      when: "beforeChildren",
+      staggerChildren: 0.1
     }
   }
 };
@@ -76,36 +89,18 @@ const LoginManagement = ({
     { 
       label: 'Вийти з особистого кабінету', 
       action: handleExitDialogOpen 
-    },
-    {
-      label: (
-        <div className="flex items-center justify-center space-x-2">
-          <ContractIcon className="w-4 h-4" />
-          <span className="text-sm">Договір публічної оферти</span>
-        </div>
-      ),
-      action: handleOpenContract,
-      customButton: (action) => (
-        <motion.button
-          onClick={action.action}
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0 0 20px rgba(132, 204, 22, 0.4)",
-          }}
-          className="w-full h-full min-h-[40px] px-4 py-2 rounded-lg bg-lime-950/20 hover:bg-lime-900/30 border border-lime-500/20 text-lime-100 font-medium"
-        >
-          {action.label}
-        </motion.button>
-      )
     }
   ];
 
   return (
     <motion.div 
-      className={`mt-8 bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
-      whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
+      className={`mt-8 bg-black/80 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover={{ boxShadow: "0 0 20px rgba(132, 204, 22, 0.2)" }}
     >
-      <div className="flex items-center justify-between mb-4 sm:mb-6">
+      <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-lime-400 flex items-center">
           <motion.div
             variants={iconVariants}
@@ -126,25 +121,17 @@ const LoginManagement = ({
         >
           <HelpIcon 
             onClick={() => setControllPanelDialog(true)} 
-            className="w-6 h-6 text-lime-400 hover:text-lime-300 cursor-help"
+            className="w-6 h-6 text-lime-400 hover:text-lime-300 cursor-help transition-colors duration-300"
           />
         </motion.div>
       </div>
 
       <motion.div 
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 justify-items-center"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4"
+        variants={containerVariants}
       >
         {actions.map((action, index) => {
-          const shouldShow = action.customButton ? true : {
+          const shouldShow = {
             'Очистити MAC': configCabinet.home.clearMac,
             'Встановити кредит': configCabinet.home.setCredit,
             'Додаткові послуги': configCabinet.home.additionalService,
@@ -157,26 +144,46 @@ const LoginManagement = ({
           return shouldShow ? (
             <motion.div
               key={index}
-              className="w-full max-w-xs"
+              className="w-full"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              {action.customButton ? (
-                action.customButton(action)
-              ) : (
-                <GlasmorphizmButton 
-                  handleAction={action.action}
-                  label={action.label}
-                  disabled={action.disabled}
-                  disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
-                  className="w-full h-full min-h-[48px] text-sm whitespace-normal px-6 py-3 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20"
-                />
-              )}
+              <GlasmorphizmButton 
+                handleAction={action.action}
+                label={action.label}
+                disabled={action.disabled}
+                disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
+                className="w-full h-full min-h-[44px] text-sm whitespace-normal px-4 py-2 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20 transition-all duration-300"
+              />
             </motion.div>
           ) : null;
         })}
+      </motion.div>
+
+      {/* Contract button */}
+      <motion.div 
+        className="mt-6 flex justify-center"
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: { opacity: 1, y: 0, transition: { delay: 0.3 } }
+        }}
+      >
+        <motion.button
+          onClick={handleOpenContract}
+          className="group flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-lime-950/30 to-lime-900/20 hover:from-lime-900/40 hover:to-lime-800/30 border border-lime-500/20 rounded-lg transition-all duration-300"
+          whileHover={{ 
+            scale: 1.02,
+            boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)"
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <ContractIcon className="w-5 h-5 text-lime-400 group-hover:text-lime-300 transition-colors duration-300" />
+          <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">
+            Договір публічної оферти
+          </span>
+        </motion.button>
       </motion.div>
     </motion.div>
   );
