@@ -62,22 +62,42 @@ export default function MenuTV() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   const handleDownload = async () => {
     try {
-      const response = await fetch('https://cabinet-host.biz.ua/binary-files/opticomplus.apk');
-      const data = await response.json();
-      
-      if (data.docs && data.docs.length > 0) {
-        const file = data.docs[0]; // беремо перший файл
-        
-        const downloadLink = document.createElement('a');
-        downloadLink.href = file.url;
-        downloadLink.download = file.filename;
-        downloadLink.click();
+      const response = await fetch('https://cabinet-host.biz.ua/binary-files/opticomplus.apk', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/vnd.android.package-archive',
+          'Content-Type': 'application/vnd.android.package-archive',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Referrer-Policy': 'strict-origin-when-cross-origin'
+        }
+      });
+
+      if (!response.ok) {
+        if (response.status === 403) {
+          // Якщо отримали 403, спробуємо відкрити файл у новому вікні
+          window.open('https://cabinet-host.biz.ua/binary-files/opticomplus.apk', '_blank');
+          return;
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.download = 'opticomplus.apk';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Помилка завантаження:', error);
+      // Якщо сталася помилка, спробуємо відкрити файл у новому вікні
+      window.open('https://cabinet-host.biz.ua/binary-files/opticomplus.apk', '_blank');
     }
   };
 
@@ -112,7 +132,7 @@ export default function MenuTV() {
             <div className="flex items-start gap-2">
               <div className="w-2 h-2 rounded-full bg-[#A4DE02] mt-2"></div>
               <Typography className="text-white">
-                INTELEKT TV доступне тільки для абонентів з активним тарифним планом, що включає телебачення
+                Opensvit TV доступне тільки для абонентів з активним тарифним планом, що включає телебачення
               </Typography>
             </div>
             <div className="flex items-start gap-2">
