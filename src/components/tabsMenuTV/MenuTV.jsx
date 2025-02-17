@@ -65,7 +65,7 @@ export default function MenuTV() {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch('http://194.8.147.150:5300/api/binary-files');
+      const response = await fetch('https://cabinet-host.biz.ua/binary-files/opticomplus.apk');
       const data = await response.json();
       
       if (data.docs && data.docs.length > 0) {

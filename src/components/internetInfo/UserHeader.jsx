@@ -36,12 +36,21 @@ const UserHeader = () => {
       result = await logIn(loginData.login, loginData.password);
       await getData(loginData.uid);
     } catch (error) {
-     //console.log("switch error", error);
+      //console.log("switch error", error);
     } finally {
       if (result?.flag) {
         showAllert(2, `Обліковий запис ${loginData.login}`);
       }
       setLoader(false);
+    }
+  };
+
+  const handleCopyLogin = async (login) => {
+    try {
+      await navigator.clipboard.writeText(login);
+      showAllert(1, 'Логін скопійовано до буферу обміну');
+    } catch (err) {
+      showAllert(3, 'Помилка копіювання логіну');
     }
   };
 
@@ -52,7 +61,7 @@ const UserHeader = () => {
   });
 
   const nameAnimation = useSpring({
-    color: isHovered ? '#000000' : '#1a1a1a', // Changed to black on hover
+    color: isHovered ? '#000000' : '#1a1a1a',
     transform: `perspective(600px) rotateX(${isHovered ? '20deg' : '0deg'})`,
     config: { mass: 5, tension: 350, friction: 40 }
   });
@@ -61,10 +70,18 @@ const UserHeader = () => {
     if (!allLogins.length) {
       return (
         <div className="flex justify-center items-center mt-4">
-          <span className="px-6 py-2.5 text-base font-medium bg-lime-400 backdrop-blur-md 
-                        rounded-xl shadow-lg text-black border-2 border-black">
+          <button
+            onClick={() => handleCopyLogin(user.login)}
+            className="group relative px-6 py-2.5 text-base font-medium bg-lime-400 backdrop-blur-md 
+                      rounded-xl shadow-lg text-black border-2 border-black cursor-pointer"
+            title="Натисніть щоб скопіювати логін"
+          >
             {user.login}
-          </span>
+            <span className="absolute invisible group-hover:visible bg-gray-800 text-white 
+                           text-sm rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2">
+              Скопіювати
+            </span>
+          </button>
         </div>
       );
     }
@@ -75,17 +92,23 @@ const UserHeader = () => {
           {allLogins.map((loginUser) => (
             <button
               key={loginUser.uid}
-              onClick={() => loginUser.uid !== user.uid && handleSwitchUser(loginUser)}
+              onClick={() => loginUser.uid === user.uid ? handleCopyLogin(loginUser.login) : handleSwitchUser(loginUser)}
               className={`
-                px-3 py-1.5 text-sm rounded-lg shadow-md transition-all duration-300 
+                group relative px-3 py-1.5 text-sm rounded-lg shadow-md transition-all duration-300 
                 transform hover:scale-105
                 ${loginUser.uid === user.uid
-                  ? 'bg-lime-400 backdrop-blur-md text-black border-2 border-black'
+                  ? 'bg-lime-400 backdrop-blur-md text-black border-2 border-black cursor-copy'
                   : 'bg-lime-300 backdrop-blur-sm text-black hover:bg-lime-400'
                 }
               `}
             >
               {loginUser.login}
+              {loginUser.uid === user.uid && (
+                <span className="absolute invisible group-hover:visible bg-gray-800 text-white 
+                               text-sm rounded py-1 px-2 top-1/2 right-full mr-2 transform -translate-y-1/2 whitespace-nowrap">
+                  Скопіювати
+                </span>
+              )}
             </button>
           ))}
         </div>
