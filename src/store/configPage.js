@@ -65,7 +65,7 @@ const useConfigPage = create((set) => ({
   async getNews(provider) {
     try {
       console.log('Making API request for provider:', provider);
-      const response = await $api.get(`http://194.8.147.150:5000/api/getNewsById?provider=${provider}`);
+      const response = await $api.get(`https://cabinet.biz.ua/api/getNewsById?provider=${provider}`);
       console.log('Raw API response:', response.data);
       
       // Extract the docs array from the response
