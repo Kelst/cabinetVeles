@@ -75,7 +75,7 @@ export default function ArticleDialog({ open, handleClose, article }) {
                 <div className="mb-6 lg:mb-0">
                   <div className="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                     <div className="flex">
-                      <div className="relative mx-4 -mt-4 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20">
+                      <div className="relative mx-4 -mt-4 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-sky-800/20">
                         <img src={article.url} className="w-full" alt={article.title} />
                       </div>
                     </div>
@@ -98,7 +98,7 @@ export default function ArticleDialog({ open, handleClose, article }) {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{ color: 'black' }}>Закрити</Button>
+          <Button onClick={handleClose} sx={{ color: 'sky-800' }}>Закрити</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -42,7 +42,7 @@ const Navigation = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="p-3 m-4 rounded-full bg-black shadow-lg hover:shadow-[#A4DE02]/50"
+        className="p-3 m-4 rounded-full bg-sky-800 shadow-lg hover:shadow-sky-700/50"
       >
         <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
           <div className="h-0.5 bg-white rounded-full" />
@@ -57,14 +57,14 @@ const Navigation = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-[8px] flex items-center justify-center"
+            className="fixed inset-0 bg-sky-800/90 backdrop-blur-[8px] flex items-center justify-center"
           >
             <motion.button
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-[rgba(164,222,2,0.1)]"
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-[rgba(96,170,217,0.1)]"
             >
               <CloseIcon className="w-8 h-8 text-white" />
             </motion.button>
@@ -110,28 +110,28 @@ const Navigation = () => {
                 >
                   <NavItem 
                     to="/"
-                    icon={<PermIdentityIcon className="text-[#A4DE02]" />}
+                    icon={<PermIdentityIcon className="text-[#77cdec]" />}
                     text="Загальне"
                     isActive={activeItem === 'Item1'}
                     onClick={() => handleNavItemClick('Item1')}
                   />
                   <NavItem 
                     to="/payment"
-                    icon={<PaidIcon className="text-[#A4DE02]" />}
+                    icon={<PaidIcon className="text-[#77cdec]" />}
                     text="Оплати"
                     isActive={activeItem === 'Item2'}
                     onClick={() => handleNavItemClick('Item2')}
                   />
                   <NavItem 
                     to="/info"
-                    icon={<InfoIcon className="text-[#A4DE02]" />}
+                    icon={<InfoIcon className="text-[#77cdec]" />}
                     text="Додатково"
                     isActive={activeItem === 'Item3'}
                     onClick={() => handleNavItemClick('Item3')}
                   />
                   <NavItem 
                     to="/news"
-                    icon={<NewspaperIcon className="text-[#A4DE02]" />}
+                    icon={<NewspaperIcon className="text-[#77cdec]" />}
                     text="Новини"
                     isActive={activeItem === 'Item4'}
                     onClick={() => handleNavItemClick('Item4')}
@@ -139,7 +139,7 @@ const Navigation = () => {
                   {configCabinet.additional?.showStore && (
                     <NavItem 
                       to="/intelekt-shop"
-                      icon={<ShoppingBasketIcon className="text-[#A4DE02]" />}
+                      icon={<ShoppingBasketIcon className="text-[#77cdec]" />}
                       text="Магазин"
                       isActive={activeItem === 'Item5'}
                       onClick={() => handleNavItemClick('Item5')}
@@ -159,7 +159,7 @@ const Navigation = () => {
                       onClick={() => setExitDialogOpen(true)}
                       className="w-full flex items-center p-3 rounded-lg text-white hover:bg-[rgba(164,222,2,0.1)] transition-colors justify-center gap-2"
                     >
-                      <LogoutIcon className="text-[#A4DE02]" />  
+                      <LogoutIcon className="text-[#77cdec]" />  
                       <span>LogOut</span>
                     </motion.button>
                   </motion.li>
@@ -193,8 +193,8 @@ const NavItem = ({ to, icon, text, isActive, onClick }) => (
         flex items-center p-3 rounded-lg
         transition-all duration-200  
         ${isActive 
-          ? 'bg-[rgba(164,222,2,0.1)] text-black shadow-sm' 
-          : 'text-white hover:bg-[rgba(164,222,2,0.1)]'
+          ? 'bg-[rgba(125,188,230,0.1)] text-sky-800 shadow-sm' 
+          : 'text-white hover:bg-[rgba(142,201,235,0.1)]'
         }
       `}
     >

@@ -71,7 +71,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-black pb-4 border-b border-[#a6ff00]">
+      <DialogTitle className="text-center text-3xl font-bold text-sky-800 pb-4 border-b border-[#77d6ff]">
         Встановити кредит 
       </DialogTitle>
       <IconButton
@@ -83,16 +83,16 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
           top: 8,
           color: '#000',
           '&:hover': {
-            color: '#a6ff00'
+            color: '#77d6ff'
           }
         }}
       >
         <CloseIcon />
       </IconButton>
       <DialogContent className="bg-white">
-        <div className="p-6 space-y-6 text-black">
+        <div className="p-6 space-y-6 text-sky-800">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-black mb-4">
+            <h2 className="text-2xl font-semibold text-sky-800 mb-4">
               Додаткові 5 днів Інтернету
             </h2>
           </AnimatedText>
@@ -104,7 +104,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
-            <h2 className="text-2xl font-semibold text-black mb-4">
+            <h2 className="text-2xl font-semibold text-sky-800 mb-4">
               Одна унікальна можливість щомісяця
             </h2>
           </AnimatedText>
@@ -120,7 +120,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
         <Button 
           onClick={handleClose}
           sx={{
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',
@@ -128,7 +128,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
             fontWeight: 'bold',
             '&:hover': {
               backgroundColor: '#000',
-              color: '#a6ff00',
+              color: '#77d6ff',
               transform: 'scale(1.05)',
             },
             transition: 'all 0.3s ease'
@@ -139,7 +139,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
         <Button 
           onClick={handleSetCredit}
           sx={{
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',
@@ -147,7 +147,7 @@ export default function MacCreditDialog({open, handleClose, handleAction}) {
             fontWeight: 'bold',
             '&:hover': {
               backgroundColor: '#000',
-              color: '#a6ff00',
+              color: '#77d6ff',
               transform: 'scale(1.05)',
             },
             transition: 'all 0.3s ease'

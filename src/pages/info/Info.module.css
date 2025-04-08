@@ -2,13 +2,13 @@
     font: 'Rubik';
     @apply rounded-br-md p-2;
     
-    border-right: 0.2rem solid #6b8e23; /* Olive green */
-    border-left: 0.2rem solid #6b8e23;
+    border-right: 0.2rem solid #6681c2; /* Olive sky */
+    border-left: 0.2rem solid #6681c2;
     background: rgba(44, 44, 44, 0.7); /* Keeping the semi-transparent dark gray */
     box-shadow: 0 0 .2rem #fff,
-                0 0 .2rem #4a5d23, /* Darker olive green */
-                0 0 2rem #6b8e23,
-                0 0 0.4rem #6b8e23,
-                0 0 0.4rem #6b8e23,
-                inset 0 0 1.3rem #4a5d23;
+                0 0 .2rem hsl(213, 87%, 77%), /* Darker olive sky */
+                0 0 2rem #6681c2,
+                0 0 0.4rem #6681c2,
+                0 0 0.4rem #6681c2,
+                inset 0 0 1.3rem #77b4ed;
 }

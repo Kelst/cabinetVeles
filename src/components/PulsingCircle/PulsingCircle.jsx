@@ -31,7 +31,7 @@ const AnimatedRocket = ({ type }) => {
       <AnimatedRocketIcon
         style={{
           transform: rocketSpring.y.to(y => `translateY(${y}px)`),
-          color: isActive ? '#a6ff00' : '#757575',
+          color: isActive ? '#77d6ff' : '#757575',
           fontSize: '48px',
           position: 'relative',
           zIndex: 2,

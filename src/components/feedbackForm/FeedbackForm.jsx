@@ -10,14 +10,14 @@ const FEEDBACK_COOLDOWN = 60 * 60 * 1000;
 
 const commonTextFieldStyles = {
   '& .MuiOutlinedInput-root': {
-    '&.Mui-focused fieldset': { borderColor: '#A4DE02' },
-    '&:hover fieldset': { borderColor: '#A4DE02' },
+    '&.Mui-focused fieldset': { borderColor: '#77cdec' },
+    '&:hover fieldset': { borderColor: '#77cdec' },
     '& fieldset': { borderColor: '#fff' }
   },
   '& .MuiInputBase-input': { color: '#fff' },
-  '& label.Mui-focused': { color: '#A4DE02' },
+  '& label.Mui-focused': { color: '#77cdec' },
   '& label': { color: '#fff' },
-  '& .MuiInput-underline:after': { borderBottomColor: '#A4DE02' }
+  '& .MuiInput-underline:after': { borderBottomColor: '#77cdec' }
 };
 
 const FeedbackForm = () => {
@@ -71,7 +71,7 @@ const FeedbackForm = () => {
           }}
         >
           {submitted ? (
-            <Typography variant="h5" sx={{ color: '#A4DE02', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}> 
+            <Typography variant="h5" sx={{ color: '#77cdec', mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}> 
               <CommentRounded />
               Дякуємо за ваш відгук!
             </Typography>
@@ -100,7 +100,7 @@ const FeedbackForm = () => {
             sx={{ 
               mb: 2,
               '& .MuiAlert-icon': {
-                color: '#A4DE02'
+                color: '#77cdec'
               }
             }}
           >
@@ -116,7 +116,7 @@ const FeedbackForm = () => {
             borderRadius: 2,
             opacity: canSubmit ? 1 : 0.8,
             backdropFilter: 'blur(8px)',
-            border: '1px solid #A4DE02'
+            border: '1px solid #77cdec'
           }}
         >
           <motion.div
@@ -134,7 +134,7 @@ const FeedbackForm = () => {
                 color: '#fff'
               }}
             >
-              <CommentRounded sx={{ color: '#A4DE02' }} />
+              <CommentRounded sx={{ color: '#77cdec' }} />
               Відгуки та пропозиції
             </Typography>
           </motion.div>
@@ -195,7 +195,7 @@ const FeedbackForm = () => {
                 endIcon={<SendRounded />}
                 sx={{
                   py: 1.5,
-                  backgroundColor: canSubmit ? '#A4DE02' : '#4C4D50',
+                  backgroundColor: canSubmit ? '#77cdec' : '#4C4D50',
                   color: '#000',
                   '&:hover': {
                     backgroundColor: canSubmit ? '#87B300' : '#4C4D50',

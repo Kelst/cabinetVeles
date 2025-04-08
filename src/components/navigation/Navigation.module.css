@@ -3,7 +3,7 @@
   position: absolute;
   width: 80px;
   height: 100vh;
-  background: #000000;
+  background: #72bdf2;
   transition: 0.5s;
   padding-left: 22px;
   color: white;
@@ -20,7 +20,7 @@
 .sideBar ul li.active {
   color: white;
   background: rgb(53, 53, 53);
-  background: linear-gradient(90deg, rgba(53, 53, 53, 1) 12%, rgba(164, 222, 2, 0.551) 45%);
+  background: linear-gradient(90deg, rgba(53, 53, 53, 1) 12%, rgba(70, 194, 248, 0.551) 45%);
   padding-left: 10px;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
@@ -57,12 +57,12 @@
 }
 
 .sideBar ul li a .icon {
-  color: #A4DE02; 
+  color: #77cdec; 
 }
 
 .sideBar ul li:hover a .icon,
 .sideBar ul li:hover a .text {
-  color: #87B300;
+  color: #45c9ea;
 }
 
 .sideBar ul li.active a .icon::before {
@@ -70,5 +70,5 @@
 }
 
 .sideBar ul li:hover.active a .icon::before {
-  background: #353535;
+  background: #92c7f5;
 }

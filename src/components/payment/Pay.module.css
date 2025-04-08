@@ -2,12 +2,12 @@
     font: 'Rubik';
     @apply rounded-br-md p-4;
     
-    border: 0.1rem solid #A4DE02; /* Lime green */
+    border: 0.1rem solid #77cdec; /* sky sky */
    
     box-shadow: 0 0 .1rem #fff,
-    0 0 .2rem #353535, /* Matte black */
-    0 0 2rem #A4DE02,
-    0 0 0.4rem #A4DE02,
-    0 0 0.4rem #A4DE02,
-    inset 0 0 1.3rem #353535; /* Matte black */
+    0 0 .2rem #92c7f5, /* Matte sky-800 */
+    0 0 2rem #77cdec,
+    0 0 0.4rem #77cdec,
+    0 0 0.4rem #77cdec,
+    inset 0 0 1.3rem #92c7f5; /* Matte sky-800 */
 }

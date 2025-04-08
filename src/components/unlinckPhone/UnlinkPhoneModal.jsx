@@ -17,11 +17,11 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -37,7 +37,7 @@ const style = {
     width: '100%',
     maxWidth: 500,
     bgcolor: '#1a1a1a',
-    boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+    boxShadow: '0 4px 30px black',
     borderRadius: '16px',
     p: 0,
     outline: 'none',
@@ -51,7 +51,7 @@ const style = {
     p: 2,
   },
   closeButton: {
-    color: '#a6ff00',
+    color: '#77d6ff',
     '&:hover': {
       color: '#fff',
       transform: 'rotate(180deg)',
@@ -104,7 +104,7 @@ const UnlinkPhoneModal = ({ open, onClose, accounts = [] }) => {
           transition={{ type: "spring", duration: 0.5 }}
         >
           <Box sx={style.header}>
-            <Typography variant="h6" component="h2" sx={{ color: '#a6ff00', fontWeight: 'bold' }}>
+            <Typography variant="h6" component="h2" sx={{ color: '#77d6ff', fontWeight: 'bold' }}>
               Доступні облікові записи
             </Typography>
             <IconButton
@@ -159,7 +159,7 @@ const UnlinkPhoneModal = ({ open, onClose, accounts = [] }) => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   sx={{
-                    backgroundColor: '#a6ff00',
+                    backgroundColor: '#77d6ff',
                     color: '#000',
                     '&:hover': {
                       backgroundColor: '#fff',
@@ -214,7 +214,7 @@ const UnlinkPhoneModal = ({ open, onClose, accounts = [] }) => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     sx={{
-                      backgroundColor: '#a6ff00',
+                      backgroundColor: '#77d6ff',
                       color: '#000',
                       '&:hover': {
                         backgroundColor: '#fff',

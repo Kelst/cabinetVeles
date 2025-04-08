@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -7,9 +6,9 @@
 
 :root{
     --clr: #a9abb3;
-    --bright-lime: #86cc0f;    /* Трохи м'якший основний */
-    --lime-light: #9fce3a;     /* Цей можна залишити, він збалансований */
-    --lime-lighter: #d8f589;   /* Менш насичений світлий відтінок */
+    --bright-blue: #00a0e4;    /* Основний синій з лого */
+    --blue-light: #42b4e6;     /* Світліший відтінок синього */
+    --blue-lighter: #b8e0f6;   /* Дуже світлий синій відтінок */
 }
 
 .navigation{
@@ -94,14 +93,14 @@
     position: absolute;
     width: 80px;
     height: 80px;
-    background: var(--bright-lime);
+    background: var(--bright-blue);
     border-radius: 50%;
     box-shadow: 0 0 0.2rem #fff,
-                0 0 0.2rem var(--bright-lime),
-                0 0 0.8rem var(--bright-lime),
-                0 0 2.8rem var(--bright-lime),
-                inset 0 0 1.3rem var(--lime-light);
-    border: 5px solid var(--bright-lime);
+                0 0 0.2rem var(--bright-blue),
+                0 0 0.8rem var(--bright-blue),
+                0 0 2.8rem var(--bright-blue),
+                inset 0 0 1.3rem var(--blue-light);
+    border: 5px solid var(--bright-blue);
     transition: 0.5s;
 }
 
@@ -132,7 +131,7 @@
 }
 
 .list.logout:hover{
-    @apply bg-[#a6ff00] text-sm text-white;
+    @apply bg-[#00a0e4] text-sm text-white;
     color: white;
     border-radius: 50%;
 }
@@ -140,57 +139,57 @@
 .spanText{
     font-size: 0.8rem;
     animation: pulsate 4.5s infinite alternate;
-    border: 0.2rem solid var(--bright-lime);
+    border: 0.2rem solid var(--bright-blue);
     border-radius: 2rem;
     padding: 0.6em;
     box-shadow: 0 0 0.2rem #fff,
-                0 0 0.2rem var(--bright-lime),
-                0 0 2rem var(--bright-lime),
-                0 0 0.8rem var(--bright-lime),
-                0 0 2.8rem var(--bright-lime),
-                inset 0 0 1.3rem var(--lime-light);
+                0 0 0.2rem var(--bright-blue),
+                0 0 2rem var(--bright-blue),
+                0 0 0.8rem var(--bright-blue),
+                0 0 2.8rem var(--bright-blue),
+                inset 0 0 1.3rem var(--blue-light);
 }
 
 .spanTextB{
     font-size: 0.8rem;
     animation: pulsate 4.5s infinite alternate;
-    border: 0.2rem solid var(--bright-lime);
+    border: 0.2rem solid var(--bright-blue);
     border-radius: 2rem;
     padding: 0.8em;
     padding-left: 12px;
     padding-right: 12px;
     margin-top: -15px;
     box-shadow: 0 0 0.2rem #fff,
-                0 0 0.2rem var(--bright-lime),
-                0 0 2rem var(--bright-lime),
-                0 0 0.4rem var(--bright-lime),
-                0 0 0.4rem var(--bright-lime),
-                inset 0 0 1.3rem var(--lime-light);
+                0 0 0.2rem var(--bright-blue),
+                0 0 2rem var(--bright-blue),
+                0 0 0.4rem var(--bright-blue),
+                0 0 0.4rem var(--bright-blue),
+                inset 0 0 1.3rem var(--blue-light);
 }
 
 @keyframes pulsate {
     100% {
         text-shadow:
             0 0 2px #fff,
-            0 0 8px var(--bright-lime),
-            0 0 15px var(--bright-lime),
-            0 0 35px var(--bright-lime),
-            0 0 76px var(--bright-lime),
-            0 0 85px var(--bright-lime),
-            0 0 95px var(--bright-lime),
-            0 0 140px var(--bright-lime);
+            0 0 8px var(--bright-blue),
+            0 0 15px var(--bright-blue),
+            0 0 35px var(--bright-blue),
+            0 0 76px var(--bright-blue),
+            0 0 85px var(--bright-blue),
+            0 0 95px var(--bright-blue),
+            0 0 140px var(--bright-blue);
     }
     
     0% {
         text-shadow:
             0 0 2px #fff,
-            0 0 4px var(--bright-lime),
+            0 0 4px var(--bright-blue),
             0 0 6px #fff,
-            0 0 10px var(--bright-lime),
-            0 0 45px var(--bright-lime),
-            0 0 55px var(--bright-lime),
-            0 0 70px var(--bright-lime),
-            0 0 80px var(--bright-lime);
+            0 0 10px var(--bright-blue),
+            0 0 45px var(--bright-blue),
+            0 0 55px var(--bright-blue),
+            0 0 70px var(--bright-blue),
+            0 0 80px var(--bright-blue);
     }
 }
 
@@ -339,4 +338,3 @@ li .logout a .icon{
 .shadow-text {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-

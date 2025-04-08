@@ -20,7 +20,7 @@ const ShopFrame = () => {
         <iframe 
           src={fullUrl}
           className="w-full h-full border-0"
-          title="Opticom Shop"
+          title="Veles Shop"
         />
       </div>
     </div>

@@ -16,15 +16,27 @@ import useConfigPage from '../../store/configPage';
 
 const pulse = keyframes`
   0% {
-    box-shadow: 0 0 0 0 rgba(166, 255, 0, 0.7);
+    box-shadow: 0 0 0 0 rgba(135, 206, 250, 0.7);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(166, 255, 0, 0);
+    box-shadow: 0 0 0 15px rgba(135, 206, 250, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(166, 255, 0, 0);
+    box-shadow: 0 0 0 0 rgba(135, 206, 250, 0);
   }
 `;
+
+// const pulse = keyframes`
+//   0% {
+//     box-shadow: 0 0 0 0 rgba(135, 206, 250, 0.7);
+//   }
+//   70% {
+//     box-shadow: 0 0 0 15px rgba(135, 206, 250, 0);
+//   }
+//   100% {
+//     box-shadow: 0 0 0 0 rgba(135, 206, 250, 0);
+//   }
+// `;
 
 const rotate = keyframes`
   from {
@@ -39,14 +51,14 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
     },
     background: {
       paper: '#1a1a1a',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -58,19 +70,19 @@ const TelegramAdButton = () => {
 
   const benefits = [
     {
-      icon: <NotificationsActiveIcon sx={{ color: '#a6ff00' }} />,
+      icon: <NotificationsActiveIcon sx={{ color: '#77d6ff' }} />,
       text: 'Миттєві сповіщення про акції та знижки'
     },
     {
-      icon: <AutoAwesomeIcon sx={{ color: '#a6ff00' }} />,
+      icon: <AutoAwesomeIcon sx={{ color: '#77d6ff' }} />,
       text: 'Персональні пропозиції та рекомендації'
     },
     {
-      icon: <SupportAgentIcon sx={{ color: '#a6ff00' }} />,
+      icon: <SupportAgentIcon sx={{ color: '#77d6ff' }} />,
       text: 'Цілодобова підтримка 24/7'
     },
     {
-      icon: <CheckCircleOutlineIcon sx={{ color: '#a6ff00' }} />,
+      icon: <CheckCircleOutlineIcon sx={{ color: '#77d6ff' }} />,
       text: 'Розширені можливості та функції'
     }
   ];
@@ -83,10 +95,10 @@ const TelegramAdButton = () => {
         sx={{
           '& .MuiTooltip-tooltip': {
             bgcolor: '#1a1a1a',
-            color: '#a6ff00',
+            color: '#77d6ff',
             fontSize: '0.875rem',
             fontWeight: 500,
-            boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 2px 8px black',
             borderRadius: '8px',
             padding: '6px 12px'
           }
@@ -98,7 +110,7 @@ const TelegramAdButton = () => {
             top: '96px',
             right: '29px',
             zIndex: 20,
-            bgcolor: '#a6ff00',
+            bgcolor: '#77d6ff',
             color: '#000',
             width: '48px',
             height: '48px',
@@ -131,7 +143,7 @@ const TelegramAdButton = () => {
           sx: {
             bgcolor: '#1a1a1a',
             borderRadius: '16px',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 4px 30px black',
           }
         }}
       >
@@ -142,7 +154,7 @@ const TelegramAdButton = () => {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: '#a6ff00',
+            color: '#77d6ff',
             '&:hover': {
               color: '#fff',
               transform: 'rotate(180deg)',
@@ -157,7 +169,7 @@ const TelegramAdButton = () => {
           textAlign: 'center', 
           fontSize: '1.5rem', 
           fontWeight: 'bold',
-          color: '#a6ff00',
+          color: '#77d6ff',
           pt: 3,
           pr: 6
         }}>
@@ -204,7 +216,7 @@ const TelegramAdButton = () => {
                 py: 1.5,
                 textTransform: 'none',
                 fontSize: '1.1rem',
-                bgcolor: '#a6ff00',
+                bgcolor: '#black',
                 color: '#000',
                 fontWeight: 'bold',
                 '&:hover': {

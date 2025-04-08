@@ -1,0 +1,182 @@
+/* Змінні для фону */
+:root {
+    --bg-primary: #f0f5fa;
+    --bg-secondary: #f8fafd;
+    --accent-blue-light: #8da8d3;
+    --accent-blue-medium: #6681c2;
+    --accent-blue-dark: #445a96;
+  }
+  
+  /* Стилі для компонента Layout */
+  .relative.min-h-screen.w-full {
+    background-color: var(--bg-primary);
+    background-image: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Діагональні елементи */
+  .relative.min-h-screen.w-full::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      -45deg,
+      transparent 65%,
+      rgba(49, 137, 244, 0.08) 80%,
+      transparent 95%
+    );
+    z-index: -2;
+  }
+  
+  .relative.min-h-screen.w-full::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      45deg,
+      transparent 75%,
+      rgba(138, 180, 231, 0.08) 85%,
+      transparent 95%
+    );
+    z-index: -2;
+  }
+  
+  /* Контейнер для елементів фону */
+  .background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  /* Великі кола */
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--accent-blue-light);
+    opacity: 0.15;
+  }
+  
+  .bg-circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+  }
+  
+  .bg-circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -50px;
+    left: -50px;
+  }
+  
+  .bg-circle-3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    right: 20%;
+    opacity: 0.1;
+  }
+  
+  /* Малі кола */
+  .bg-dot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--accent-blue-medium);
+    opacity: 0.2;
+  }
+  
+  .bg-dot-1 {
+    width: 12px;
+    height: 12px;
+    top: 25%;
+    right: 25%;
+  }
+  
+  .bg-dot-2 {
+    width: 8px;
+    height: 8px;
+    top: 60%;
+    right: 40%;
+  }
+  
+  .bg-dot-3 {
+    width: 10px;
+    height: 10px;
+    top: 80%;
+    right: 25%;
+  }
+  
+  .bg-dot-4 {
+    width: 6px;
+    height: 6px;
+    top: 70%;
+    right: 60%;
+  }
+  
+  /* Горизонтальні лінії */
+  .bg-line {
+    position: absolute;
+    height: 1px;
+    background-color: rgba(138, 180, 231, 0.2);
+    width: 100%;
+  }
+  
+  .bg-line-1 {
+    top: 65%;
+  }
+  
+  .bg-line-2 {
+    top: 85%;
+  }
+  
+  /* Діагональні смуги */
+  .bg-stripe {
+    position: absolute;
+    background-color: rgba(138, 180, 231, 0.07);
+    transform: rotate(-45deg);
+    transform-origin: center;
+  }
+  
+  .bg-stripe-1 {
+    width: 200%;
+    height: 150px;
+    top: 20%;
+    left: -50%;
+  }
+  
+  .bg-stripe-2 {
+    width: 200%;
+    height: 100px;
+    top: 50%;
+    left: -50%;
+  }
+  
+  @media (max-width: 768px) {
+    .bg-circle-1 {
+      width: 250px;
+      height: 250px;
+    }
+    
+    .bg-circle-2 {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .bg-circle-3 {
+      width: 150px;
+      height: 150px;
+    }
+  }

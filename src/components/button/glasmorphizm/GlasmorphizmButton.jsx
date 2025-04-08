@@ -31,18 +31,19 @@ export default function GlasmorphizmButton({
         onClose={() => setShowTooltip(false)}
         sx={{
           '& .MuiTooltip-tooltip': {
-            backgroundColor: 'rgba(132, 204, 22, 0.9)',
+            background: 'linear-gradient(to bottom, #7d9dae, #6c8b9b)',
             color: 'white',
             fontSize: '14px',
             backdropFilter: 'blur(15px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 2px 4px rgba(132, 204, 22, 0.2)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 3px 8px rgba(108, 139, 155, 0.4)',
+            textShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
           },
           '& .MuiTooltip-arrow': {
-            color: 'rgba(132, 204, 22, 0.9)',
+            color: '#6c8b9b',
           },
           '& .MuiTooltip-arrow::before': {
-            boxShadow: '0 2px 4px rgba(132, 204, 22, 0.2)',
+            boxShadow: '0 3px 8px rgba(108, 139, 155, 0.4)',
           }
         }}
       >

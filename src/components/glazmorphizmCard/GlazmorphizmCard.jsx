@@ -49,8 +49,8 @@ function TariffDescription({ tariffInfo }) {
             
             {hasTV && (
                 <div className="flex items-center gap-1.5">
-                    <Tv size={16} className="text-green-300" />
-                    <span className="text-green-300">TV-пакет включено</span>
+                    <Tv size={16} className="text-sky-300" />
+                    <span className="text-sky-300">TV-пакет включено</span>
                 </div>
             )}
             

@@ -88,7 +88,7 @@ export default function DialogDiscount({open, handleClose, handleAction, monthly
                                                         <span className='text-gray-400 line-through text-lg'>{monthlyPayment * 12} грн.</span>
                                                         <span className='font-bold text-2xl text-gray-900'>{calcYearlyWithDiscount(monthlyPayment)} грн.</span>    
                                                     </div>
-                                                    <span className="text-green-600 text-sm font-medium">
+                                                    <span className="text-sky-600 text-sm font-medium">
                                                         ви заощаджуєте: {Math.round(monthlyPayment * 12 * 0.2)} грн.
                                                     </span>
                                                 </td>

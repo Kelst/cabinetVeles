@@ -83,7 +83,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     ].join(','),
     '&:focus': {
       borderRadius: 4,
-      borderColor: 'black',
+      borderColor: 'sky-800',
     },
   },
 }));
@@ -436,7 +436,7 @@ export default function PaymentDialog({open, handleClose, type}) {
                 onClick={() => handleRedirectTo(type)} 
                 disabled={!isValidAmount || isLoading}
                 sx={{
-                  color: 'black',
+                  color: 'sky-800',
                   position: 'relative'
                 }}
               >
@@ -445,7 +445,7 @@ export default function PaymentDialog({open, handleClose, type}) {
                     <CircularProgress
                       size={24}
                       sx={{
-                        color: 'black',
+                        color: 'sky-800',
                         position: 'absolute',
                         left: '50%',
                         marginLeft: '-12px'

@@ -32,7 +32,7 @@ const dataStore = create((set) => ({
    tasks:[],
    
 async getDataUid(uid){
-  const dataUserUid= await $api.get(`https://cabinet.biz.ua/api/getDataUid?uid:${uid}&provider=${'Opticom'}`)
+  const dataUserUid= await $api.get(`https://cabinet.biz.ua/api/getDataUid?uid:${uid}&provider=${'Veles'}`)
   const data=dataUserUid.data
   set(state=>({...state,user:data}))
 },

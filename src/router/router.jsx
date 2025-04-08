@@ -37,8 +37,8 @@ async function rootLoader() {
     const uid = localStorage.getItem('uid');    
     if (uid) {
       await getData(uid);
-      await getConfigCabinet("Opticom")
-      await getNews("Opticom")
+      await getConfigCabinet("Veles")
+      await getNews("Veles")
     }
     return { isAuth: true };
   } catch (error) {
@@ -52,7 +52,7 @@ async function loginLoader() {
     const checkUser = useStore.getState().checkUser;
     const flag = await checkUser();
     const getImageUrl = useConfigPage.getState().getImageUrl;
-    await getImageUrl("Opticom")
+    await getImageUrl("Veles")
 
      const imageUrl = useConfigPage(state => state.imageUrl);
     if (flag.isAuth) {
@@ -93,7 +93,7 @@ export const router = createBrowserRouter([
         element: <News />,
       },
       {
-        path: "/Opticom-shop",
+        path: "/Veles-shop",
         element: <ShopFrame />,
       },
    
@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
     loader: loginLoader,
   },
   {
-    path: "/nomoney/opticom/*",  // Використовуємо * для перехоплення всіх підшляхів
+    path: "/nomoney/veles/*",  // Використовуємо * для перехоплення всіх підшляхів
     element: <NoMoney />,
   },
  

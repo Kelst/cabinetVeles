@@ -3,16 +3,20 @@ import Joyride from 'react-joyride';
 import { HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { IconButton, Tooltip, ThemeProvider, createTheme } from '@mui/material';
+import { keyframes } from '@mui/system';
 
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
+    },
+    background: {
+      paper: '#1a1a1a',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -42,6 +46,18 @@ const HomeTour = () => {
       setRun(false);
     }
   };
+
+  const pulse = keyframes`
+    0% {
+      box-shadow: 0 0 0 0 rgba(135, 206, 250, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(135, 206, 250, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(135, 206, 250, 0);
+    }
+  `;
 
   const iconVariants = {
     initial: { scale: 1 },
@@ -124,10 +140,10 @@ const HomeTour = () => {
           sx={{
             '& .MuiTooltip-tooltip': {
               bgcolor: '#1a1a1a',
-              color: '#a6ff00',
+              color: '#77d6ff',
               fontSize: '0.875rem',
               fontWeight: 500,
-              boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+              boxShadow: '0 2px 8px black',
               borderRadius: '8px',
               padding: '6px 12px'
             }
@@ -136,13 +152,14 @@ const HomeTour = () => {
           <IconButton 
             onClick={handleStartTour}
             sx={{ 
-              bgcolor: '#a6ff00',
+              bgcolor: '#77d6ff',
               color: '#000',
               '&:hover': { 
                 bgcolor: '#fff',
                 transform: 'scale(1.05)',
               },
-              boxShadow: '0 0 20px rgba(166, 255, 0, 0.5)',
+              boxShadow: '0 0 20px rgba(119, 214, 255, 0.5)',
+              animation: `${pulse} 2s infinite`,
               transition: 'all 0.3s ease'
             }}
           >
@@ -162,7 +179,7 @@ const HomeTour = () => {
         styles={{
           options: {
             zIndex: 10000,
-            primaryColor: '#a6ff00',
+            primaryColor: '#77d6ff',
             backgroundColor: '#1a1a1a',
             textColor: '#ffffff',
             arrowColor: '#1a1a1a',
@@ -175,8 +192,8 @@ const HomeTour = () => {
             whiteSpace: 'pre-line',
             textAlign: 'left',
             backdropFilter: 'blur(4px)',
-            border: '1px solid rgba(166, 255, 0, 0.2)',
-            boxShadow: '0 8px 16px rgba(166, 255, 0, 0.1)',
+            border: '1px solid rgba(119, 214, 255, 0.2)',
+            boxShadow: '0 8px 16px rgba(119, 214, 255, 0.1)',
             backgroundColor: '#1a1a1a',
             color: '#ffffff'
           },
@@ -186,10 +203,10 @@ const HomeTour = () => {
           },
           tooltipTitle: {
             textAlign: 'left',
-            color: '#a6ff00'
+            color: '#77d6ff'
           },
           buttonNext: {
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000000',
             fontWeight: 'bold',
             '&:hover': {
@@ -199,13 +216,13 @@ const HomeTour = () => {
           buttonBack: {
             color: '#ffffff',
             '&:hover': {
-              color: '#a6ff00'
+              color: '#77d6ff'
             }
           },
           buttonSkip: {
             color: '#ffffff',
             '&:hover': {
-              color: '#a6ff00'
+              color: '#77d6ff'
             }
           }
         }}

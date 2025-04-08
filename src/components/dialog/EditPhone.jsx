@@ -22,11 +22,11 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -138,7 +138,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
           style: {
             backgroundColor: '#1a1a1a',
             borderRadius: '16px',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 4px 30px black',
           },
         }}
       >
@@ -149,7 +149,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: '#a6ff00',
+            color: '#77d6ff',
             '&:hover': {
               color: '#fff',
               transform: 'rotate(180deg)',
@@ -161,7 +161,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
         </IconButton>
         <DialogContent className="bg-[#1a1a1a]">
           <div className="max-w-2xl mx-auto p-8">
-            <h2 className="text-3xl font-bold mb-4 text-[#a6ff00]">
+            <h2 className="text-3xl font-bold mb-4 text-[#77d6ff]">
               {activeStep === 0 ? 'Введіть новий номер телефону' : 'Введіть код підтвердження'}
             </h2>
             <Box sx={{ width: '100%', display: 'flex', flexDirection: "column" }}>
@@ -172,16 +172,16 @@ export default function EditPhone({open, handleClose, handleAction}) {
                   '& .MuiStepLabel-label': {
                     color: '#fff',
                     '&.Mui-active': {
-                      color: '#a6ff00',
+                      color: '#77d6ff',
                     }
                   },
                   '& .MuiStepIcon-root': {
                     color: '#333',
                     '&.Mui-active': {
-                      color: '#a6ff00',
+                      color: '#77d6ff',
                     },
                     '&.Mui-completed': {
-                      color: '#a6ff00',
+                      color: '#77d6ff',
                     }
                   }
                 }}
@@ -209,17 +209,17 @@ export default function EditPhone({open, handleClose, handleAction}) {
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         '& fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         },
                         '&:hover fieldset': {
                           borderColor: '#fff',
                         },
                         '&.Mui-focused fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         },
                       },
                       '& .MuiInputLabel-root': {
-                        color: '#a6ff00',
+                        color: '#77d6ff',
                       }
                     }}
                   />
@@ -240,17 +240,17 @@ export default function EditPhone({open, handleClose, handleAction}) {
                       marginTop: 2,
                       '& .MuiOutlinedInput-root': {
                         '& fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         },
                         '&:hover fieldset': {
                           borderColor: '#fff',
                         },
                         '&.Mui-focused fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         },
                       },
                       '& .MuiInputLabel-root': {
-                        color: '#a6ff00',
+                        color: '#77d6ff',
                       },
                       '& .MuiFormHelperText-root': {
                         color: '#fff',
@@ -267,7 +267,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
                       color: '#fff',
                       '&:not(:disabled)': {
                         '&:hover': {
-                          color: '#a6ff00',
+                          color: '#77d6ff',
                         }
                       }
                     }}
@@ -279,7 +279,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
                     onClick={handleNext}
                     disabled={isNextDisabled() || isSubmitting}
                     sx={{
-                      backgroundColor: '#a6ff00',
+                      backgroundColor: '#77d6ff',
                       color: '#000',
                       '&:hover': {
                         backgroundColor: '#fff',
@@ -303,7 +303,7 @@ export default function EditPhone({open, handleClose, handleAction}) {
             </Box>
           </div>
         </DialogContent>
-        <DialogActions className="bg-[#111111] p-4">
+        <DialogActions className="bg-[#5b8bd8] p-4">
           <Button 
             onClick={() => {
               setActiveStep(0);

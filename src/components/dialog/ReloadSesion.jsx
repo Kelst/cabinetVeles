@@ -58,13 +58,13 @@ export default function ReloadSession({ open, handleClose }) {
         style: {
           backgroundColor: '#1a1a1a',
           borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+          boxShadow: '0 4px 30px black',
         },
       }}
     >
-      <div className="pt-8 pb-6 px-4 border-b border-[#a6ff00] flex items-center justify-center">
-        <h2 className="text-3xl font-bold text-[#a6ff00] flex items-center">
-          <RefreshIcon className="mr-2" sx={{ color: '#a6ff00' }} />
+      <div className="pt-8 pb-6 px-4 border-b border-[#77d6ff] flex items-center justify-center">
+        <h2 className="text-3xl font-bold text-[#77d6ff] flex items-center">
+          <RefreshIcon className="mr-2" sx={{ color: '#77d6ff' }} />
           Перезавантаження сесії
         </h2>
       </div>
@@ -76,7 +76,7 @@ export default function ReloadSession({ open, handleClose }) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: '#a6ff00',
+          color: '#77d6ff',
           '&:hover': {
             color: '#fff',
             transform: 'rotate(180deg)',
@@ -90,43 +90,43 @@ export default function ReloadSession({ open, handleClose }) {
       <DialogContent className="bg-[#1a1a1a]">
         <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
+            <h2 className="text-2xl font-semibold text-[#77d6ff] mb-4">
               Важлива інформація про перезавантаження сесії:
             </h2>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+            <div className="bg-[#5b8bd8] p-4 rounded-lg border border-[#77d6ff]">
               <p className="leading-relaxed">
-                Ми розпочнемо процес <span className="font-semibold text-[#a6ff00]">адміністративного перезавантаження</span> вашої сесії. Це допоможе вирішити можливі проблеми з підключенням та оновити параметри вашого з'єднання.
+                Ми розпочнемо процес <span className="font-semibold text-[#77d6ff]">адміністративного перезавантаження</span> вашої сесії. Це допоможе вирішити можливі проблеми з підключенням та оновити параметри вашого з'єднання.
               </p>
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
             <div className="leading-relaxed">
-              Для <span className="font-semibold text-[#a6ff00]">швидшого відновлення</span> інтернет-з'єднання, рекомендуємо вам також <span className="font-semibold text-[#a6ff00]">перезавантажити ваш роутер</span>. Це забезпечить повне оновлення всіх налаштувань мережі.
+              Для <span className="font-semibold text-[#77d6ff]">швидшого відновлення</span> інтернет-з'єднання, рекомендуємо вам також <span className="font-semibold text-[#77d6ff]">перезавантажити ваш роутер</span>. Це забезпечить повне оновлення всіх налаштувань мережі.
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
-            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+            <div className="bg-[#5b8bd8] p-4 rounded-lg border border-[#77d6ff]">
               <div className="leading-relaxed mb-2">Кроки для перезавантаження роутера:</div>
               <ol className="space-y-2">
                 <li className="flex items-center">
-                  <span className="text-[#a6ff00] mr-2">1.</span>
+                  <span className="text-[#77d6ff] mr-2">1.</span>
                   <span>Вимкніть роутер з електромережі</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="text-[#a6ff00] mr-2">2.</span>
+                  <span className="text-[#77d6ff] mr-2">2.</span>
                   <span>Зачекайте 30 секунд</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="text-[#a6ff00] mr-2">3.</span>
+                  <span className="text-[#77d6ff] mr-2">3.</span>
                   <span>Увімкніть роутер знову</span>
                 </li>
                 <li className="flex items-center">
-                  <span className="text-[#a6ff00] mr-2">4.</span>
+                  <span className="text-[#77d6ff] mr-2">4.</span>
                   <span>Дочекайтесь повного завантаження (1-2 хвилини)</span>
                 </li>
               </ol>
@@ -135,13 +135,13 @@ export default function ReloadSession({ open, handleClose }) {
 
           <AnimatedText delay={0.5}>
             <div className="leading-relaxed">
-              Якщо після цих дій з'єднання не відновиться протягом 5 хвилин, будь ласка, <span className="font-semibold text-[#a6ff00]">зверніться до нашої служби підтримки</span> для додаткової допомоги.
+              Якщо після цих дій з'єднання не відновиться протягом 5 хвилин, будь ласка, <span className="font-semibold text-[#77d6ff]">зверніться до нашої служби підтримки</span> для додаткової допомоги.
             </div>
           </AnimatedText>
         </div>
       </DialogContent>
 
-      <DialogActions className="bg-[#111111] p-4">
+      <DialogActions className="bg-[#5b8bd8] p-4">
         <Button
           onClick={handleClose}
           sx={{
@@ -164,7 +164,7 @@ export default function ReloadSession({ open, handleClose }) {
         <Button
           onClick={onConfirm}
           sx={{
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',

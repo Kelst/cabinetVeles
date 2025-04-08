@@ -93,8 +93,8 @@ export default function DropDownCard({ open, user, handleClose, transition }) {
           <Button
             ref={buttonRef}
             sx={{
-              color: 'black',
-              borderColor: 'black',
+              color: 'sky-800',
+              borderColor: 'sky-800',
               ":hover": { borderColor: 'red' }
             }}
             variant='outlined'

@@ -14,7 +14,7 @@ import { CalendarToday, Description, AccountBalance, TrendingUp } from '@mui/ico
 import useStore from '../../store/store';
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  background: '#000000', // Black background
+  background: '#000000', // sky-800 background
   borderRadius: '16px',
   padding: '16px',
   height: '55vh',
@@ -23,14 +23,14 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
     width: '8px',
   },
   '&::-webkit-scrollbar-track': {
-    background: '#353535', // Matte black
+    background: '#92c7f5', // Matte sky-800
     borderRadius: '4px',
   },
   '&::-webkit-scrollbar-thumb': {
-    background: '#A4DE02', // Lime green
+    background: '#77cdec', // sky sky
     borderRadius: '4px',
     '&:hover': {
-      background: '#90EE90', // Lighter lime green on hover
+      background: '#90EE90', // Lighter sky sky on hover
     },
   },
 }));
@@ -44,20 +44,20 @@ const StyledTable = styled(Table)({
     left: 0,
     right: 0,
     height: '2px',
-    background: 'linear-gradient(90deg, #353535, #A4DE02, #353535)', // Black and lime green gradient
+    background: 'linear-gradient(90deg, #92c7f5, #77cdec, #92c7f5)', // sky-800 and sky sky gradient
     animation: 'gradient 3s ease infinite',
   },
 });
 
 const HeaderCell = styled(TableCell)(({ theme }) => ({
-  background: '#000000', // Black
-  color: '#A4DE02', // Lime green
+  background: '#000000', // sky-800
+  color: '#77cdec', // sky sky
   fontWeight: '600',
   padding: '16px',
   fontSize: '0.9rem',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
-  borderBottom: '1px solid #353535',
+  borderBottom: '1px solid #92c7f5',
   transition: 'all 0.3s ease',
   '&:first-of-type': {
     borderTopLeftRadius: '8px',
@@ -71,26 +71,26 @@ const DataCell = styled(TableCell)(({ theme }) => ({
   fontSize: '0.85rem',
   padding: '12px 16px',
   color: '#ffffff',
-  borderBottom: '1px solid #353535',
+  borderBottom: '1px solid #92c7f5',
   backgroundColor: '#000000',
 }));
 
 const StyledTableRow = styled(TableRow)({
   transition: 'all 0.2s ease',
   '&:hover': {
-    backgroundColor: '#353535 !important',
+    backgroundColor: '#92c7f5 !important',
     '& td': {
-      backgroundColor: '#353535 !important',
+      backgroundColor: '#92c7f5 !important',
     }
   },
 });
 
 const SummaryRow = styled(TableRow)({
-  backgroundColor: '#353535',
+  backgroundColor: '#92c7f5',
   '& td': {
     fontWeight: 'bold',
-    color: '#A4DE02', // Lime green
-    backgroundColor: '#353535 !important',
+    color: '#77cdec', // sky sky
+    backgroundColor: '#92c7f5 !important',
   },
 });
 
@@ -98,7 +98,7 @@ const IconWrapper = styled(Box)({
   display: 'inline-flex',
   alignItems: 'center',
   gap: '8px',
-  color: '#A4DE02', // Lime green
+  color: '#77cdec', // sky sky
 });
 
 function formatDate(dateString) {
@@ -146,7 +146,7 @@ export default function DarkPaidTable() {
     <Box sx={{ 
       p: 2, 
       animation: 'fadeIn 0.5s ease-out',
-      background: 'linear-gradient(145deg, #000000, #353535)', // Black and matte black gradient
+      background: 'linear-gradient(145deg, #000000, #92c7f5)', // sky-800 and matte sky-800 gradient
       borderRadius: '20px',
     }}>
       <StyledTableContainer component={Paper}>
@@ -155,25 +155,25 @@ export default function DarkPaidTable() {
             <TableRow>
               <HeaderCell>
                 <IconWrapper>
-                  <CalendarToday sx={{ fontSize: 18, color: '#A4DE02' }} /> {/* Lime green */}
+                  <CalendarToday sx={{ fontSize: 18, color: '#77cdec' }} /> {/* sky sky */}
                   <span>Дата</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <Description sx={{ fontSize: 18, color: '#A4DE02' }} />
+                  <Description sx={{ fontSize: 18, color: '#77cdec' }} />
                   <span>Опис</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <TrendingUp sx={{ fontSize: 18, color: '#A4DE02' }} />
+                  <TrendingUp sx={{ fontSize: 18, color: '#77cdec' }} />
                   <span>Сума</span>
                 </IconWrapper>
               </HeaderCell>
               <HeaderCell align="center">
                 <IconWrapper>
-                  <AccountBalance sx={{ fontSize: 18, color: '#A4DE02' }} />
+                  <AccountBalance sx={{ fontSize: 18, color: '#77cdec' }} />
                   <span>Залишок</span>
                 </IconWrapper>
               </HeaderCell>
@@ -191,7 +191,7 @@ export default function DarkPaidTable() {
                 <DataCell 
                   align="center"
                   sx={{ 
-                    color: row.deposit < 0 ? '#A4DE02' : '#ffffff', // Changed to lime green
+                    color: row.deposit < 0 ? '#77cdec' : '#ffffff', // Changed to sky sky
                     fontWeight: row.deposit < 0 ? 'bold' : 'normal'
                   }}
                 >
@@ -209,7 +209,7 @@ export default function DarkPaidTable() {
               <DataCell 
                 align="center"
                 sx={{ 
-                  color: paid.sum < 0 ? '#A4DE02' : '#ffffff', // Changed to lime green
+                  color: paid.sum < 0 ? '#77cdec' : '#ffffff', // Changed to sky sky
                   fontWeight: 'bold'
                 }}
               >

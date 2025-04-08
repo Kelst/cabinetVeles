@@ -70,7 +70,7 @@ const UserMenuHome = () => {
 
     return (
       <div className="absolute left-0 md:right-0 md:left-auto  mt-2 w-48 bg-slate-800/95 backdrop-blur-sm rounded-lg 
-                      shadow-lg shadow-black/50 border border-slate-600/50 z-50 overflow-hidden">
+                      shadow-lg shadow-sky-800/50 border border-slate-600/50 z-50 overflow-hidden">
         <div className="py-2">
           {allLogins.map((loginUser) => (
             <button

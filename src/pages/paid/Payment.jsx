@@ -57,13 +57,13 @@ const StyledTabs = styled((props) => (
   position: 'relative',
   zIndex: 0,
   '& .MuiTabs-indicator': {
-    backgroundColor: '#A4DE02', // Lime green color
+    backgroundColor: '#77cdec', // sky sky color
     marginBottom: "10px",
     marginTop: "10px",
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
-    backgroundColor: '#353535', // Matte black
+    backgroundColor: '#92c7f5', // Matte sky-800
   },
 });
 
@@ -73,12 +73,12 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(15),
     marginRight: theme.spacing(1),
-    color: 'rgba(0, 0, 0, 0.7)', // Slightly faded black
+    color: 'rgba(0, 0, 0, 0.7)', // Slightly faded sky-800
     '&.Mui-selected': {
-      color: '#000000', // Solid black
+      color: '#000000', // Solid sky-800
     },
     '&.MuiTabs-indicator': {
-      color: '#000000' // Black
+      color: '#000000' // sky-800
     }
   }),
 );

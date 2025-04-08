@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const RainDrop = ({ delay }) => {
   return (
     <motion.div
-      className="absolute bg-[#A4DE02] w-0.5 h-2 rounded-full" 
+      className="absolute bg-[#87CEEB] w-0.5 h-2 rounded-full" 
       initial={{ opacity: 0, y: 0 }}
       animate={{ 
         opacity: [0, 1, 0],
@@ -68,9 +68,9 @@ export default function Loader() {
             sx={{ 
                 color: '#fff', 
                 zIndex: (theme) => theme.zIndex.drawer + 1000,
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                backgroundColor: 'rgba(135, 206, 235, 0.1)',
                 backdropFilter: 'blur(8px)',
-                border: '1px solid #A4DE02'
+                border: '1px solid #87CEEB'
             }}
             open={openLoader}
         >
@@ -80,16 +80,16 @@ export default function Loader() {
                         className='absolute top-[-120px] z-[1000000000000000] left-[60px] w-[60px] h-[60px] mb-1 animate-spin'
                         src={bigW} 
                         alt="Big W"
-                        style={{ filter: 'invert(76%) sepia(92%) saturate(369%) hue-rotate(39deg) brightness(106%) contrast(101%)' }} 
+                        style={{ filter: 'invert(80%) sepia(32%) saturate(788%) hue-rotate(177deg) brightness(104%) contrast(95%)' }} 
                     />
                     <img  
                         className='absolute top-[-80px] z-[1000000000000000] left-[115px] w-[40px] h-[40px] mb-1 animate-reverse-spin'
                         src={bigW} 
                         alt="Small W"
-                        style={{ filter: 'invert(76%) sepia(92%) saturate(369%) hue-rotate(39deg) brightness(106%) contrast(101%)' }}
+                        style={{ filter: 'invert(80%) sepia(32%) saturate(788%) hue-rotate(177deg) brightness(104%) contrast(95%)' }}
                     />
                     <motion.h2 
-                        className='text-[#A4DE02] relative z-10' 
+                        className='text-[#87CEEB] relative z-10' 
                         variants={loadingVariants}
                         initial="hidden"
                         animate="visible"

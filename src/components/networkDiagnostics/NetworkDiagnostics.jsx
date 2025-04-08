@@ -232,11 +232,11 @@ const NetworkDiagnostics = () => {
           {/* ONU Status Node */}
           <DiagnosticNode isActive={currentStep >= 1} delay={0.5}>
             <div className="flex flex-col items-center">
-              <Router className={isOnuActive ? "text-green-500 mb-2" : "text-red-500 mb-2"} size={24} />
+              <Router className={isOnuActive ? "text-sky-500 mb-2" : "text-red-500 mb-2"} size={24} />
               <h3 className="font-semibold mb-2">Оптичний термінал</h3>
               {isOnuActive ? (
                 <div className="text-center">
-                  <span className="text-green-500 flex items-center justify-center mb-2">
+                  <span className="text-sky-500 flex items-center justify-center mb-2">
                     <Check size={16} className="mr-1" /> Обладнання в мережі
                   </span>
                   <p className="text-sm text-gray-600">
@@ -283,7 +283,7 @@ const NetworkDiagnostics = () => {
                 <div className="text-center">
                   {isPortStateUp ? (
                     <>
-                      <div className="text-green-500 font-bold mb-2">
+                      <div className="text-sky-500 font-bold mb-2">
                         <Check size={16} className="inline mr-1" />
                         З'єднання з роутером активне
                       </div>

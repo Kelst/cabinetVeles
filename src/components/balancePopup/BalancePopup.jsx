@@ -49,11 +49,11 @@ const BalancePopup = ({ balance, credit = 0, deposit = 0, onClose }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        className="fixed bottom-4 z-[1000] right-4 max-w-sm bg-black rounded-lg shadow-lg p-6 border border-green-600"
+        className="fixed bottom-4 z-[1000] right-4 max-w-sm bg-sky-800 rounded-lg shadow-lg p-6 border border-x-sky-200"
       >
         <button 
           onClick={handleClose}
-          className="absolute top-2 right-2 text-green-500 hover:text-green-400"
+          className="absolute top-2 right-2 text-sky-500 hover:text-sky-400 "
         >
           <XCircle className="h-5 w-5" />
         </button>
@@ -64,14 +64,14 @@ const BalancePopup = ({ balance, credit = 0, deposit = 0, onClose }) => {
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 0.5, repeat: 3 }}
             >
-              <span className="text-green-500 text-xl">⚠️</span>
+              <span className="text-sky-500 text-xl">⚠️</span>
             </motion.div>
             <h3 className="font-medium text-white">Від'ємний баланс</h3>
           </div>
           
           <p className="text-gray-300">
             На вашому рахунку: 
-            <span className="font-semibold text-green-500 ml-1">
+            <span className="font-semibold text-x-sky-500 ml-1">
               {balance.toFixed(2)} грн
             </span>
           </p>
@@ -86,7 +86,7 @@ const BalancePopup = ({ balance, credit = 0, deposit = 0, onClose }) => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors"
+              className="w-full bg-x-sky-600 text-white py-2 px-4 rounded hover:bg-x-sky-700 transition-colors"
             >
               Перейти до оплати
             </motion.button>
@@ -97,7 +97,7 @@ const BalancePopup = ({ balance, credit = 0, deposit = 0, onClose }) => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleSetCredit}
-              className="w-full bg-white text-black py-2 px-4 rounded hover:bg-gray-100 transition-colors"
+              className="w-full bg-white text-sky-800 py-2 px-4 rounded hover:bg-gray-100 transition-colors"
             >
               Встановити кредит
             </motion.button>

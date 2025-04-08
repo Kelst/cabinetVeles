@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-const MapOffice = () => {
+const MapOffice = ({ coordinates = [48.264296497571564, 25.9371682967154] }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyCk3eWqtwQDddcKGxI0bQ73gdiCcL5ltag"
@@ -13,17 +13,12 @@ const MapOffice = () => {
         {isLoaded && (
           <GoogleMap
             mapContainerClassName="w-full h-full"
-            center={{lat: 48.26659945813064, lng: 25.939732362574233}}
-            zoom={13}
+            center={{lat: coordinates[0], lng: coordinates[1]}}
+            zoom={15}
           >
             <Marker 
-              position={{lat: 48.26924824459138, lng: 25.923757203974443}}
-              title="ТЦ Проспект"
-              visible={true}
-            />
-            <Marker 
-              position={{lat: 48.25924596720751, lng: 25.95679345477146}}
-              title="ТЦ Депот"
+              position={{lat: coordinates[0], lng: coordinates[1]}}
+              title="м. Чернівці, вул. Пилипа Орлика 9А"
               visible={true}
             />
           </GoogleMap>

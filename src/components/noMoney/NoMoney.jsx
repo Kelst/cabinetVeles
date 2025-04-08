@@ -8,8 +8,8 @@ const NoMoney = () => {
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
-    if (location.pathname !== '/nomoney/opticom') {
-      navigate('/nomoney/opticom', { replace: true });
+    if (location.pathname !== '/nomoney/veles') {
+      navigate('/nomoney/veles', { replace: true });
     }
     setIsVisible(true);
   }, [location, navigate]);
@@ -21,7 +21,7 @@ const NoMoney = () => {
           <div className="mb-6">
             <img 
               src={Logo} 
-              className="w-80 h-48 object-contain" 
+              className="w-40 h-48 object-contain" 
               alt="Logo" 
             />
           </div>

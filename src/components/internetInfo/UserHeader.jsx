@@ -72,12 +72,12 @@ const UserHeader = () => {
         <div className="flex justify-center items-center mt-4">
           <button
             onClick={() => handleCopyLogin(user.login)}
-            className="group relative px-6 py-2.5 text-base font-medium bg-lime-400 backdrop-blur-md 
-                      rounded-xl shadow-lg text-black border-2 border-black cursor-pointer"
+            className="group relative px-6 py-2.5 text-base font-medium bg-sky-400 backdrop-blur-md 
+                      rounded-xl shadow-lg text-sky-800 border-2 border-sky-800 cursor-pointer"
             title="Натисніть щоб скопіювати логін"
           >
             {user.login}
-            <span className="absolute invisible group-hover:visible bg-gray-800 text-white 
+            <span className="absolute invisible group-hover:visible bg-sky-800 text-white 
                            text-sm rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2">
               Скопіювати
             </span>
@@ -97,14 +97,14 @@ const UserHeader = () => {
                 group relative px-3 py-1.5 text-sm rounded-lg shadow-md transition-all duration-300 
                 transform hover:scale-105
                 ${loginUser.uid === user.uid
-                  ? 'bg-lime-400 backdrop-blur-md text-black border-2 border-black cursor-copy'
-                  : 'bg-lime-300 backdrop-blur-sm text-black hover:bg-lime-400'
+                  ? 'bg-sky-400 backdrop-blur-md text-sky-800 border-2 border-sky-800 cursor-copy'
+                  : 'bg-sky-300 backdrop-blur-sm text-sky-800 hover:bg-sky-400'
                 }
               `}
             >
               {loginUser.login}
               {loginUser.uid === user.uid && (
-                <span className="absolute invisible group-hover:visible bg-gray-800 text-white 
+                <span className="absolute invisible group-hover:visible  bg-sky-900 text-white 
                                text-sm rounded py-1 px-2 top-1/2 right-full mr-2 transform -translate-y-1/2 whitespace-nowrap">
                   Скопіювати
                 </span>
@@ -117,12 +117,12 @@ const UserHeader = () => {
   };
 
   if (!user) {
-    return <div className="text-black">Loading user data...</div>;
+    return <div className="text-sky-800">Loading user data...</div>;
   }
 
   return (
     <animated.div style={fadeIn} className="mb-8 text-center">
-      <div className="p-8 rounded-lg bg-lime-400 bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-lg border-2 border-black">
+      <div className="p-8 rounded-lg bg-sky-400 bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-lg border-2 sky-900">
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}

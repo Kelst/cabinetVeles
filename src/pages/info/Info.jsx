@@ -65,18 +65,18 @@ const StyledTabs = styled((props) => (
   position: 'relative',
   zIndex: 0,
   '& .MuiTabs-indicator': {
-    backgroundColor: '#A4DE02', // Lime green
+    backgroundColor: '#77cdec', // sky sky
     marginBottom: "10px",
     marginTop: "10px",
   },
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
-    backgroundColor: '#353535', // Matte black
+    backgroundColor: '#92c7f5', // Matte sky-800
   },
   '& .MuiTabs-flexContainer': {
     '& button': {
       '&:hover': {
-        color: '#90EE90', // Lighter lime green for hover
+        color: 'black', // Lighter sky sky for hover
         opacity: 1,
       },
     },
@@ -91,13 +91,13 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
     marginRight: theme.spacing(1),
     color: 'rgba(0, 0, 0, 0.7)',
     '&.Mui-selected': {
-      color: '#000000', // Black
+      color: '#000000', // sky-800
     },
     '&.MuiTabs-indicator': {
-      color: "#000000" // Black
+      color: "#000000" // sky-800
     },
     '&:hover': {
-      color: 'rgba(0, 0, 0, 0.9)', // Darker black for hover
+      color: 'rgba(0, 0, 0, 0.9)', // Darker sky-800 for hover
     }
   }),
 );
@@ -112,18 +112,36 @@ export default function Info() {
     { label: "Мої заявки", show: configCabinet.additional.showTask, component: <MyTaskViewer /> },
     { label: "Приведи друга", show: configCabinet.additional.addFriend, component: <PromoPage/>  },
     { label: "Офіси", show: configCabinet.additional.showOffice, component: (
-      <div>
-        <div className='mb-2 flex flex-wrap justify-center items-center'>
-          <div className='text-sm border-2 border-[#A4DE02]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center mb-2 hover:border-[#A4DE02] transition-colors duration-300'>
-            <div className='font-bold'>ТЦ "Проспект", оф. № 128А (праворуч від ескалатору)</div>
-            <div className='text-[14px]'>пн-пт 09:00 - 18:00 (перерва 14:00 - 15:00)</div>
-            <div className='text-[12px]'>сб 10:00 - 18:00 (перерва 13:00 - 14:00), нд - вихідний</div>
-          </div>
-          <div className='text-sm border-2 border-[#A4DE02]/30 rounded-md p-3 mx-[20px] flex flex-col items-start justify-center hover:border-[#A4DE02] transition-colors duration-300'>
-            <div className='font-bold'>ТРЦ «DEPOt» (2-й поверх)</div>
-            <div className='text-[14px]'>пн-нд 10:00 - 20:00 (перерва 14:00 - 14:30)</div>
-          </div>
+      <div className="w-full  mx-auto  ">
+    <div className="mb-6 flex flex-wrap justify-center items-center">
+      <div className="text-sm border-2 border-[#77d6ff]/30 rounded-lg p-4 mx-[20px] flex flex-col items-start justify-center mb-2 hover:border-[#77d6ff] transition-colors duration-300 max-w-md w-full">
+        <div className="font-bold text-lg mb-3 text-[#77d6ff]">Контакти</div>
+        
+        <div className="mb-3">
+          <div className="font-semibold mb-1">Адреса:</div>
+          <div>м. Чернівці, вул. Пилипа Орлика 9А</div>
         </div>
+        
+        <div className="mb-3">
+          <div className="font-semibold mb-1">Графік роботи:</div>
+          <div><span className="font-medium">Понеділок — п'ятниця:</span> з 9:00 до 18:00</div>
+          <div><span className="font-medium">Субота:</span> з 9:00 до 13:00</div>
+          <div><span className="font-medium">Неділя:</span> вихідний</div>
+        </div>
+        
+        <div className="mb-3">
+          <div className="font-semibold mb-1">Контактні телефони:</div>
+          <div><span className="font-medium">Vodafone:</span> +38 (099) 22-44-227</div>
+          <div><span className="font-medium">Kyivstar:</span> +38 (097) 22-44-227</div>
+        </div>
+        
+        <div>
+          <div className="font-semibold mb-1">Електронна пошта:</div>
+          <div>veles.cv.@gmail.com</div>
+        </div>
+      </div>
+    </div>
+     
         <MapOffice />
       </div>
     ) },

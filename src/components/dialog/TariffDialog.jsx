@@ -14,11 +14,11 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -44,17 +44,17 @@ export default function TariffDialog({ open, handleClose }) {
           style: {
             backgroundColor: '#1a1a1a',
             borderRadius: '16px',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 4px 30px black',
           },
         }}
       >
         <div className="relative pt-8 pb-6 px-4 bg-[#1a1a1a]">
           <div className="relative flex flex-col items-center gap-2">
-            <div className="w-16 h-0.5 bg-[#a6ff00]" />
+            <div className="w-16 h-0.5 bg-[#77d6ff]" />
             
-            <h2 className="text-2xl font-bold tracking-wide text-[#a6ff00] uppercase text-center relative">
+            <h2 className="text-2xl font-bold tracking-wide text-[#77d6ff] uppercase text-center relative">
               Доступні тарифні плани
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/5 h-0.5 bg-[#a6ff00]" />
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/5 h-0.5 bg-[#77d6ff]" />
             </h2>
             <p className="text-sm text-white tracking-wide text-center mt-4">
               Оберіть найкращий тариф для вас
@@ -71,7 +71,7 @@ export default function TariffDialog({ open, handleClose }) {
               position: 'absolute',
               right: 8,
               top: 8,
-              color: '#a6ff00',
+              color: '#77d6ff',
               '&:hover': {
                 color: '#fff',
                 transform: 'rotate(180deg)',
@@ -87,7 +87,7 @@ export default function TariffDialog({ open, handleClose }) {
           <GlazmorphizmCard tarriffList={tarriffList} tariff={tariff} handleClose={handleClose} />
         </DialogContent>
 
-        <DialogActions className="bg-[#111111] p-4">
+        <DialogActions className="bg-[#5b8bd8] p-4">
           <Button 
             onClick={handleClose}
             sx={{
@@ -100,7 +100,7 @@ export default function TariffDialog({ open, handleClose }) {
               '&:hover': {
                 backgroundColor: '#444',
                 transform: 'scale(1.05)',
-                color: '#a6ff00',
+                color: '#77d6ff',
               },
               transition: 'all 0.3s ease'
             }}

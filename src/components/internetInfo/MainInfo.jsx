@@ -40,7 +40,7 @@ const iconVariants = {
 
 const EmptyValuePlaceholder = ({ message = "Дані відсутні" }) => (
   <motion.div 
-    className="inline-flex items-center gap-2 text-lime-600/60"
+    className="inline-flex items-center gap-2 text-sky-600/60"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     whileHover={{ scale: 1.05 }}
@@ -71,7 +71,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
   
   const InfoItem = ({ icon: Icon, label, value, defaultMessage = "Дані відсутні", type = 'default', children }) => (
     <motion.div 
-      className="flex items-center py-3 border-b border-lime-600/20 last:border-b-0"
+      className="flex items-center py-3 border-b border-red-300 last:border-b-0"
       whileHover={{ 
         x: 5,
         backgroundColor: "rgba(163, 230, 53, 0.05)",
@@ -83,15 +83,15 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         variants={iconVariants}
         animate="animate"
       >
-        <Icon className="w-5 h-5 flex-shrink-0 text-lime-400" />
+        <Icon className="w-5 h-5 flex-shrink-0 text-sky-400" />
       </motion.div>
       <motion.div 
         className="flex flex-col sm:flex-row sm:justify-between sm:items-center w-full"
         whileHover={{ color: "#84cc16" }}
       >
-        <span className="text-sm text-lime-200/70 sm:text-base sm:mr-4">{label}</span>
+        <span className="text-sm text-sky-200/70 sm:text-base sm:mr-4">{label}</span>
         <motion.div 
-          className="font-medium text-lime-100 mt-1 sm:mt-0 flex items-center"
+          className="font-medium text-sky-100 mt-1 sm:mt-0 flex items-center"
           whileHover={{ scale: 1.02 }}
         >
           {formatValue(value, defaultMessage, type)}
@@ -111,7 +111,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-3 py-2 bg-lime-900/20 rounded-lg border border-lime-600/20"
+          className="inline-flex items-center gap-3 px-3 py-2 bg-sky-900 rounded-lg border border-sky-600"
         >
           <motion.div
             animate={{ 
@@ -124,14 +124,14 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
               ease: "easeInOut"
             }}
           >
-            <AlertCircle className="w-5 h-5 text-lime-500" />
+            <AlertCircle className="w-5 h-5 text-sky-500" />
           </motion.div>
           <motion.div 
             className="flex flex-col"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-lime-500 font-medium">Недостатньо коштів</span>
-            <span className="text-lime-400/60 text-sm">Поповніть баланс для продовження</span>
+            <span className="text-sky-500 font-medium">Недостатньо коштів</span>
+            <span className="text-sky-400/60 text-sm">Поповніть баланс для продовження</span>
           </motion.div>
         </motion.div>
       );
@@ -142,19 +142,19 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
     }
   
     return user.statusInternet ? (
-      <div className="inline-flex justify-center items-center gap-2 text-lime-100">
+      <div className="inline-flex justify-center items-center gap-2 text-sky-100">
         <AnimatedRocket type="active" />
         Active
         {configCabinet?.home?.reloadSesion &&
           <Tooltip title="Перезавантажити сесію" arrow>
             <IconButton size="small" className="ml-2" onClick={handleReloadSession}>
-              <RefreshIcon className="w-4 h-4 text-lime-300" />
+              <RefreshIcon className="w-4 h-4 text-sky-300" />
             </IconButton>
           </Tooltip>
         }
       </div>
     ) : (
-      <div className="inline-flex justify-center items-center gap-2 text-lime-100">
+      <div className="inline-flex justify-center items-center gap-2 text-sky-100">
         <AnimatedRocket type="inactive" /> 
         Inactive 
         <NetworkDiagnostics/>
@@ -165,7 +165,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
   if (!user) {
     return (
       <motion.div 
-        className="bg-black/80 p-6 rounded-lg shadow-lg border border-lime-500/20"
+        className="bg-sky-80 p-6 rounded-lg shadow-lg border border-sky-500"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -176,13 +176,13 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
 
   return (
     <motion.div 
-      className={`bg-black/80 p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 ${style?.animationBorder || ''}`}
+      className={`bg-sky-80 p-4 sm:p-6 rounded-lg shadow-lg border border-sky-500 ${style?.animationBorder || ''}`}
       whileHover={{ boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)" }}
     >
       <TelegramAdButton/>
       <FeedbackModal/>
       <HomeTour/>
-      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-lime-400 flex items-center">
+      <h2 className="text-xl font-bold mb-4 sm:mb-6 text-sky-400 flex items-center">
         <motion.div
           className="mr-2 perspective-400"
           variants={iconVariants}
@@ -206,7 +206,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
                 onClick={handleEditPhone} 
                 className="ml-2"
               >
-                <ModeEditOutlineTwoToneIcon className="text-lime-300" fontSize="small" />
+                <ModeEditOutlineTwoToneIcon className="text-sky-300" fontSize="small" />
               </IconButton>
             </Tooltip>
           }
@@ -230,7 +230,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
             user.cid ? (
               <Tooltip title="Інтернет сесія працює на цьому mac-адресі" arrow>
                 <IconButton size="small" className="ml-2">
-                  <div className="text-lime-100">{user.cid}</div> 
+                  <div className="text-sky-100">{user.cid}</div> 
                 </IconButton>
               </Tooltip>
             ) : undefined
@@ -243,8 +243,8 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
           value={
             user.status !== undefined ? (
               user.status 
-                ? <div className="inline-flex gap-x-2 text-lime-100"><AnimatedLoginShield /> Активний</div>
-                : <div className="inline-flex gap-x-2 text-lime-100"><PauseIcon /> На паузі</div>
+                ? <div className="inline-flex gap-x-2 text-sky-100"><AnimatedLoginShield /> Активний</div>
+                : <div className="inline-flex gap-x-2 text-sky-100"><PauseIcon /> На паузі</div>
             ) : undefined
           }
           defaultMessage="Статус невідомий"
@@ -261,7 +261,7 @@ const MainInfo = ({ style, handleEditPhone, handleStopPlayLogin, handleReloadSes
                 onClick={handleEditPassword} 
                 className="ml-2"
               >
-                <ModeEditOutlineTwoToneIcon className="text-lime-300" fontSize="small" />
+                <ModeEditOutlineTwoToneIcon className="text-sky-300" fontSize="small" />
               </IconButton>
             </Tooltip>
           }

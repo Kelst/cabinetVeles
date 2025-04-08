@@ -4,15 +4,15 @@ import { useNavigate, useRouteError } from 'react-router-dom';
 import { Button, Typography, Box, ThemeProvider, createTheme } from '@mui/material';
 import { WifiOff } from 'lucide-react';
 
-const darkTheme = createTheme({
+const skyTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -73,9 +73,9 @@ const ErrorPage = () => {
       initial={{ pathLength: 0 }}
       animate={{
         background: [
-          "linear-gradient(45deg, #a6ff00 0%, transparent 70%)",
-          "linear-gradient(45deg, #d4ff66 30%, transparent 80%)",
-          "linear-gradient(45deg, #a6ff00 0%, transparent 70%)",
+          "linear-gradient(45deg, #77d6ff 0%, transparent 70%)",
+          "linear-gradient(45deg, #5cb8ff 30%, transparent 80%)",
+          "linear-gradient(45deg, #77d6ff 0%, transparent 70%)",
         ]
       }}
       transition={{
@@ -87,8 +87,8 @@ const ErrorPage = () => {
   );
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Box className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] via-black to-[#1a1a1a]">
+    <ThemeProvider theme={skyTheme}>
+      <Box className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] via-sky-800 to-[#1a1a1a]">
         <Circuit />
         
         <motion.div
@@ -98,8 +98,8 @@ const ErrorPage = () => {
           className="relative z-10 mx-8 w-[400px] h-[350px] md:w-[500px] flex justify-center items-center 
                      rounded-lg shadow-2xl bg-[#1a1a1a]/50 backdrop-blur-md flex-col"
           style={{
-            border: '1px solid rgba(166, 255, 0, 0.1)',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)'
+            border: '1px solid rgba(119, 214, 255, 0.1)',
+            boxShadow: '0 4px 30px black'
           }}
         >
           <motion.div
@@ -108,7 +108,7 @@ const ErrorPage = () => {
             animate="animate"
             className="mb-6"
           >
-            <WifiOff size={50} className="text-[#a6ff00]" />
+            <WifiOff size={50} className="text-[#77d6ff]" />
           </motion.div>
 
           <motion.div
@@ -122,8 +122,8 @@ const ErrorPage = () => {
               sx={{ 
                 fontSize: { xs: '4rem', md: '5rem' },
                 fontFamily: 'monospace',
-                color: '#a6ff00',
-                textShadow: '0 0 20px rgba(166, 255, 0, 0.5)'
+                color: '#77d6ff',
+                textShadow: '0 0 20px rgba(119, 214, 255, 0.5)'
               }}
             >
               {error?.status || '404'}
@@ -153,7 +153,7 @@ const ErrorPage = () => {
               variant="contained"
               onClick={() => navigate('/')}
               sx={{
-                bgcolor: '#a6ff00',
+                bgcolor: '#77d6ff',
                 px: 4,
                 py: 1.5,
                 borderRadius: '9999px',
@@ -161,7 +161,7 @@ const ErrorPage = () => {
                 textTransform: 'none',
                 color: '#000',
                 fontWeight: 'bold',
-                boxShadow: '0 0 30px rgba(166, 255, 0, 0.3)',
+                boxShadow: '0 0 30px rgba(119, 214, 255, 0.3)',
                 '&:hover': {
                   bgcolor: '#fff',
                   transform: 'scale(1.05)',

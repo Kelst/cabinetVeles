@@ -95,11 +95,11 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
         style: {
           backgroundColor: '#1a1a1a',
           borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+          boxShadow: '0 4px 30px black',
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-[#a6ff00] pb-4 border-b border-[#a6ff00]">
+      <DialogTitle className="text-center text-3xl font-bold text-[#77d6ff] pb-4 border-b border-[#77d6ff]">
         Статична IP-адреса
       </DialogTitle>
       <IconButton
@@ -109,7 +109,7 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: '#a6ff00',
+          color: '#77d6ff',
           '&:hover': {
             color: '#fff'
           }
@@ -122,26 +122,26 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
         <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.2}>
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[#a6ff00] mb-4">Для чого потрібна статична IP-адреса?</h3>
+              <h3 className="text-2xl font-semibold text-[#77d6ff] mb-4">Для чого потрібна статична IP-адреса?</h3>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-2">
-                  <span className="text-[#a6ff00]">•</span>
+                  <span className="text-[#77d6ff]">•</span>
                   <span>Віддалений доступ до пристроїв і домашніх серверів</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-[#a6ff00]">•</span>
+                  <span className="text-[#77d6ff]">•</span>
                   <span>Надійна робота онлайн-ігор та стрімінгових сервісів</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-[#a6ff00]">•</span>
+                  <span className="text-[#77d6ff]">•</span>
                   <span>Стабільний доступ до систем відеоспостереження</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-[#a6ff00]">•</span>
+                  <span className="text-[#77d6ff]">•</span>
                   <span>Захищений доступ до корпоративних мереж (VPN)</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <span className="text-[#a6ff00]">•</span>
+                  <span className="text-[#77d6ff]">•</span>
                   <span>Хостинг веб-серверів та інших мережевих сервісів</span>
                 </li>
               </ul>
@@ -155,7 +155,7 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
             <AnimatedText delay={0.4}>
               <form className="space-y-4 mt-6">
                 <div>
-                  <label className="block text-sm font-medium text-[#a6ff00] mb-2">
+                  <label className="block text-sm font-medium text-[#77d6ff] mb-2">
                     Ваш номер телефону
                   </label>
                   <TextField
@@ -171,13 +171,13 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
                       '& .MuiOutlinedInput-root': {
                         color: '#fff',
                         '& fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         },
                         '&:hover fieldset': {
                           borderColor: '#fff',
                         },
                         '&.Mui-focused fieldset': {
-                          borderColor: '#a6ff00',
+                          borderColor: '#77d6ff',
                         }
                       },
                       '& .MuiFormHelperText-root': {
@@ -190,8 +190,8 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
             </AnimatedText>
           ) : (
             <AnimatedText delay={0.1}>
-              <div className="text-center p-6 bg-[#111111] rounded-lg border border-[#a6ff00] mt-6">
-                <h3 className="text-xl font-semibold text-[#a6ff00] mb-2">
+              <div className="text-center p-6 bg-[#5b8bd8] rounded-lg border border-[#77d6ff] mt-6">
+                <h3 className="text-xl font-semibold text-[#77d6ff] mb-2">
                   Дякуємо за заявку!
                 </h3>
                 <p className="text-white">
@@ -203,11 +203,11 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
         </div>
       </DialogContent>
 
-      <DialogActions className="bg-[#111111] p-4">
+      <DialogActions className="bg-[#5b8bd8] p-4">
         <Button 
           onClick={handleClose}
           sx={{
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',
@@ -228,7 +228,7 @@ export default function StaticIpDialog({ open, handleClose, handleAction }) {
             onClick={handleSubmit}
             disabled={!isValid}
             sx={{
-              backgroundColor: isValid ? '#a6ff00' : '#333',
+              backgroundColor: isValid ? '#77d6ff' : '#333',
               color: isValid ? '#000' : '#666',
               borderRadius: '9999px',
               padding: '8px 24px',

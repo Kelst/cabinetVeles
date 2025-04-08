@@ -4,6 +4,7 @@ import { Dialog, TextField, Typography, Button, IconButton, Tooltip, Box } from 
 import { Headset, X, MessageSquare } from 'lucide-react';
 import InputMask from 'react-input-mask';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { keyframes } from '@mui/system';
 import ContactInfoButton from '../сontactInfoButton/ContactInfoButton';
 import useInfoStore from '../../store/infoStore';
 import useStore from '../../store/store';
@@ -12,11 +13,14 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a6ff00',
+      main: '#77d6ff',
+    },
+    background: {
+      paper: '#1a1a1a',
     },
     text: {
       primary: '#ffffff',
-      secondary: '#a6ff00',
+      secondary: '#77d6ff',
     },
   },
 });
@@ -38,17 +42,17 @@ const MaskedInput = memo(({ value, onChange }) => (
               color: '#fff',
               backgroundColor: '#1a1a1a',
               '& fieldset': {
-                borderColor: 'rgba(166, 255, 0, 0.3)',
+                borderColor: 'rgba(119, 214, 255, 0.3)',
               },
               '&:hover fieldset': {
-                borderColor: '#a6ff00',
+                borderColor: '#77d6ff',
               },
               '&.Mui-focused fieldset': {
                 borderColor: '#fff',
               }
             },
             '& .MuiInputLabel-root': {
-              color: '#a6ff00',
+              color: '#77d6ff',
               '&.Mui-focused': {
                 color: '#fff'
               }
@@ -101,6 +105,18 @@ const FeedbackModal = () => {
     }
   }
 
+  const pulse = keyframes`
+    0% {
+      box-shadow: 0 0 0 0 rgba(135, 206, 250, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(135, 206, 250, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(135, 206, 250, 0);
+    }
+  `;
+
   const iconVariants = {
     initial: { scale: 1 },
     hover: { 
@@ -133,10 +149,10 @@ const FeedbackModal = () => {
           sx={{
             '& .MuiTooltip-tooltip': {
               bgcolor: '#1a1a1a',
-              color: '#a6ff00',
+              color: '#77d6ff',
               fontSize: '0.875rem',
               fontWeight: 500,
-              boxShadow: '0 2px 8px rgba(166, 255, 0, 0.15)',
+              boxShadow: '0 2px 8px black',
               borderRadius: '8px',
               padding: '6px 12px'
             }
@@ -145,13 +161,14 @@ const FeedbackModal = () => {
           <IconButton 
             onClick={handleOpen}
             sx={{ 
-              bgcolor: '#a6ff00',
+              bgcolor: '#77d6ff',
               color: '#000',
               '&:hover': { 
                 bgcolor: '#fff',
                 transform: 'scale(1.05)',
               },
-              boxShadow: '0 0 20px rgba(166, 255, 0, 0.5)',
+              boxShadow: '0 0 20px rgba(119, 214, 255, 0.5)',
+              animation: `${pulse} 2s infinite`,
               transition: 'all 0.3s ease'
             }}
           >
@@ -169,7 +186,7 @@ const FeedbackModal = () => {
           sx: {
             bgcolor: '#1a1a1a',
             borderRadius: '16px',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 4px 30px black',
             position: 'relative',
             p: 3
           }
@@ -190,7 +207,7 @@ const FeedbackModal = () => {
           <IconButton 
             onClick={handleClose}
             sx={{ 
-              color: '#a6ff00',
+              color: '#77d6ff',
               '&:hover': {
                 color: '#fff',
                 transform: 'rotate(180deg)',
@@ -205,7 +222,7 @@ const FeedbackModal = () => {
         <Box className="mb-6">
           <Typography 
             sx={{ 
-              color: '#a6ff00',
+              color: '#77d6ff',
               fontWeight: 600, 
               fontSize: '1.5rem',
               mb: 2
@@ -215,7 +232,7 @@ const FeedbackModal = () => {
             <ContactInfoButton />
           </Typography>
           <Box className="flex items-center gap-2">
-            <MessageSquare size={24} color="#a6ff00" />
+            <MessageSquare size={24} color="#77d6ff" />
             <Typography sx={{ color: '#fff', fontWeight: 500, fontSize: '1.25rem' }}>
               {user.login}
             </Typography>
@@ -237,17 +254,17 @@ const FeedbackModal = () => {
                   color: '#fff',
                   backgroundColor: '#1a1a1a',
                   '& fieldset': {
-                    borderColor: 'rgba(166, 255, 0, 0.3)',
+                    borderColor: 'rgba(119, 214, 255, 0.3)',
                   },
                   '&:hover fieldset': {
-                    borderColor: '#a6ff00',
+                    borderColor: '#77d6ff',
                   },
                   '&.Mui-focused fieldset': {
                     borderColor: '#fff',
                   }
                 },
                 '& .MuiInputLabel-root': {
-                  color: '#a6ff00',
+                  color: '#77d6ff',
                   '&.Mui-focused': {
                     color: '#fff'
                   }
@@ -265,7 +282,7 @@ const FeedbackModal = () => {
               disabled={!isValidPhone||message.length<7}
               onClick={handleFeedback}
               sx={{
-                bgcolor: '#a6ff00',
+                bgcolor: '#77d6ff',
                 color: '#000',
                 py: 1.5,
                 textTransform: 'none',
@@ -277,7 +294,7 @@ const FeedbackModal = () => {
                   transform: 'scale(1.05)',
                 },
                 '&.Mui-disabled': {
-                  bgcolor: 'rgba(166, 255, 0, 0.3)',
+                  bgcolor: 'rgba(119, 214, 255, 0.3)',
                   color: 'rgba(0, 0, 0, 0.8)'
                 },
                 transition: 'all 0.3s ease'

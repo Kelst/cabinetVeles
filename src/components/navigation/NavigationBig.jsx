@@ -70,7 +70,7 @@ setActiveItem(item)
   return (
     <div className="">
     <HeaderSignboard user={user} clases={clases} />
-    <div className={'transition-all duration-500 bg-[#060606] -translate-y-80 md:translate-y-[0px] relative -z-10 ' + ' ' + clases.navigation}>
+    <div className={'transition-all duration-500 bg-sky-700 -translate-y-80 md:translate-y-[0px] relative -z-10 ' + ' ' + clases.navigation}>
       <div 
         className="absolute -left-6  w-[210px] h-[200px] z-50 cursor-pointer overflow-hidden"
         onClick={() => navigate('/home')}
@@ -82,11 +82,11 @@ setActiveItem(item)
           <img 
             src={configCabinet.logo_min_navigation}
             alt="Logo"
-            className="w-[70%] h-auto object-contain" 
+            className="w-[50%] h-auto object-contain hover:-rotate-2 duration-300" 
           />
         </motion.div>
       </div>
-      {/*    <div className=' absolute font-bold  hidden 2xl:block  top-[90px] transition-all duration-500  left-0 uppercase text-white text-[10px]  2xl:top-[21px] 2xl:left-60 2xl:text-black '> 
+      {/*    <div className=' absolute font-bold  hidden 2xl:block  top-[90px] transition-all duration-500  left-0 uppercase text-white text-[10px]  2xl:top-[21px] 2xl:left-60 2xl:text-sky-800 '> 
        <span className={clases.spanText}> Особистий кабінет   </span>  </div> */}
       <ul>
       
@@ -145,7 +145,7 @@ setActiveItem(item)
           </a>
         </li>
         {
-          activeItem!='Item1'? <div className=' font-mono absolute font-bold top-[95px] right-[0px]  text-center transition-all duration-500 sm:hidden md:block  uppercase text-white 2xl:n 2xl:top-4  2xl:right-[60px] 2xl:text-black'>
+          activeItem!='Item1'? <div className=' font-mono absolute font-bold top-[95px] right-[0px]  text-center transition-all duration-500 sm:hidden md:block  uppercase text-white 2xl:n 2xl:top-4  2xl:right-[60px] 2xl:text-sky-800'>
         <UserMenu user={user}/>
           </div>
           :""

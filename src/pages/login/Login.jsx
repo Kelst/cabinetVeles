@@ -233,7 +233,7 @@ export default function Login() {
             }
           }, 100);
         }
-        let imageUR = await getImageUrl('Opticom');
+        let imageUR = await getImageUrl('Veles');
         setImageU(imageUR);
         
       } catch (error) {
@@ -324,7 +324,7 @@ export default function Login() {
                     className='cursor-pointer' 
                     sx={{ 
                       m: 1, 
-                      bgcolor: '#A4DE02', 
+                      bgcolor: '#77cdec', 
                       textShadow: "revert", 
                       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                       transition: 'all 0.3s ease',
@@ -342,7 +342,7 @@ export default function Login() {
                   <Typography 
                     component="h1" 
                     variant="h5" 
-                    className='font-bold text-black'
+                    className='font-bold text-sky-800'
                     sx={{
                       transition: 'all 0.3s ease',
                       '&:hover': {

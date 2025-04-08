@@ -135,7 +135,7 @@ const [openUnlink, setOpenUnlink] = useState(false);
 />
     <div className=' hidden lg:block relative z-10'>
     <div className=" text-white  flex items-center justify-center rounded-lg">
-      <div className="container mx-auto p-8 bg-white   opacity-95 text-black rounded-md shadow-md">
+      <div className="container mx-auto p-8 bg-white   opacity-95 text-sky-800 rounded-md shadow-md">
       <UserHeader 
         open={open}
         handleClick={handleClick}
@@ -255,7 +255,7 @@ hasAnyTrueValue?
      <MacCreditDialog open={openDialogCredit} handleAction={showAllert} handleClose={()=>{setOpenDialogCredit(false)}}   />
      <StaticIpDialog open={openDialogStatic} handleAction={showAllert} handleClose={()=>{setOpenDialogStatic(false)}}   />
      <AddService open={openDialogService} handleClose={()=>setOpenDialogService(false)}/>
-     <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} />
+     {/* <StopPlayDialog open={openDialogStopPlay}   handleClose={()=>{setOpenDialogStopPlay(false)}} /> */}
      <ClearCID  open={openCid}  handleClose={()=>{setOpenCid(false)}}/>
      <ReloadSesion open={openDialogReloadSession}   handleClose={()=>{setOpenDialogReloadSession(false)}} />
      <EditPhone open={openDialogEditPhone} handleClose={()=>{setOpenDialogEditPhone(false)}}/>

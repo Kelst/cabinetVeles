@@ -94,14 +94,14 @@ const LoginManagement = ({
 
   return (
     <motion.div 
-      className={`mt-8 bg-black/80 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg border border-lime-500/20 w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
+      className={`mt-8 bg-sky-80 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-lg border border-sky-500/20 w-full max-w-[1600px] mx-auto ${style.animationBorder}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       whileHover={{ boxShadow: "0 0 20px rgba(132, 204, 22, 0.2)" }}
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-lime-400 flex items-center">
+        <h2 className="text-xl font-bold text-sky-400 flex items-center">
           <motion.div
             variants={iconVariants}
             animate="animate"
@@ -121,7 +121,7 @@ const LoginManagement = ({
         >
           <HelpIcon 
             onClick={() => setControllPanelDialog(true)} 
-            className="w-6 h-6 text-lime-400 hover:text-lime-300 cursor-help transition-colors duration-300"
+            className="w-6 h-6 text-sky-400 hover:text-sky-300 cursor-help transition-colors duration-300"
           />
         </motion.div>
       </div>
@@ -155,7 +155,7 @@ const LoginManagement = ({
                 label={action.label}
                 disabled={action.disabled}
                 disabledReason={action.disabled ? `Ви вже використовуєте статичну IP: ${ipStatic}` : ""}
-                className="w-full h-full min-h-[44px] text-sm whitespace-normal px-4 py-2 bg-lime-950/20 hover:bg-lime-900/30 border-lime-500/20 transition-all duration-300"
+                className="w-full h-full min-h-[44px] text-sm whitespace-normal px-4 py-2 bg-sky-950/20 hover:bg-sky-900/30 border-sky-500/20 transition-all duration-300"
               />
             </motion.div>
           ) : null;
@@ -172,14 +172,14 @@ const LoginManagement = ({
       >
         <motion.button
           onClick={handleOpenContract}
-          className="group flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-lime-950/30 to-lime-900/20 hover:from-lime-900/40 hover:to-lime-800/30 border border-lime-500/20 rounded-lg transition-all duration-300"
+          className="group flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-sky-950/30 to-sky-900/20 hover:from-sky-900/40 hover:to-sky-800/30 border border-sky-500/20 rounded-lg transition-all duration-300"
           whileHover={{ 
             scale: 1.02,
             boxShadow: "0 0 15px rgba(132, 204, 22, 0.3)"
           }}
           whileTap={{ scale: 0.98 }}
         >
-          <ContractIcon className="w-5 h-5 text-lime-400 group-hover:text-lime-300 transition-colors duration-300" />
+          <ContractIcon className="w-5 h-5 text-sky-400 group-hover:text-sky-300 transition-colors duration-300" />
           <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300">
             Договір публічної оферти
           </span>

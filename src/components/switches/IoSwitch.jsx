@@ -19,7 +19,7 @@ const IOSSwitch = styled((props) => (
       transform: 'translateX(16px)',
       color: '#fff',
       '& + .MuiSwitch-track': {
-        backgroundColor:  '#A4DE02',
+        backgroundColor:  '#77cdec',
         opacity: 1,
         border: 0,
       },
@@ -48,7 +48,7 @@ const IOSSwitch = styled((props) => (
   },
   '& .MuiSwitch-track': {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === 'light' ? '#A4DE02' : '#A4DE02',
+    backgroundColor: theme.palette.mode === 'light' ? '#77cdec' : '#77cdec',
     opacity: 1,
     transition: theme.transitions.create(['background-color'], {
       duration: 500,

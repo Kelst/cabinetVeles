@@ -106,13 +106,13 @@ export default function MenuTV() {
       {!tariff.includes("TV") ? (
         <Alert 
           severity="info" 
-          icon={<InfoIcon sx={{ color: '#A4DE02' }} />}
+          icon={<InfoIcon sx={{ color: '#77cdec' }} />}
           sx={{
             backgroundColor: 'rgba(0,0,0,0.9)',
             color: '#ffffff', 
-            border: '1px solid #A4DE02',
+            border: '1px solid #77cdec',
             '& .MuiAlert-icon': {
-              color: '#A4DE02',
+              color: '#77cdec',
             },
             '& .MuiAlert-message': {
               width: '100%',
@@ -121,7 +121,7 @@ export default function MenuTV() {
           }}
         >
           <AlertTitle sx={{ 
-            color: '#A4DE02', 
+            color: '#77cdec', 
             fontWeight: 'bold',
             fontSize: '1.1rem',
             mb: 2 
@@ -130,13 +130,13 @@ export default function MenuTV() {
           </AlertTitle>
           <div className="space-y-2">
             <div className="flex items-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#A4DE02] mt-2"></div>
+              <div className="w-2 h-2 rounded-full bg-[#77cdec] mt-2"></div>
               <Typography className="text-white">
                 Opensvit TV доступне тільки для абонентів з активним тарифним планом, що включає телебачення
               </Typography>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#A4DE02] mt-2"></div>
+              <div className="w-2 h-2 rounded-full bg-[#77cdec] mt-2"></div>
               <Typography className="text-white">
                 Для активації сервісу зверніться до служби підтримки або оберіть відповідний тарифний план у особистому кабінеті
               </Typography>
@@ -158,10 +158,10 @@ export default function MenuTV() {
       overflow: 'hidden',
       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       backdropFilter: 'blur(8px)',
-      border: '1px solid #A4DE02'
+      border: '1px solid #77cdec'
     }}>
       <Box sx={{ 
-        borderBottom: '1px solid #A4DE02',
+        borderBottom: '1px solid #77cdec',
         backgroundColor: 'rgba(0, 0, 0, 0.9)'
       }}>
         <Tabs 
@@ -170,17 +170,17 @@ export default function MenuTV() {
           variant="fullWidth"
           sx={{
             '& .MuiTabs-indicator': {
-              backgroundColor: '#A4DE02',
+              backgroundColor: '#77cdec',
             },
           }}
         >
           <Tab
             icon={<TvIcon />}
-            label="OPTICOMPLUS TV"
+            label="Veles TV"
             sx={{
               color: 'white',
               '&.Mui-selected': {
-                color: '#A4DE02',
+                color: '#77cdec',
               },
               textTransform: 'uppercase',
               fontWeight: 'bold',
@@ -194,7 +194,7 @@ export default function MenuTV() {
               sx={{
                 color: 'white',
                 '&.Mui-selected': {
-                  color: '#A4DE02',
+                  color: '#77cdec',
                 },
                 textTransform: 'uppercase',
                 fontWeight: 'bold',
@@ -209,7 +209,7 @@ export default function MenuTV() {
         <div className="space-y-4">
           <InfoBanner />
           
-          <div className="flex items-center gap-4 flex-wrap p-4 bg-black rounded-lg shadow-[0_0_15px_rgba(164,222,2,0.3)]">
+          <div className="flex items-center gap-4 flex-wrap p-4 bg-sky-800 rounded-lg shadow-[0_0_15px_rgba(164,222,2,0.3)]">
             <Tooltip title="Для пристроїв Android/Android TV" placement="bottom">
               <Typography className="text-white font-medium">
                 Завантажити APK файл  
@@ -219,10 +219,10 @@ export default function MenuTV() {
               onClick={handleDownload}
               startIcon={<BrowserUpdatedIcon />}
               sx={{  
-                color: '#A4DE02',
-                borderColor: '#A4DE02',
+                color: '#77cdec',
+                borderColor: '#77cdec',
                 '&:hover': {
-                  borderColor: '#A4DE02',
+                  borderColor: '#77cdec',
                   backgroundColor: 'rgba(164, 222, 2, 0.1)',
                   boxShadow: '0 0 15px rgba(164, 222, 2, 0.3)' 
                 },
@@ -273,15 +273,15 @@ export default function MenuTV() {
                 '&.Mui-expanded': {
                   margin: '8px 0',
                 },
-                borderColor: '#A4DE02',
+                borderColor: '#77cdec',
                 border: '1px solid'
               }}
             >
               <AccordionSummary
-                expandIcon={<SettingsIcon sx={{ color: '#A4DE02' }} />}
+                expandIcon={<SettingsIcon sx={{ color: '#77cdec' }} />}
                 sx={{
                   '&.Mui-expanded': {
-                    backgroundColor: 'black',
+                    backgroundColor: 'sky-800',
                     borderRadius: '8px 8px 0 0',
                   },
                 }}
@@ -326,14 +326,14 @@ export default function MenuTV() {
                   '&.Mui-expanded': {
                     margin: '8px 0',
                   },
-                  border: '1px solid #A4DE02'
+                  border: '1px solid #77cdec'
                 }}
               >
                 <AccordionSummary
-                  expandIcon={<SettingsIcon sx={{ color: '#A4DE02' }} />}
+                  expandIcon={<SettingsIcon sx={{ color: '#77cdec' }} />}
                   sx={{
                     '&.Mui-expanded': {
-                      backgroundColor: 'black',
+                      backgroundColor: 'sky-800',
                       borderRadius: '8px 8px 0 0',
                     },
                   }}

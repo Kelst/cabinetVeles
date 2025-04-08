@@ -32,8 +32,8 @@ export default function ExitDialog({open,handleClose,handleLogOuth}) {
         <img className='w-40   object-cover mx-auto' src={Bay} alt="вийти" />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{color:'black'}}>Залишитись</Button>
-          <Button onClick={handleLogOuth}sx={{color:'black'}}>Вийти</Button>
+          <Button onClick={handleClose} sx={{color:'sky-800'}}>Залишитись</Button>
+          <Button onClick={handleLogOuth}sx={{color:'sky-800'}}>Вийти</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

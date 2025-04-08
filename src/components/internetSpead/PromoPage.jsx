@@ -15,20 +15,20 @@ import { styled } from '@mui/material/styles';
 import ContactInfoButton from '../сontactInfoButton/ContactInfoButton';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  background: 'linear-gradient(to bottom, #000000, #353535, #000000)', // Black and matte black
+  background: 'linear-gradient(to bottom, #000000, #92c7f5, #000000)', // sky-800 and matte sky-800
   minHeight: '100vh',
   padding: theme.spacing(4),
   color: '#ffffff'
 }));
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: 'rgba(0, 0, 0, 0.9)', // Black with transparency
+  backgroundColor: 'rgba(0, 0, 0, 0.9)', // sky-800 with transparency
   backdropFilter: 'blur(8px)',
-  border: '1px solid #A4DE02', // Lime green
+  border: '1px solid #77cdec', // sky sky
   marginBottom: theme.spacing(4),
   color: '#ffffff',
   '&:hover': {
-    boxShadow: '0 0 15px rgba(164, 222, 2, 0.3)', // Lime green shadow
+    boxShadow: '0 0 15px rgba(164, 222, 2, 0.3)', // sky sky shadow
     transform: 'translateY(-2px)',
     transition: 'all 0.3s ease'
   }
@@ -71,7 +71,7 @@ const PromoPage = () => {
             variant="h2" 
             align="center" 
             sx={{ 
-              color: '#A4DE02', // Lime green
+              color: '#77cdec', // sky sky
               mb: 2, 
               fontWeight: 'bold',
               textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
@@ -103,7 +103,7 @@ const PromoPage = () => {
         <AnimatedSection delay={0.4}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#77cdec', mb: 2, fontWeight: 'bold' }}>
                 Як стати учасником акції:
               </Typography>
               <List>
@@ -133,7 +133,7 @@ const PromoPage = () => {
         <AnimatedSection delay={0.5}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#77cdec', mb: 2, fontWeight: 'bold' }}>
                 Спеціальна пропозиція!
               </Typography>
               <Typography variant="h5" sx={{ mb: 2, color: '#ffffff' }}>
@@ -166,7 +166,7 @@ const PromoPage = () => {
         <AnimatedSection delay={0.6}>
           <StyledCard>
             <CardContent>
-              <Typography variant="h4" sx={{ color: '#A4DE02', mb: 2, fontWeight: 'bold' }}>
+              <Typography variant="h4" sx={{ color: '#77cdec', mb: 2, fontWeight: 'bold' }}>
                 Важливо!
               </Typography>
               <Typography variant="body1" sx={{ color: '#ffffff' }}>

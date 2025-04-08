@@ -62,11 +62,11 @@ export default function StopPlayDialog({open, handleClose}) {
         style: {
           backgroundColor: '#1a1a1a',
           borderRadius: '16px',
-          boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+          boxShadow: '0 4px 30px black',
         },
       }}
     >
-      <DialogTitle className="text-center text-3xl font-bold text-[#a6ff00] pb-4 border-b border-[#a6ff00]">
+      <DialogTitle className="text-center text-3xl font-bold text-[#77d6ff] pb-4 border-b border-[#77d6ff]">
         Призупинити послугу
       </DialogTitle>
       <IconButton
@@ -76,7 +76,7 @@ export default function StopPlayDialog({open, handleClose}) {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: '#a6ff00',
+          color: '#77d6ff',
           '&:hover': {
             color: '#fff',
             transform: 'rotate(180deg)',
@@ -89,39 +89,39 @@ export default function StopPlayDialog({open, handleClose}) {
       <DialogContent className="bg-[#1a1a1a]">
         <div className="p-6 space-y-6 text-white">
           <AnimatedText delay={0.1}>
-            <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
+            <h2 className="text-2xl font-semibold text-[#77d6ff] mb-4">
               Важлива інформація щодо призупинення та відновлення послуг:
             </h2>
           </AnimatedText>
 
           <AnimatedText delay={0.2}>
-            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+            <div className="bg-[#5b8bd8] p-4 rounded-lg border border-[#77d6ff]">
               <p className="leading-relaxed">
-                Ми розуміємо, що іноді у вас можуть виникнути обставини, які вимагають тимчасового призупинення наших послуг. З радістю повідомляємо, що ви маєте можливість призупинити послуги протягом мінімального терміну – <span className="font-semibold text-[#a6ff00]">1 місяця</span>. Важливо зазначити, що ви можете в будь-який момент відновити послуги.
+                Ми розуміємо, що іноді у вас можуть виникнути обставини, які вимагають тимчасового призупинення наших послуг. З радістю повідомляємо, що ви маєте можливість призупинити послуги протягом мінімального терміну – <span className="font-semibold text-[#77d6ff]">1 місяця</span>. Важливо зазначити, що ви можете в будь-який момент відновити послуги.
               </p>
             </div>
           </AnimatedText>
 
           <AnimatedText delay={0.3}>
             <p className="leading-relaxed">
-              Це надає вам <span className="font-semibold text-[#a6ff00]">гнучкість</span> у керуванні своїм обліковим записом та можливість <span className="font-semibold text-[#a6ff00]">економії</span> в тих випадках, коли ви тимчасово не використовуєте наші послуги.
+              Це надає вам <span className="font-semibold text-[#77d6ff]">гнучкість</span> у керуванні своїм обліковим записом та можливість <span className="font-semibold text-[#77d6ff]">економії</span> в тих випадках, коли ви тимчасово не використовуєте наші послуги.
             </p>
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
-            <div className="bg-[#111111] p-4 rounded-lg border border-[#a6ff00] mt-4">
+            <div className="bg-[#5b8bd8] p-4 rounded-lg border border-[#77d6ff] mt-4">
               <p className="leading-relaxed">
-                Якщо у вас виникли питання або вам потрібна додаткова інформація щодо процедури призупинення та відновлення послуг, будь ласка, <span className="font-semibold text-[#a6ff00]">звертайтеся до нашої служби підтримки</span>. Ми завжди готові допомогти вам у зручний для вас спосіб.
+                Якщо у вас виникли питання або вам потрібна додаткова інформація щодо процедури призупинення та відновлення послуг, будь ласка, <span className="font-semibold text-[#77d6ff]">звертайтеся до нашої служби підтримки</span>. Ми завжди готові допомогти вам у зручний для вас спосіб.
               </p>
             </div>
           </AnimatedText>
         </div>
       </DialogContent>
-      <DialogActions className="bg-[#111111] p-4">
+      <DialogActions className="bg-[#5b8bd8] p-4">
         <Button 
           onClick={handleOncklick}
           sx={{
-            backgroundColor: '#a6ff00',
+            backgroundColor: '#77d6ff',
             color: '#000',
             borderRadius: '9999px',
             padding: '8px 24px',

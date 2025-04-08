@@ -69,7 +69,7 @@ const UserMenu = ({ centered }) => {
     if (!isExpanded || !allLogins.length) return null;
 
     return (
-      <div className="absolute right-0 mt-2 w-48 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-lg shadow-black/50 
+      <div className="absolute right-0 mt-2 w-48 bg-slate-800/95 backdrop-blur-sm rounded-lg shadow-lg shadow-sky-800/50 
                       border border-slate-600/50 z-50 overflow-hidden">
         <div className="py-2">
           {allLogins.map((loginUser) => (

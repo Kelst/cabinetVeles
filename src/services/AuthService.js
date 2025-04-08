@@ -10,7 +10,7 @@ class AuthService {
              const response = await $api.post('/login', {
                  login,
                  password,
-                 provider: "Opticom"
+                 provider: "Veles"
              });
              
              if (response.data.accessToken && response.data.refreshToken) {
@@ -28,7 +28,7 @@ class AuthService {
          try {
              const response = await $api.post('/loginPhone', {
                  phone,
-                 provider: "Opticom"
+                 provider: "Veles"
              });
              
              if (response.data.accessToken && response.data.refreshToken) {

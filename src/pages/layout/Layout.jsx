@@ -10,6 +10,7 @@ import IntertwiningLinesAnimation from '../../components/intertwiningLinesAnimat
 import useConfigPage from '../../store/configPage';
 import HeaderSignboard from '../../components/headerSignboard/HeaderSignboard';
 import useStore from '../../store/store';
+import './Layout.css'; // Підключаємо новий CSS файл для фону
 
 export default function Layout() {
   const user = useStore(state => state.user);
@@ -20,6 +21,7 @@ export default function Layout() {
   const showCursor = useInfoStore(state => state.showCursor);
   const setLoader = useInfoStore(store => store.setLoader);
   const [showButton, setShowButton] = useState(false);
+  
   useEffect(() => {
     const checkAuthData = () => {
         const authData = localStorage.getItem('authData');
@@ -30,7 +32,8 @@ export default function Layout() {
     const interval = setInterval(checkAuthData, 5000);
     
     return () => clearInterval(interval);
-}, []);
+  }, []);
+  
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
@@ -63,21 +66,31 @@ export default function Layout() {
   }
 
   return (
-    
     <div className="relative min-h-screen w-full overflow-x-hidden">
-      {/* <video
-        autoPlay
-        loop
-        muted
-        className="fixed inset-0 w-full h-full object-cover -z-10"
-      >
-        <source src="./src/assets/hsv4.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
+      {/* Елементи нового фону */}
+      <div className="background-elements">
+        {/* Великі кола */}
+        <div className="bg-circle bg-circle-1"></div>
+        <div className="bg-circle bg-circle-2"></div>
+        <div className="bg-circle bg-circle-3"></div>
+        
+        {/* Малі кола (точки) */}
+        <div className="bg-dot bg-dot-1"></div>
+        <div className="bg-dot bg-dot-2"></div>
+        <div className="bg-dot bg-dot-3"></div>
+        <div className="bg-dot bg-dot-4"></div>
+        
+        {/* Горизонтальні лінії */}
+        <div className="bg-line bg-line-1"></div>
+        <div className="bg-line bg-line-2"></div>
+        
+        {/* Діагональні смуги */}
+        <div className="bg-stripe bg-stripe-1"></div>
+        <div className="bg-stripe bg-stripe-2"></div>
+      </div>
 
       <Loader />
       <CustomAlert />
-      <IntertwiningLinesAnimation />
       <HeaderSignboard user={user} />
 
       <div className="flex flex-col md:flex-row w-full">
@@ -91,23 +104,21 @@ export default function Layout() {
         </nav>
 
         <main className="flex-grow px-4 mt-[10px] md:mt-[200px] mx-auto w-full max-w-[90%] sm:max-w-[550px] md:max-w-[900px] lg:max-w-[1019px] xl:max-w-[1100px] 2xl:max-w-[1450px]">
-     
           <Outlet />
-    
         </main>
       </div>
 
       {showButton && (
-       <button
-       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-       className="fixed bottom-5 right-4 z-50 p-4 transition-opacity hover:opacity-80 text-black"
-     >
-       <img 
-         src={hand} 
-         alt="Scroll to top" 
-         className="w-12 h-12 animate-bounce filter invert brightness-100"
-       />
-     </button>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-5 right-4 z-50 p-4 transition-opacity hover:opacity-80 text-sky-800"
+        >
+          <img 
+            src={hand} 
+            alt="Scroll to top" 
+            className="w-12 h-12 animate-bounce filter invert brightness-100"
+          />
+        </button>
       )}
     </div>
   );

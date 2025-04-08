@@ -53,11 +53,11 @@ export default function AddService({ open, handleClose }) {
           style: {
             backgroundColor: '#1a1a1a',
             borderRadius: '16px',
-            boxShadow: '0 4px 30px rgba(166, 255, 0, 0.15)',
+            boxShadow: '0 4px 30px black',
           },
         }}
       >
-        <DialogTitle className="text-center text-3xl font-bold text-[#a6ff00] pb-4 border-b border-[#a6ff00]">
+        <DialogTitle className="text-center text-3xl font-bold text-[#77d6ff] pb-4 border-b border-[#77d6ff]">
           Додаткові послуги
         </DialogTitle>
         <IconButton
@@ -67,7 +67,7 @@ export default function AddService({ open, handleClose }) {
             position: 'absolute',
             right: '16px',
             top: '16px',
-            color: '#a6ff00',
+            color: '#77d6ff',
             transition: 'all 0.3s ease',
             '&:hover': {
               color: '#fff',
@@ -80,61 +80,61 @@ export default function AddService({ open, handleClose }) {
         <DialogContent className="bg-[#1a1a1a]">
           <div className="p-6 space-y-6 text-white">
             <AnimatedText delay={0.1}>
-              <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
-                Вартість додаткових послуг, пов'язаних з роботою доступу до мережі Інтернет для абонентів Opticom:
+              <h2 className="text-2xl font-semibold text-[#77d6ff] mb-4">
+                Вартість додаткових послуг, пов'язаних з роботою доступу до мережі Інтернет для абонентів Veles:
               </h2>
             </AnimatedText>
 
             <AnimatedText delay={0.2}>
               <ul className="space-y-3">
                 <li className="flex items-start space-x-2">
-                  <span className="text-[#a6ff00] mt-1">•</span>
+                  <span className="text-[#77d6ff] mt-1">•</span>
                   <span>Налаштування роутерів, ТВ-приставок в офісах провайдера Intelekt – безкоштовно.</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <span className="text-[#a6ff00] mt-1">•</span>
+                  <span className="text-[#77d6ff] mt-1">•</span>
                   <span>Налаштування основного роутера технічним спеціалістом з виїздом до абонента – 300 грн.</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <span className="text-[#a6ff00] mt-1">•</span>
+                  <span className="text-[#77d6ff] mt-1">•</span>
                   <span>Підключення кабелем (до 10 м.) та налаштування ТВ-приставок, телевізорів технічним спеціалістом з виїздом до абонента – безкоштовно.</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <span className="text-[#a6ff00] mt-1">•</span>
+                  <span className="text-[#77d6ff] mt-1">•</span>
                   <span>Підключення послуги "Статична IP адреса" – 50 грн/міс.</span>
                 </li>
               </ul>
             </AnimatedText>
 
             <AnimatedText delay={0.3}>
-              <h2 className="text-2xl font-semibold text-[#a6ff00] mb-4">
+              <h2 className="text-2xl font-semibold text-[#77d6ff] mb-4">
                 Побудова та обслуговування внутрішніх локальних мереж зв'язку абонента (кабельних та радіо):
               </h2>
             </AnimatedText>
 
             <AnimatedText delay={0.4}>
-              <div className="space-y-4 bg-[#111111] p-4 rounded-lg border border-[#a6ff00]">
+              <div className="space-y-4 bg-[#5b8bd8] p-4 rounded-lg border border-[#77d6ff]">
                 <p>
-                  Перша година (оплата за транспортні витрати, компенсація оплати часу монтажників у дорозі, робота монтажників – у вартість включається робота монтажників від 1 хв. до 60 хв. у абонента) – <span className="text-[#a6ff00]">600 грн</span>.
+                  Перша година (оплата за транспортні витрати, компенсація оплати часу монтажників у дорозі, робота монтажників – у вартість включається робота монтажників від 1 хв. до 60 хв. у абонента) – <span className="text-[#77d6ff]">600 грн</span>.
                 </p>
                 <p>
-                  Друга та наступні години – <span className="text-[#a6ff00]">300 грн./година</span>. за межами м. Чернівці – додатково <span className="text-[#a6ff00]">10 грн</span>. за 1 км. від м. Чернівці.
+                  Друга та наступні години – <span className="text-[#77d6ff]">300 грн./година</span>. за межами м. Чернівці – додатково <span className="text-[#77d6ff]">10 грн</span>. за 1 км. від м. Чернівці.
                 </p>
               </div>
             </AnimatedText>
 
             <AnimatedText delay={0.5}>
-              <p className="mt-6 font-semibold text-[#a6ff00]">
+              <p className="mt-6 font-semibold text-[#77d6ff]">
                 Якщо Ви бажаєте замовити додаткову послугу (виїзд майстра, тощо), скористайтесь кнопкою 'Продовжити' та слідуйте інструкціями !
               </p>
             </AnimatedText>
           </div>
         </DialogContent>
-        <DialogActions className="bg-[#111111] p-4">
+        <DialogActions className="bg-[#5b8bd8] p-4">
           <Button 
             onClick={handleShowDialog}
             sx={{
-              backgroundColor: '#a6ff00',
+              backgroundColor: '#77d6ff',
               color: '#000',
               borderRadius: '9999px',
               padding: '8px 24px',

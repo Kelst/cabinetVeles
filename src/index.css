@@ -4,15 +4,17 @@
 
 /* Базові налаштування */
 :root {
-  /* Основна палітра кольорів */
-  --bright-lime: #86cc0f;
-  --lime-light: #9fce3a;
-  --lime-lighter: #d8f589;
+  /* Основна палітра кольорів - блакитні відтінки */
+  --bright-blue: #00a0e4;
+  --blue-light: #42b4e6;
+  --blue-lighter: #b8e0f6;
+  --blue-sky: #87cefa;
+  --blue-pale: #d0f0ff;
   
   /* Додаткові кольори для різних станів */
-  --lime-hover: #7ab90e;
-  --lime-active: #6ca60d;
-  --lime-disabled: rgba(134, 204, 15, 0.5);
+  --blue-hover: #0090ce;
+  --blue-active: #0080b8;
+  --blue-disabled: rgba(0, 160, 228, 0.5);
   
   /* Кольори для тексту */
   --text-primary: rgba(0, 0, 0, 0.87);
@@ -49,15 +51,45 @@ body {
   font-family: 'Lato', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   color: var(--text-primary);
-  background: var(--bright-lime);
+  background: linear-gradient(135deg, var(--bright-blue), var(--blue-sky));
+  background-size: 100% 100%;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   transition: background-color 0.3s ease;
 }
 
+/* Геометричні елементи для фону */
+body::before, body::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+/* Верхній правий елемент */
+body::before {
+  top: 0;
+  right: 0;
+  width: 30vw;
+  height: 30vw;
+  background: var(--blue-lighter);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  opacity: 0.6;
+}
+
+/* Нижній лівий елемент */
+body::after {
+  bottom: 0;
+  left: 0;
+  width: 25vw;
+  height: 25vw;
+  background: var(--blue-light);
+  clip-path: circle(40% at 10% 90%);
+  opacity: 0.4;
+}
+
 /* Покращена чорна смуга */
-.black-stripe {
+.sky-800-stripe {
   background: rgba(0, 0, 0, 0.9);
   position: relative;
   padding: 1.25rem;
@@ -67,48 +99,67 @@ body {
   transition: all 0.3s ease;
 }
 
-.black-stripe:hover {
+.sky-800-stripe:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
 
-/* Покращені декоративні лінії */
-.decorative-line {
+/* Статичні декоративні елементи */
+.decorative-dot {
   position: absolute;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transform: skewX(-45deg);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
 }
 
-.decorative-line.top {
-  top: 20px;
-  animation: lineGlow 2s ease-in-out infinite;
+.sky-800-stripe:hover .decorative-dot {
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.decorative-line.bottom {
-  bottom: 20px;
-  animation: lineGlow 2s ease-in-out infinite reverse;
+/* Розміщення декоративних елементів */
+.decorative-dot.one {
+  top: 10px;
+  left: 10%;
+  width: 8px;
+  height: 8px;
 }
 
-@keyframes lineGlow {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+.decorative-dot.two {
+  top: 15px;
+  right: 15%;
+  width: 6px;
+  height: 6px;
+}
+
+.decorative-dot.three {
+  bottom: 12px;
+  left: 20%;
+  width: 5px;
+  height: 5px;
+}
+
+.decorative-dot.four {
+  bottom: 8px;
+  right: 25%;
+  width: 7px;
+  height: 7px;
+}
+
+/* Текстура для фону */
+.texture-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Покращена картка */
 .card {
   position: relative;
-  background: var(--lime-light);
+  background: var(--blue-light);
   border: 2px solid rgba(0, 0, 0, 0.8);
   border-radius: 12px;
   padding: 1.5rem;
@@ -121,15 +172,80 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* Декоративні кути картки */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 15px;
+  height: 15px;
+  border-top: 3px solid var(--blue-lighter);
+  border-left: 3px solid var(--blue-lighter);
+  border-radius: 3px 0 0 0;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  border-bottom: 3px solid var(--blue-lighter);
+  border-right: 3px solid var(--blue-lighter);
+  border-radius: 0 0 3px 0;
+}
+
+/* Цікаві патерни */
+.pattern-dots {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 120px;
+  height: 120px;
+  opacity: 0.15;
+  z-index: -1;
+  background-image: radial-gradient(var(--blue-light) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.pattern-lines {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  width: 150px;
+  height: 150px;
+  opacity: 0.1;
+  z-index: -1;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--blue-light),
+    var(--blue-light) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+}
+
 /* Медіа-запити для адаптивності */
 @media (max-width: 768px) {
   .card {
     padding: 1rem;
   }
   
-  .black-stripe {
+  .sky-800-stripe {
     padding: 1rem;
     clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+  }
+  
+  body::before {
+    width: 50vw;
+    height: 50vw;
+  }
+  
+  body::after {
+    width: 40vw;
+    height: 40vw;
   }
 }
 
@@ -138,8 +254,6 @@ body {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -152,8 +266,8 @@ body {
     --text-secondary: rgba(255, 255, 255, 0.6);
     --text-disabled: rgba(255, 255, 255, 0.38);
   }
-
+  
   .card {
-    background: rgba(159, 206, 58, 0.9);
+    background: rgba(66, 180, 230, 0.9);
   }
 }

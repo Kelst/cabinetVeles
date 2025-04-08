@@ -131,7 +131,7 @@ export default function AddServiceMake({open, handleClose, handleCloseService}) 
         <DialogActions>
           <Button 
             onClick={sendRequest} 
-            sx={{color:'black'}} 
+            sx={{color:'sky-800'}} 
             disabled={!isValid()}
           >
             Залишити заявку

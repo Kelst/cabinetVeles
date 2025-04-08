@@ -13,7 +13,7 @@ export default class UserService {
 
     static async fetchUsers(uid) {
         try {
-            const response = await $api.get(`https://cabinet.biz.ua/api/getDataUid?uid=${uid}&provider=${'Opticom'}`);
+            const response = await $api.get(`https://cabinet.biz.ua/api/getDataUid?uid=${uid}&provider=${'Veles'}`);
             const responseTariff = await $api.get(`https://cabinet.biz.ua/api/getListTariffAvaible?uid=${uid}`);
            //console.log(response.data);
             const result={...response.data,subLogin:[...response.data.subLogin],...responseTariff.data}

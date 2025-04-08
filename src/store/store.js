@@ -220,7 +220,7 @@ async checkAuth(){
 },
  async checkBillingApi(){
   try {
-  const user= await axios.get(`https://cabinet.biz.ua/api/checkIpBilling?provider=${'Opticom'}`)
+  const user= await axios.get(`https://cabinet.biz.ua/api/checkIpBilling?provider=${'Veles'}`)
   if(user.status=='200'){
 return user.data
   } else {
@@ -232,7 +232,7 @@ return user.data
  },
  async checkBillingApiGuest(guestIp){
   try {
-  const user= await axios.get(`https://cabinet.biz.ua/api/checkBillingApiGuest?guestIp=${guestIp}&provider=${'Opticom'}`)
+  const user= await axios.get(`https://cabinet.biz.ua/api/checkBillingApiGuest?guestIp=${guestIp}&provider=${'Veles'}`)
   if(user.status=='200'){
 return user.data
   } else {
@@ -401,7 +401,7 @@ async addCredit(uid,login) {
 },
 async requestPhoneChange(uid,login,newPhone) {
   try {
-    const response = await $api.post('https://cabinet.biz.ua/api/request-phone-change', { uid,login,newPhone,provider:'Opticom'})
+    const response = await $api.post('https://cabinet.biz.ua/api/request-phone-change', { uid,login,newPhone,provider:'Veles'})
     const result = response.data
     return result
   } catch (error) {
@@ -505,7 +505,7 @@ async getPrivat24Link(login,suma) {
 },
 async getEasypayLink(login,suma) {
   try {
-    const response = await $api.get(`https://cabinet.biz.ua/api/getEasypayLink?login=${login}&suma=${suma}&provider=Opticom`)
+    const response = await $api.get(`https://cabinet.biz.ua/api/getEasypayLink?login=${login}&suma=${suma}&provider=Veles`)
     const result = response.data
     return result
   } catch (error) {
@@ -580,7 +580,7 @@ async getDataOnu(uid) {
 async addAdditionalService(uid,login,phone,description) {
   try {
 
-    const response = await $api.post('https://cabinet.biz.ua/api/addAdditionalService', { uid, login, phone,description,provider:'Opticom' });
+    const response = await $api.post('https://cabinet.biz.ua/api/addAdditionalService', { uid, login, phone,description,provider:'Veles' });
     const result = response.data;
     return result;
   } catch (error) {
@@ -591,7 +591,7 @@ async addAdditionalService(uid,login,phone,description) {
 async addStaticRequest(login,phone) {
   try {
 
-    const response = await $api.post('https://cabinet.biz.ua/api/addStaticRequest', {login, phone,provider:'Opticom' });
+    const response = await $api.post('https://cabinet.biz.ua/api/addStaticRequest', {login, phone,provider:'Veles' });
     const result = response.data;
     return result;
   } catch (error) {
@@ -602,7 +602,7 @@ async addStaticRequest(login,phone) {
 async addFeedBack(feedBack,phone,login) {
   try {
 
-    const response = await $api.post('https://cabinet.biz.ua/api/addFeedback', {feedBack,phone,login,provider:"Opticom" });
+    const response = await $api.post('https://cabinet.biz.ua/api/addFeedback', {feedBack,phone,login,provider:"Veles" });
     const result = response.data;
     return result;
   } catch (error) {
@@ -613,7 +613,7 @@ async addFeedBack(feedBack,phone,login) {
 async addFeedBackU(login,phone,message,sublogin) {
   try {
 
-    const response = await $api.post('https://cabinet.biz.ua/api/addFeedbackU', {login,phone,message,sublogin,provider:"Opticom" });
+    const response = await $api.post('https://cabinet.biz.ua/api/addFeedbackU', {login,phone,message,sublogin,provider:"Veles" });
     const result = response.data;
     return result;
   } catch (error) {
@@ -624,7 +624,7 @@ async addFeedBackU(login,phone,message,sublogin) {
 async removeStaticRequest(login) {
   try {
 
-    const response = await $api.post('https://cabinet.biz.ua/api/removeStaticRequest', {login,provider:'Opticom'});
+    const response = await $api.post('https://cabinet.biz.ua/api/removeStaticRequest', {login,provider:'Veles'});
     const result = response.data;
     return result;
   } catch (error) {

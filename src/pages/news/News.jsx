@@ -18,7 +18,7 @@ export default function News() {
         setIsLoading(true);
         setError(null);
        // console.log('Fetching news...');
-        const newsData = await getNews('Opticom');
+        const newsData = await getNews('Veles');
       //  console.log('Received news data:', newsData);
         setIsLoading(false);
       } catch (err) {
@@ -61,7 +61,7 @@ export default function News() {
           transition={{ type: "spring", stiffness: 300 }}
         >
           <div
-            className="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
+            className="relative mb-6 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-sky-800/20 cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
             onClick={() => handleOpenDialog(article)}
           >
             <motion.img 
@@ -120,7 +120,7 @@ export default function News() {
             transition={{ duration: 0.7 }}
           >
             <div className="absolute inset-0 overflow-hidden">
-              <div className="h-full w-full bg-gradient-to-b from-black/50 to-transparent opacity-50"></div>
+              <div className="h-full w-full bg-gradient-to-b from-sky-800/50 to-transparent opacity-50"></div>
             </div>
             <div className="relative">
               <div className="flex flex-col items-center">

@@ -20,7 +20,7 @@ const Pay = ({ handlePayDialogShow }) => {
   const { payments, getPayments } = useConfigPage();
 const login=useStore(state=>state.login)
   useEffect(() => {
-    getPayments('Opticom');
+    getPayments('Veles');
   }, [getPayments]);
 
   return (
